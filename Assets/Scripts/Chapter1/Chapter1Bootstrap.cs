@@ -498,13 +498,15 @@ public class Chapter1Bootstrap : MonoBehaviour
                 return;
             }
 
+            var verticalOffset = new Vector3(0f, 2f, 0f);
             var furnitureRoot = EnsureChild(apartmentRoot, "Furniture").transform;
-            EnsureModelInstance(furnitureRoot, apartmentBedModel, BedDefaultPath, new Vector3(2.5f, 0.05f, -2.2f), new Vector3(0f, -90f, 0f), Vector3.one * 0.01f);
-            EnsureModelInstance(furnitureRoot, apartmentTableModel, TableDefaultPath, new Vector3(-1.6f, 0.05f, 0.9f), new Vector3(0f, 45f, 0f), Vector3.one * 0.012f);
-            EnsureModelInstance(furnitureRoot, apartmentChairModel, ChairDefaultPath, new Vector3(-2.4f, 0.05f, 1.8f), new Vector3(0f, 140f, 0f), Vector3.one * 0.011f);
-            EnsureModelInstance(furnitureRoot, apartmentPlantModel, PlantDefaultPath, new Vector3(3.1f, 0.05f, 1.8f), Vector3.zero, Vector3.one * 0.01f);
+            EnsureModelInstance(furnitureRoot, apartmentBedModel, BedDefaultPath, new Vector3(2.5f, 0.05f, -2.2f) + verticalOffset, new Vector3(0f, -90f, 0f), Vector3.one * 0.01f);
+            EnsureModelInstance(furnitureRoot, apartmentTableModel, TableDefaultPath, new Vector3(-1.6f, 0.05f, 0.9f) + verticalOffset, new Vector3(0f, 45f, 0f), Vector3.one * 0.012f);
+            EnsureModelInstance(furnitureRoot, apartmentChairModel, ChairDefaultPath, new Vector3(-2.4f, 0.05f, 1.8f) + verticalOffset, new Vector3(0f, 140f, 0f), Vector3.one * 0.011f);
+            EnsureModelInstance(furnitureRoot, apartmentPlantModel, PlantDefaultPath, new Vector3(3.1f, 0.05f, 1.8f) + verticalOffset, Vector3.zero, Vector3.one * 0.01f);
 
             BuildNoticeBoard(apartmentRoot);
+            OffsetChildLocalPosition(apartmentRoot, "NoticeBoard", verticalOffset);
         }
 
         private void PopulateCourtyard(Transform courtyardRoot)
@@ -515,10 +517,15 @@ public class Chapter1Bootstrap : MonoBehaviour
             }
 
             var props = EnsureChild(courtyardRoot, "Props").transform;
-            EnsureModelInstance(props, benchModel, BenchDefaultPath, new Vector3(3.5f, 0f, areaSpacing + 2.6f), new Vector3(0f, -90f, 0f), Vector3.one * 0.01f);
-            EnsureModelInstance(props, noticeBoardModel, NoticeBoardDefaultPath, new Vector3(-4.2f, 0f, areaSpacing + 2.8f), new Vector3(0f, 90f, 0f), Vector3.one * 0.012f);
-            EnsureStreetlight(props, new Vector3(-5f, 0f, areaSpacing + 4f));
-            EnsureStreetlight(props, new Vector3(5f, 0f, areaSpacing + 3f));
+
+            var benchPosition = ToAreaLocal(courtyardRoot, new Vector3(3.5f, 0f, areaSpacing + 2.6f));
+            EnsureModelInstance(props, benchModel, BenchDefaultPath, benchPosition, new Vector3(0f, -90f, 0f), Vector3.one * 0.01f);
+
+            var boardPosition = ToAreaLocal(courtyardRoot, new Vector3(-4.2f, 0f, areaSpacing + 2.8f));
+            EnsureModelInstance(props, noticeBoardModel, NoticeBoardDefaultPath, boardPosition, new Vector3(0f, 90f, 0f), Vector3.one * 0.012f);
+
+            EnsureStreetlight(props, ToAreaLocal(courtyardRoot, new Vector3(-5f, 0f, areaSpacing + 4f)));
+            EnsureStreetlight(props, ToAreaLocal(courtyardRoot, new Vector3(5f, 0f, areaSpacing + 3f)));
         }
 
         private void PopulateStreet(Transform streetRoot)
@@ -529,13 +536,68 @@ public class Chapter1Bootstrap : MonoBehaviour
             }
 
             var props = EnsureChild(streetRoot, "Props").transform;
-            EnsureModelInstance(props, kioskModel, KioskDefaultPath, new Vector3(-3.4f, 0f, areaSpacing * 2f - 2.4f), new Vector3(0f, 90f, 0f), Vector3.one * 0.012f);
-            EnsureStreetlight(props, new Vector3(4.5f, 0f, areaSpacing * 2f - 3f));
-            EnsureStreetlight(props, new Vector3(-4.5f, 0f, areaSpacing * 2f + 1f));
+            RemoveChildIfExists(props, "Billboard");
+
+            var kioskPosition = ToAreaLocal(streetRoot, new Vector3(-3.4f, 0f, areaSpacing * 2f - 2.4f));
+            EnsureModelInstance(props, kioskModel, KioskDefaultPath, kioskPosition, new Vector3(0f, 90f, 0f), Vector3.one * 0.012f);
+
+            EnsureStreetlight(props, ToAreaLocal(streetRoot, new Vector3(4.5f, 0f, areaSpacing * 2f - 3f)));
+            EnsureStreetlight(props, ToAreaLocal(streetRoot, new Vector3(-4.5f, 0f, areaSpacing * 2f + 1f)));
 
             var skyline = EnsureChild(streetRoot, "Skyline").transform;
-            EnsureModelInstance(skyline, tallBuildingModel, TallBuildingDefaultPath, new Vector3(-12f, 0f, areaSpacing * 2f + 10f), Vector3.zero, Vector3.one);
-            EnsureModelInstance(skyline, lowBuildingModel, LowBuildingDefaultPath, new Vector3(12f, 0f, areaSpacing * 2f + 8f), new Vector3(0f, 180f, 0f), Vector3.one);
+            EnsureModelInstance(skyline, tallBuildingModel, TallBuildingDefaultPath, ToAreaLocal(streetRoot, new Vector3(-12f, 0f, areaSpacing * 2f + 10f)), Vector3.zero, Vector3.one);
+            EnsureModelInstance(skyline, lowBuildingModel, LowBuildingDefaultPath, ToAreaLocal(streetRoot, new Vector3(12f, 0f, areaSpacing * 2f + 8f)), new Vector3(0f, 180f, 0f), Vector3.one);
+        }
+
+        private Vector3 ToAreaLocal(Transform areaRoot, Vector3 environmentSpacePosition)
+        {
+            if (areaRoot == null)
+            {
+                return environmentSpacePosition;
+            }
+
+            var worldPosition = transform.TransformPoint(environmentSpacePosition);
+            return areaRoot.InverseTransformPoint(worldPosition);
+        }
+
+        private void OffsetChildLocalPosition(Transform parent, string childName, Vector3 offset)
+        {
+            if (parent == null)
+            {
+                return;
+            }
+
+            var child = parent.Find(childName);
+            if (child == null)
+            {
+                return;
+            }
+
+            child.localPosition += offset;
+        }
+
+        private void RemoveChildIfExists(Transform parent, string childName)
+        {
+            if (parent == null)
+            {
+                return;
+            }
+
+            var child = parent.Find(childName);
+            if (child == null)
+            {
+                return;
+            }
+
+#if UNITY_EDITOR
+            if (!Application.isPlaying)
+            {
+                UnityEditor.Undo.DestroyObjectImmediate(child.gameObject);
+                return;
+            }
+#endif
+
+            Destroy(child.gameObject);
         }
 
         private void DeployAI(Transform aiRoot)
