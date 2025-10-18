@@ -16,3 +16,14 @@ This journal tracks the development progress of this project.
   - `[path/to/file]`
 - **Commit Hash:** `[commit hash]`
 ```
+
+### Task ID: SYS-001
+
+- **Start Time:** 2025-10-18 10:00:00
+- **End Time:**
+- **Status:** In Progress
+- **Notes/Blockers:** 
+  - Starting implementation of the core systems: TimeManager, KnowledgeManager, AnchorManager, and EchoSystem.
+  - The initial focus will be on creating the basic class structure and event bus communication in C# for Unity.
+- **Associated Files:**
+  - `tasks/task_core_systems.md`
