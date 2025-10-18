@@ -46,7 +46,7 @@ namespace Managers
         {
             // Simple serialization to PlayerPrefs for now.
             // A more robust solution would use a dedicated save file.
-            var serialized = MiniJSON.Json.Serialize(_knowledge);
+            var serialized = Json.Serialize(_knowledge);
             PlayerPrefs.SetString("Knowledge", serialized);
             PlayerPrefs.Save();
         }
@@ -56,7 +56,7 @@ namespace Managers
             if (PlayerPrefs.HasKey("Knowledge"))
             {
                 var serialized = PlayerPrefs.GetString("Knowledge");
-                var deserialized = MiniJSON.Json.Deserialize(serialized) as Dictionary<string, object>;
+                var deserialized = Json.Deserialize(serialized) as Dictionary<string, object>;
                 _knowledge = new Dictionary<string, string>();
                 foreach (var pair in deserialized)
                 {
