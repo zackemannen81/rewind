@@ -43,15 +43,14 @@ This journal tracks the development progress of this project.
 ### Task ID: PC-001
 
 - **Start Time:** 2025-10-18 09:22:00
-- **End Time:**
-- **Status:** In Progress
+- **End Time:** 2025-10-18 09:58:00
+- **Status:** Completed
 - **Notes/Blockers:** 
-  - Resuming player controller work; plan to implement crouch, sneak, vault, climb, lean, and noise output hooks.
-  - Need to fix EventBus unsubscribe handling and ensure new mechanics integrate with AI detection pipeline.
+  - Implemented crouch, sneak, lean, vault, and climb mechanics with AI noise hooks; EventBus hardened to avoid ghost listeners.
+  - Need Unity playtest to tune traversal layer masks and consider expanding input asset for non-programmatic bindings.
 - **Associated Files:**
   - `tasks/task_player_controller.md`
   - `Assets/Scripts/Player/PlayerController.cs`
   - `Assets/Scripts/Player/PlayerInput.cs`
   - `Assets/Scripts/Core/EventBus.cs`
-- **Commit Hash:**
-
+- **Commit Hash:** `5743f52`
