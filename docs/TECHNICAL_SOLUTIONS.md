@@ -3,6 +3,14 @@
 
 This document summarizes the proposed technical solutions for RE:WIND's core systems, based on the GDD's technical blueprints.
 
+## Game Engine
+
+**Engine:** Unity
+**Version:** 2022.3 LTS (or newer)
+**Language:** C#
+
+The project will be developed using Unity, leveraging its C# scripting environment, robust physics engine, and extensive asset store for rapid prototyping and development.
+
 ## Core Systems Architecture
 
 The game will be built on a modular, event-driven architecture to ensure loose coupling and testability.

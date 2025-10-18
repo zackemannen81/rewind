@@ -3,6 +3,9 @@ DOKUMENT: PRODUKTIONSPLAN & ROADMAP - RE:WIND
 Datum: 2025-10-16
 Syfte: Att definiera teamets roller, ansvar, tidslinje och milstolpar för utvecklingen av RE:WIND, med ett specifikt fokus på en AI-assisterad utvecklingspipeline.
 ​1. Team och Roller: En AI-augmenterad Struktur
+
+**Spelmotor:** Unity har valts som spelmotor för detta projekt. Detta beslut baseras på teamets befintliga erfarenhet av motorn, vilket kommer att påskynda utvecklingen och minska inlärningskurvan.
+
 ​I denna produktionsmodell agerar människor som arkitekter, regissörer och validerare, medan LLM-agenterna fungerar som exekutörer för väldefinierade kodningsuppgifter. Rollerna skiftar från "skapare av kod" till "specifikerare och granskare av kod".
 ​Lead Designer / Game Director (Människa):
 ​Ansvar: Håller i den övergripande visionen. Är den ytterst ansvariga för att GDD:t är kristallklart, konsekvent och detaljerat nog för att kunna översättas till prompts för kod-agenterna. Sätter de kreativa målen för varje milstolpe.
