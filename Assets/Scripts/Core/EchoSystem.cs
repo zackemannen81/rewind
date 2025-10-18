@@ -1,5 +1,6 @@
 
 using System.Collections.Generic;
+using Events;
 using UnityEngine;
 
 namespace Core
@@ -86,6 +87,13 @@ namespace Core
 
         public void StartPlayback(List<PlayerAction> actions)
         {
+            if (actions == null || actions.Count == 0)
+            {
+                _isPlaying = false;
+                _actionsToPlay = null;
+                return;
+            }
+
             _actionsToPlay = actions;
             _currentActionIndex = 0;
             _isPlaying = true;

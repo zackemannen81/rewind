@@ -1,49 +1,72 @@
 
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Core
 {
+    /// <summary>
+    /// Lightweight event bus to keep systems decoupled while allowing structured communication.
+    /// </summary>
     public static class EventBus
     {
-        private static readonly Dictionary<Type, List<Action<object>>> s_subscribers = new();
+        private static readonly Dictionary<Type, List<Delegate>> s_subscribers = new();
 
         public static void Subscribe<T>(Action<T> callback) where T : struct
         {
-            var eventType = typeof(T);
-            if (!s_subscribers.ContainsKey(eventType))
-            {
-                s_subscribers[eventType] = new List<Action<object>>();
-            }
-
-            s_subscribers[eventType].Add(e => callback((T)e));
-        }
-
-        public static void Unsubscribe<T>(Action<T> callback) where T : struct
-        {
-            var eventType = typeof(T);
-            if (!s_subscribers.ContainsKey(eventType))
+            if (callback == null)
             {
                 return;
             }
 
-            // This is a simplified unsubscribe. A more robust implementation might require
-            // keeping a reference to the original delegate.
-            // For this project, we will keep it simple for now.
+            var eventType = typeof(T);
+            if (!s_subscribers.TryGetValue(eventType, out var listeners))
+            {
+                listeners = new List<Delegate>();
+                s_subscribers[eventType] = listeners;
+            }
+
+            if (!listeners.Contains(callback))
+            {
+                listeners.Add(callback);
+            }
+        }
+
+        public static void Unsubscribe<T>(Action<T> callback) where T : struct
+        {
+            if (callback == null)
+            {
+                return;
+            }
+
+            var eventType = typeof(T);
+            if (!s_subscribers.TryGetValue(eventType, out var listeners))
+            {
+                return;
+            }
+
+            listeners.Remove(callback);
+
+            if (listeners.Count == 0)
+            {
+                s_subscribers.Remove(eventType);
+            }
         }
 
         public static void Publish<T>(T eventToPublish) where T : struct
         {
             var eventType = typeof(T);
-            if (!s_subscribers.ContainsKey(eventType))
+            if (!s_subscribers.TryGetValue(eventType, out var listeners))
             {
                 return;
             }
 
-            foreach (var subscriber in s_subscribers[eventType])
+            // Iterate backwards so subscribers can safely unsubscribe while events are processed.
+            for (var i = listeners.Count - 1; i >= 0; i--)
             {
-                subscriber.Invoke(eventToPublish);
+                if (listeners[i] is Action<T> typedListener)
+                {
+                    typedListener.Invoke(eventToPublish);
+                }
             }
         }
     }

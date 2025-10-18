@@ -1,4 +1,6 @@
 
+using UnityEngine;
+
 namespace Events
 {
     public struct LoopStartEvent { }
@@ -11,5 +13,12 @@ namespace Events
     public struct MinutePassedEvent
     {
         public int MinutesRemaining;
+    }
+
+    public struct PlayerNoiseEvent
+    {
+        public float NoiseLevel;
+        public bool IsMoving;
+        public Vector3 Position;
     }
 }
