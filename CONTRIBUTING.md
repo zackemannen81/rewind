@@ -1,6 +1,6 @@
-# Contributing to Beat Blaster 2
+# Contributing to RE:WIND
 
-We love receiving contributions from the community and are thrilled that you're interested in making Beat Blaster 2 even better. To ensure a smooth and collaborative process, we've established a few guidelines that we ask you to follow.
+We love receiving contributions from the community and are thrilled that you're interested in making RE:WIND even better. To ensure a smooth and collaborative process, we've established a few guidelines that we ask you to follow.
 
 ## Code of Conduct
 
@@ -8,10 +8,10 @@ To maintain a welcoming and inclusive environment, we expect all contributors to
 
 ## How to Contribute
 
-There are many ways to contribute to Beat Blaster 2, and we appreciate them all:
+There are many ways to contribute to RE:WIND, and we appreciate them all:
 
-- **Reporting Bugs:** If you encounter a bug, please [open an issue](https://github.com/zackemannen81/Beat-Blaster2/issues) and provide a detailed description, including steps to reproduce it.
-- **Suggesting Enhancements:** Have an idea for a new feature or an improvement to an existing one? We'd love to hear it! [Open an issue](https://github.com/zackemannen81/Beat-Blaster2/issues) to share your thoughts.
+- **Reporting Bugs:** If you encounter a bug, please [open an issue](https://github.com/zackemannen81/rewind/issues) and provide a detailed description, including steps to reproduce it.
+- **Suggesting Enhancements:** Have an idea for a new feature or an improvement to an existing one? We'd love to hear it! [open an issue](https://github.com/zackemannen81/rewind/issues) to share your thoughts.
 - **Submitting Pull Requests:** If you're ready to contribute code, you can submit a pull request. Here's how:
 
     1. **Fork the Repository:** Create your own copy of the repository to work on.
@@ -39,14 +39,14 @@ To avoid stepping on each other's tasks, we use two Git worktrees per contributo
 ### Setup
 
 ```bash
-git worktree add ../bb2-main main   # creates ../bb2-main pointing at main
+git worktree add ../rewind-main main   # creates ../rewind-main pointing at main
 ```
 
 ### Daily flow
 
-1. **Log progress first:** in the `main` worktree (`../bb2-main`), update the journal/task files and commit + push. Example:
+1. **Log progress first:** in the `main` worktree (`../rewind-main`), update the journal/task files and commit + push. Example:
    ```bash
-   cd ../bb2-main
+   cd ../rewind-main
    git pull --ff-only
    # edit docs/dev-journal.md, tasks/... as needed
    git add docs/dev-journal.md tasks/
@@ -60,6 +60,6 @@ This workflow keeps status updates visible on `main` while isolating feature dev
 
 ## Questions and Support
 
-If you have any questions or need help with the contribution process, feel free to reach out to us by [opening an issue](https://github.com/zackemannen81/Beat-Blaster2/issues).
+If you have any questions or need help with the contribution process, feel free to reach out to us by [open an issue](https://github.com/zackemannen81/rewind/issues).
 
-Thank you for your interest in contributing to Beat Blaster 2! We look forward to your contributions.
+Thank you for your interest in contributing to RE:WIND! We look forward to your contributions.
