@@ -9,13 +9,27 @@ namespace Chapter1
 
         [SerializeField]
         private Chapter1FuseBox fuseBox;
+        [SerializeField]
+        private AudioSource generatorAudio;
 
         public bool IsGeneratorOnline { get; private set; }
         public bool HasCompletedGoldenPath { get; private set; }
 
+        private void Awake()
+        {
+            if (generatorAudio == null)
+            {
+                generatorAudio = GetComponentInChildren<AudioSource>();
+            }
+        }
+
         public void OnLoopStart()
         {
             IsGeneratorOnline = false;
+            if (generatorAudio != null)
+            {
+                generatorAudio.Stop();
+            }
         }
 
         public bool TryActivate()
@@ -32,6 +46,10 @@ namespace Chapter1
 
             IsGeneratorOnline = true;
             HasCompletedGoldenPath = true;
+            if (generatorAudio != null)
+            {
+                generatorAudio.Play();
+            }
             OnGeneratorActivated?.Invoke();
             return true;
         }
@@ -39,6 +57,11 @@ namespace Chapter1
         public void SetFuseBox(Chapter1FuseBox target)
         {
             fuseBox = target;
+        }
+
+        public void SetAudioSource(AudioSource audioSource)
+        {
+            generatorAudio = audioSource;
         }
     }
 }

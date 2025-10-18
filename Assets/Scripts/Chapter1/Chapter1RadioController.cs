@@ -32,6 +32,12 @@ namespace Chapter1
             PlayCurrentClip(forceClue: true);
         }
 
+        public void SetAudioClips(AudioClip garble, AudioClip clue)
+        {
+            garbleClip = garble;
+            clueClip = clue;
+        }
+
         public void SetAudioSource(AudioSource source)
         {
             radioSource = source;

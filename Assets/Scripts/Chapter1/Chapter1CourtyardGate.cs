@@ -7,8 +7,12 @@ namespace Chapter1
     {
         [SerializeField]
         private Animator gateAnimator;
+        [SerializeField]
+        private AudioSource gateAudio;
 
         private static readonly int OpenHash = Animator.StringToHash("Open");
+
+        private Collider _gateCollider;
 
         public bool IsOpen { get; private set; }
 
@@ -31,6 +35,16 @@ namespace Chapter1
             {
                 gateAnimator.SetBool(OpenHash, true);
             }
+
+            if (_gateCollider != null)
+            {
+                _gateCollider.enabled = false;
+            }
+
+            if (gateAudio != null)
+            {
+                gateAudio.Play();
+            }
         }
 
         public void Close()
@@ -40,11 +54,31 @@ namespace Chapter1
             {
                 gateAnimator.SetBool(OpenHash, false);
             }
+
+            if (_gateCollider != null)
+            {
+                _gateCollider.enabled = true;
+            }
+
+            if (gateAudio != null)
+            {
+                gateAudio.Stop();
+            }
         }
 
         public void ForceOpen()
         {
             Open();
+        }
+
+        public void AssignCollider(Collider collider)
+        {
+            _gateCollider = collider;
+        }
+
+        public void SetAudioSource(AudioSource audioSource)
+        {
+            gateAudio = audioSource;
         }
     }
 }
