@@ -3,7 +3,7 @@
 
 - **ID:** PC-001
 - **Title:** Implement Player Controller
-- **Status:** OPEN
+- **Status:** IN_PROGRESS
 - **Description:** Implement the player character controller with all the specified movement mechanics.
 - **Acceptance Criteria:**
   - Player can walk, run, crouch, and sneak.
