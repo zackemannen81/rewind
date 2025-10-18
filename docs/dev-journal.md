@@ -69,3 +69,17 @@ This journal tracks the development progress of this project.
   - `docs/GDD_About.md`
 - **Commit Hash:**
 
+### Task ID: SND-001
+
+- **Start Time:** 2025-10-18 16:20:15 UTC
+- **End Time:**
+- **Status:** In Progress
+- **Notes/Blockers:** 
+  - Kicking off core audio direction for the Chapter 1 vertical slice; will audit existing Unity project structure and technical guidelines before asset planning.
+  - Need to scope feasible deliverables without sourcing external libraries; plan to build an in-engine audio manager and placeholder synth cues pending final production.
+  - Will survey available dataset references in `docs/` to align sonic motifs with established narrative beats.
+- **Associated Files:**
+  - `tasks/task_sound_design.md`
+  - `docs/GDD_ArtStyleAssets.md`
+  - `Assets/Scripts/Audio/`
+

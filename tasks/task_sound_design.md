@@ -3,7 +3,7 @@
 
 - **ID:** SND-001
 - **Title:** Establish Core Sound Design and Assets
-- **Status:** OPEN
+- **Status:** IN_PROGRESS
 - **Description:** Create the core audio assets for the vertical slice (Chapter 1), aligning with the sound design defined in `GDD_ArtStyleAssets.md`.
 - **Acceptance Criteria:**
   - Ambient, atmospheric music tracks.
