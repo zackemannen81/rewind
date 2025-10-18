@@ -13,3 +13,7 @@
   - Movement speed and noise levels affect AI detection.
 - **Dependencies:** None
 - **Estimated Effort:** 3 days
+
+## Notes
+
+- 2025-10-18: Resuming implementation of advanced traversal and stealth mechanics (crouch, sneak, vault, climb, lean, noise hooks) per PC-001 plan.

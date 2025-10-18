@@ -39,3 +39,19 @@ This journal tracks the development progress of this project.
   - The initial focus will be on creating a basic character controller that can move and jump.
 - **Associated Files:**
   - `tasks/task_player_controller.md`
+
+### Task ID: PC-001
+
+- **Start Time:** 2025-10-18 09:22:00
+- **End Time:**
+- **Status:** In Progress
+- **Notes/Blockers:** 
+  - Resuming player controller work; plan to implement crouch, sneak, vault, climb, lean, and noise output hooks.
+  - Need to fix EventBus unsubscribe handling and ensure new mechanics integrate with AI detection pipeline.
+- **Associated Files:**
+  - `tasks/task_player_controller.md`
+  - `Assets/Scripts/Player/PlayerController.cs`
+  - `Assets/Scripts/Player/PlayerInput.cs`
+  - `Assets/Scripts/Core/EventBus.cs`
+- **Commit Hash:**
+
