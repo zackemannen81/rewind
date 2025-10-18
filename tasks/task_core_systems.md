@@ -3,7 +3,7 @@
 
 - **ID:** SYS-001
 - **Title:** Implement Core Gameplay Systems
-- **Status:** IN_PROGRESS
+- **Status:** DONE
 - **Description:** Implement the fundamental systems required for the core gameplay loop of RE:WIND, as detailed in the GDDs. This includes the TimeManager, KnowledgeManager, AnchorManager, and the EchoSystem.
 - **Acceptance Criteria:**
   - A `TimeManager` that can start, end, and reset the 7-minute loop.
