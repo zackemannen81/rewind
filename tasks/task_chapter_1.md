@@ -3,7 +3,7 @@
 
 - **ID:** CH1-001
 - **Title:** Implement Chapter 1: "Wake / District 4: Threshold"
-- **Status:** OPEN
+- **Status:** IN_PROGRESS
 - **Description:** Implement the gameplay, puzzles, and narrative events for Chapter 1 as detailed in `GDD_About.md`.
 - **Acceptance Criteria:**
   - The level geometry for Apartment 4C, the courtyard, and the street is blocked out.

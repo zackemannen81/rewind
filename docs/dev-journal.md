@@ -54,3 +54,18 @@ This journal tracks the development progress of this project.
   - `Assets/Scripts/Player/PlayerInput.cs`
   - `Assets/Scripts/Core/EventBus.cs`
 - **Commit Hash:** `5743f52`
+
+### Task ID: CH1-001
+
+- **Start Time:** 2025-10-18 10:53:00
+- **End Time:**
+- **Status:** In Progress
+- **Notes/Blockers:** 
+  - Planning Chapter 1 blockout and golden-path puzzle chain; need to evaluate placeholder assets and define traversal masks.
+  - Identify required scenes/prefabs and system hooks (anchors, knowledge beats) before implementation.
+- **Associated Files:**
+  - `tasks/task_chapter_1.md`
+  - `Assets/Scenes/Chapter1/`
+  - `docs/GDD_About.md`
+- **Commit Hash:**
+
