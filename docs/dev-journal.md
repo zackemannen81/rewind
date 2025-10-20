@@ -83,3 +83,17 @@ This journal tracks the development progress of this project.
   - `docs/GDD_ArtStyleAssets.md`
   - `Assets/Scripts/Audio/`
 
+### Task ID: ART-001
+
+- **Start Time:** 2025-10-20 15:16:27 UTC
+- **End Time:**
+- **Status:** In Progress
+- **Notes/Blockers:** 
+  - Drafting production plan for art direction of Chapter 1 vertical slice: scope characters, enemy drone, and hero prop set before touching Unity project.
+  - Need to audit `docs/GDD_ArtStyleAssets.md` and existing asset folders to map required modeling/texturing tasks and shader pipeline considerations.
+  - Coordinate with lighting/post-processing standards to ensure color palette and diegetic UI align with narrative tone.
+- **Associated Files:**
+  - `tasks/task_art_style.md`
+  - `docs/GDD_ArtStyleAssets.md`
+  - `Assets/Art/`
+
