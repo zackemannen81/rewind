@@ -36,3 +36,10 @@
 
 # Various temporary files
 *.tmp
+
+# macOS specific
+.DS_Store
+
+# Ignore backup/separate project folders
+/Re WiND Character edit/
+
