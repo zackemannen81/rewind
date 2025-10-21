@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7356871674112410291}
+  - component: {fileID: 7356871674112410292}
   m_Layer: 0
   m_Name: ArtPaletteController
   m_TagString: Untagged
@@ -44,5 +45,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   palette: {fileID: 11400000, guid: 159f223d0d5d40ff904d3d57f892abac, type: 2}
   materialBindings: []
-  _currentLoopState: 0
-  _isInitialised: 0
