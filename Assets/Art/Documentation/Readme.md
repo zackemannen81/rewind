@@ -16,6 +16,11 @@ This folder contains the assets introduced for Task ART-001 to standardise the n
   - Listens for `LoopStartEvent`, `MinutePassedEvent`, and `LoopEndEvent` to drive alert/loop-end looks.
   - Enables alert mode when the loop timer hits the final minute (via `MinutePassedEvent`).
 
+## Editor Generator
+- `RetroArtBaselineGenerator` (`Art ▸ Generate ▸ Build Core Art Baseline`) spawns the default characters, props, and lighting prefabs under `Assets/Art/Characters`, `Assets/Art/Props`, and `Assets/Art/Lighting`.
+- The generator wipes previously generated prefabs before writing new ones, so you can re-run it safely after tweaking materials or palette values.
+- Expect each prefab to land in its own folder (e.g. `Assets/Art/Characters/Player/Player_LowPoly.prefab`). Drop these into scenes for quick blockouts.
+
 ### Usage Steps
 1. Drop `RetroPaletteStateController` onto a scene GameObject (e.g. `ArtPaletteController`).
 2. Assign the `RetroPalette_Default` asset to the controller.
@@ -30,4 +35,3 @@ This folder contains the assets introduced for Task ART-001 to standardise the n
 - `RETRO_ALERT` intensifies the base colour toward a crimson tint for late-loop tension.
 - `RETRO_LOOPEND` desaturates materials for the final rewind flash.
 - Toggle these keywords through gameplay by invoking `RetroPaletteStateController.SetLoopState` helpers (automatically handled for basic loop flow).
-

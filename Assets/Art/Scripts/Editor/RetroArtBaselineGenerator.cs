@@ -277,26 +277,26 @@ namespace Art.Editor
 
         private static void BuildGlobalProfile(PostProcessProfile profile)
         {
-            var bloom = profile.AddSettings<Bloom>();
+            var bloom = AddSetting<Bloom>(profile);
             bloom.intensity.Override(12f);
             bloom.threshold.Override(0.9f);
             bloom.softKnee.Override(0.5f);
             bloom.color.Override(Color.white);
 
-            var chromatic = profile.AddSettings<ChromaticAberration>();
+            var chromatic = AddSetting<ChromaticAberration>(profile);
             chromatic.intensity.Override(0.2f);
             chromatic.fastMode.Override(true);
 
-            var vignette = profile.AddSettings<Vignette>();
+            var vignette = AddSetting<Vignette>(profile);
             vignette.intensity.Override(0.35f);
             vignette.smoothness.Override(0.7f);
 
-            var grain = profile.AddSettings<Grain>();
+            var grain = AddSetting<Grain>(profile);
             grain.intensity.Override(0.15f);
             grain.colored.Override(false);
             grain.size.Override(0.7f);
 
-            var colorGrading = profile.AddSettings<ColorGrading>();
+            var colorGrading = AddSetting<ColorGrading>(profile);
             colorGrading.postExposure.Override(0.2f);
             colorGrading.temperature.Override(-12f);
             colorGrading.tint.Override(4f);
@@ -306,21 +306,34 @@ namespace Art.Editor
 
         private static void BuildLoopEndProfile(PostProcessProfile profile)
         {
-            var colorGrading = profile.AddSettings<ColorGrading>();
+            var colorGrading = AddSetting<ColorGrading>(profile);
             colorGrading.saturation.Override(-40f);
             colorGrading.hueShift.Override(-10f);
             colorGrading.postExposure.Override(-0.3f);
 
-            var chromatic = profile.AddSettings<ChromaticAberration>();
+            var chromatic = AddSetting<ChromaticAberration>(profile);
             chromatic.intensity.Override(0.6f);
 
-            var vignette = profile.AddSettings<Vignette>();
+            var vignette = AddSetting<Vignette>(profile);
             vignette.intensity.Override(0.45f);
 
-            var grain = profile.AddSettings<Grain>();
+            var grain = AddSetting<Grain>(profile);
             grain.intensity.Override(0.25f);
             grain.colored.Override(false);
             grain.size.Override(0.9f);
+        }
+
+        private static T AddSetting<T>(PostProcessProfile profile) where T : PostProcessEffectSettings
+        {
+            var setting = ScriptableObject.CreateInstance<T>();
+            setting.name = typeof(T).Name;
+            setting.hideFlags = HideFlags.HideInInspector | HideFlags.HideInHierarchy;
+            setting.enabled.Override(true);
+
+            AssetDatabase.AddObjectToAsset(setting, profile);
+            profile.settings.Add(setting);
+            EditorUtility.SetDirty(setting);
+            return setting;
         }
 
         private static void RemoveCollider(GameObject go)

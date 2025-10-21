@@ -11,6 +11,7 @@ Build the Chapter 1 vertical-slice art foundation that matches the retro-futuris
 - **Lighting Templates:** Volume profile asset encoding fog, bloom, chromatic aberration, color grading curves for the neon-noir look; reusable directional/area light prefabs tagged for Chapter 1 scenes.
 - **Post-Processing Stack:** Global volume prefab referencing the palette accent colors, depth-of-field, bloom, film grain, and vignette tuned to the 7-minute loop pacing (normal, alert, loop-end overrides).
 - **Documentation:** Drop-in instructions for art integration, asset naming conventions, and palette usage guidelines.
+- **Editor Automation:** `Art ▸ Generate ▸ Build Core Art Baseline` menu builds hero prefabs and lighting profiles from palette definitions to accelerate blockouts.
 
 ## Working Approach
 1. **Audit & Cleanup (Day 1):** Catalogue existing placeholder meshes in `Assets/WorkInProgressOrPlaceHolders`. Identify reusable items vs. replacements. Normalize scale references (1 unit = 1 meter).
