@@ -286,7 +286,8 @@ namespace Art.Editor
 
             var grain = profile.AddSettings<Grain>();
             grain.intensity.Override(0.15f);
-            grain.response.Override(0.8f);
+            grain.colored.Override(false);
+            grain.size.Override(0.7f);
 
             var colorGrading = profile.AddSettings<ColorGrading>();
             colorGrading.postExposure.Override(0.2f);
@@ -311,7 +312,8 @@ namespace Art.Editor
 
             var grain = profile.AddSettings<Grain>();
             grain.intensity.Override(0.25f);
-            grain.response.Override(0.6f);
+            grain.colored.Override(false);
+            grain.size.Override(0.9f);
         }
 
         private static void RemoveCollider(GameObject go)
