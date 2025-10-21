@@ -1,0 +1,849 @@
+2025-10-19 10:35:04.542 +02:00 [INF] Initializing Coplay services
+2025-10-19 10:35:04.776 +02:00 [INF] Initializing EditorThreadHelper
+2025-10-19 10:35:04.776 +02:00 [INF] EditorThreadHelper initialized successfully
+2025-10-19 10:35:04.972 +02:00 [INF] Enabling console error detection
+2025-10-19 10:35:04.994 +02:00 [INF] Found 0 errors via direct console query (cached)
+2025-10-19 10:35:04.996 +02:00 [INF] ConsoleDebugButtonService initializing
+2025-10-19 10:35:05.001 +02:00 [INF] Console debug button is enabled, adding button
+2025-10-19 10:35:05.001 +02:00 [INF] Enabling console debug button
+2025-10-19 10:35:05.003 +02:00 [INF] === Starting console button injection ===
+2025-10-19 10:35:05.004 +02:00 [INF] Found 1 console window instances
+2025-10-19 10:35:05.128 +02:00 [DBG] Console window found, attempting to add button
+2025-10-19 10:35:05.163 +02:00 [DBG] Initial error state: False
+2025-10-19 10:35:05.165 +02:00 [WRN] Could not find toolbar by child count, trying alternative search
+2025-10-19 10:35:05.168 +02:00 [DBG] Could not find console toolbar - adding button to root instead
+2025-10-19 10:35:05.171 +02:00 [DBG] Logo texture load result: success
+2025-10-19 10:35:05.221 +02:00 [INF] Coplay logo added (always visible)
+2025-10-19 10:35:05.253 +02:00 [INF] Debug button added with absolute positioning (centered), initial visibility: hidden
+2025-10-19 10:35:05.255 +02:00 [INF] Copy button added (always visible), initial position: near logo
+2025-10-19 10:35:05.258 +02:00 [DBG] UpdateButtonVisibility called - hasErrors: False, _debugButton: exists
+2025-10-19 10:35:05.258 +02:00 [INF] Debug With AI button successfully injected into console
+2025-10-19 10:35:05.261 +02:00 [INF] Subscribed to error detection
+2025-10-19 10:35:05.261 +02:00 [INF] ConsoleDebugButtonService initialized
+2025-10-19 10:35:09.083 +02:00 [INF] No existing action records JSON file found.
+2025-10-19 10:35:11.672 +02:00 [INF] Found 0 errors via direct console query (cached)
+2025-10-19 10:35:11.672 +02:00 [INF] No startup errors found after delayed check
+2025-10-19 10:35:11.673 +02:00 [DBG] UpdateButtonVisibility called - hasErrors: False, _debugButton: exists
+2025-10-19 10:36:25.284 +02:00 [DBG] Compilation finished, refreshing error state
+2025-10-19 10:36:25.608 +02:00 [INF] Deinitializing Coplay services
+2025-10-19 10:36:25.612 +02:00 [INF] ConsoleDebugButtonService disposing
+2025-10-19 10:36:25.631 +02:00 [INF] Unsubscribed from error detection
+2025-10-19 10:36:25.690 +02:00 [INF] EditorThreadHelper disposed
+2025-10-19 10:36:36.106 +02:00 [INF] Initializing Coplay services
+2025-10-19 10:36:36.206 +02:00 [INF] Initializing EditorThreadHelper
+2025-10-19 10:36:36.207 +02:00 [INF] EditorThreadHelper initialized successfully
+2025-10-19 10:36:36.294 +02:00 [INF] Enabling console error detection
+2025-10-19 10:36:36.309 +02:00 [INF] Found 0 errors via direct console query (cached)
+2025-10-19 10:36:36.310 +02:00 [INF] ConsoleDebugButtonService initializing
+2025-10-19 10:36:36.313 +02:00 [INF] Console debug button is enabled, adding button
+2025-10-19 10:36:36.313 +02:00 [INF] Enabling console debug button
+2025-10-19 10:36:36.315 +02:00 [INF] === Starting console button injection ===
+2025-10-19 10:36:36.315 +02:00 [INF] Found 1 console window instances
+2025-10-19 10:36:36.394 +02:00 [DBG] Console window found, attempting to add button
+2025-10-19 10:36:36.414 +02:00 [DBG] Initial error state: False
+2025-10-19 10:36:36.415 +02:00 [WRN] Could not find toolbar by child count, trying alternative search
+2025-10-19 10:36:36.417 +02:00 [DBG] Could not find console toolbar - adding button to root instead
+2025-10-19 10:36:36.418 +02:00 [DBG] Logo texture load result: success
+2025-10-19 10:36:36.445 +02:00 [INF] Coplay logo added (always visible)
+2025-10-19 10:36:36.462 +02:00 [INF] Debug button added with absolute positioning (centered), initial visibility: hidden
+2025-10-19 10:36:36.464 +02:00 [INF] Copy button added (always visible), initial position: near logo
+2025-10-19 10:36:36.465 +02:00 [DBG] UpdateButtonVisibility called - hasErrors: False, _debugButton: exists
+2025-10-19 10:36:36.465 +02:00 [INF] Debug With AI button successfully injected into console
+2025-10-19 10:36:36.467 +02:00 [INF] Subscribed to error detection
+2025-10-19 10:36:36.467 +02:00 [INF] ConsoleDebugButtonService initialized
+2025-10-19 10:36:50.562 +02:00 [INF] No existing action records JSON file found.
+2025-10-19 10:36:53.308 +02:00 [INF] Found 0 errors via direct console query (cached)
+2025-10-19 10:36:53.308 +02:00 [INF] No startup errors found after delayed check
+2025-10-19 10:36:53.309 +02:00 [DBG] UpdateButtonVisibility called - hasErrors: False, _debugButton: exists
+2025-10-19 10:41:42.696 +02:00 [INF] Deinitializing Coplay services
+2025-10-19 10:41:42.698 +02:00 [INF] ConsoleDebugButtonService disposing
+2025-10-19 10:41:42.702 +02:00 [INF] Unsubscribed from error detection
+2025-10-19 10:41:42.707 +02:00 [INF] EditorThreadHelper disposed
+2025-10-19 10:41:48.250 +02:00 [INF] Initializing Coplay services
+2025-10-19 10:41:48.388 +02:00 [INF] Initializing EditorThreadHelper
+2025-10-19 10:41:48.389 +02:00 [INF] EditorThreadHelper initialized successfully
+2025-10-19 10:41:48.474 +02:00 [INF] Enabling console error detection
+2025-10-19 10:41:48.488 +02:00 [INF] Found 0 errors via direct console query (cached)
+2025-10-19 10:41:48.489 +02:00 [INF] ConsoleDebugButtonService initializing
+2025-10-19 10:41:48.492 +02:00 [INF] Console debug button is enabled, adding button
+2025-10-19 10:41:48.492 +02:00 [INF] Enabling console debug button
+2025-10-19 10:41:48.494 +02:00 [INF] === Starting console button injection ===
+2025-10-19 10:41:48.494 +02:00 [INF] Found 1 console window instances
+2025-10-19 10:41:48.576 +02:00 [DBG] Console window found, attempting to add button
+2025-10-19 10:41:48.596 +02:00 [DBG] Initial error state: False
+2025-10-19 10:41:48.597 +02:00 [WRN] Could not find toolbar by child count, trying alternative search
+2025-10-19 10:41:48.599 +02:00 [DBG] Could not find console toolbar - adding button to root instead
+2025-10-19 10:41:48.607 +02:00 [DBG] Logo texture load result: success
+2025-10-19 10:41:48.637 +02:00 [INF] Coplay logo added (always visible)
+2025-10-19 10:41:48.654 +02:00 [INF] Debug button added with absolute positioning (centered), initial visibility: hidden
+2025-10-19 10:41:48.659 +02:00 [INF] Copy button added (always visible), initial position: near logo
+2025-10-19 10:41:48.660 +02:00 [DBG] UpdateButtonVisibility called - hasErrors: False, _debugButton: exists
+2025-10-19 10:41:48.660 +02:00 [INF] Debug With AI button successfully injected into console
+2025-10-19 10:41:48.662 +02:00 [INF] Subscribed to error detection
+2025-10-19 10:41:48.662 +02:00 [INF] ConsoleDebugButtonService initialized
+2025-10-19 10:41:55.401 +02:00 [INF] Found 0 errors via direct console query (cached)
+2025-10-19 10:41:55.401 +02:00 [INF] No startup errors found after delayed check
+2025-10-19 10:41:55.403 +02:00 [DBG] UpdateButtonVisibility called - hasErrors: False, _debugButton: exists
+2025-10-19 10:43:09.995 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 10:43:09.997 +02:00 [INF] Cached error state is stale (74.6s old), returning empty
+2025-10-19 10:43:10.494 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 10:43:10.494 +02:00 [INF] Cached error state is stale (75.1s old), returning empty
+2025-10-19 10:43:10.994 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 10:43:10.994 +02:00 [INF] Cached error state is stale (75.6s old), returning empty
+2025-10-19 10:43:11.494 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 10:43:11.494 +02:00 [INF] Cached error state is stale (76.1s old), returning empty
+2025-10-19 10:43:11.994 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 10:43:11.994 +02:00 [INF] Cached error state is stale (76.6s old), returning empty
+2025-10-19 10:43:12.494 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 10:43:12.494 +02:00 [INF] Cached error state is stale (77.1s old), returning empty
+2025-10-19 10:43:12.994 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 10:43:12.994 +02:00 [INF] Cached error state is stale (77.6s old), returning empty
+2025-10-19 10:43:13.494 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 10:43:13.494 +02:00 [INF] Cached error state is stale (78.1s old), returning empty
+2025-10-19 10:43:13.994 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 10:43:13.994 +02:00 [INF] Cached error state is stale (78.6s old), returning empty
+2025-10-19 10:43:14.494 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 10:43:14.494 +02:00 [INF] Cached error state is stale (79.1s old), returning empty
+2025-10-19 10:43:15.494 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 10:43:15.494 +02:00 [INF] Cached error state is stale (80.1s old), returning empty
+2025-10-19 10:43:15.994 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 10:43:15.994 +02:00 [INF] Cached error state is stale (80.6s old), returning empty
+2025-10-19 10:43:16.494 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 10:43:16.494 +02:00 [INF] Cached error state is stale (81.1s old), returning empty
+2025-10-19 10:43:17.499 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 10:43:17.499 +02:00 [INF] Cached error state is stale (82.1s old), returning empty
+2025-10-19 10:43:18.497 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 10:43:18.497 +02:00 [INF] Cached error state is stale (83.1s old), returning empty
+2025-10-19 10:43:18.997 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 10:43:18.997 +02:00 [INF] Cached error state is stale (83.6s old), returning empty
+2025-10-19 10:43:19.498 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 10:43:19.498 +02:00 [INF] Cached error state is stale (84.1s old), returning empty
+2025-10-19 10:43:19.997 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 10:43:19.997 +02:00 [INF] Cached error state is stale (84.6s old), returning empty
+2025-10-19 10:43:20.497 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 10:43:20.497 +02:00 [INF] Cached error state is stale (85.1s old), returning empty
+2025-10-19 10:43:20.997 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 10:43:20.997 +02:00 [INF] Cached error state is stale (85.6s old), returning empty
+2025-10-19 10:43:21.497 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 10:43:21.497 +02:00 [INF] Cached error state is stale (86.1s old), returning empty
+2025-10-19 10:43:21.997 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 10:43:21.997 +02:00 [INF] Cached error state is stale (86.6s old), returning empty
+2025-10-19 10:43:22.497 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 10:43:22.497 +02:00 [INF] Cached error state is stale (87.1s old), returning empty
+2025-10-19 10:43:22.997 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 10:43:22.997 +02:00 [INF] Cached error state is stale (87.6s old), returning empty
+2025-10-19 10:43:23.497 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 10:43:23.497 +02:00 [INF] Cached error state is stale (88.1s old), returning empty
+2025-10-19 10:43:23.997 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 10:43:23.997 +02:00 [INF] Cached error state is stale (88.6s old), returning empty
+2025-10-19 10:43:24.497 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 10:43:24.497 +02:00 [INF] Cached error state is stale (89.1s old), returning empty
+2025-10-19 10:43:24.997 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 10:43:24.997 +02:00 [INF] Cached error state is stale (89.6s old), returning empty
+2025-10-19 10:43:25.497 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 10:43:25.497 +02:00 [INF] Cached error state is stale (90.1s old), returning empty
+2025-10-19 10:43:25.997 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 10:43:25.997 +02:00 [INF] Cached error state is stale (90.6s old), returning empty
+2025-10-19 10:43:26.497 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 10:43:26.497 +02:00 [INF] Cached error state is stale (91.1s old), returning empty
+2025-10-19 10:43:26.997 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 10:43:26.997 +02:00 [INF] Cached error state is stale (91.6s old), returning empty
+2025-10-19 10:43:28.497 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 10:43:28.497 +02:00 [INF] Cached error state is stale (93.1s old), returning empty
+2025-10-19 10:43:28.997 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 10:43:28.997 +02:00 [INF] Cached error state is stale (93.6s old), returning empty
+2025-10-19 10:49:15.240 +02:00 [INF] Deinitializing Coplay services
+2025-10-19 10:49:15.242 +02:00 [INF] ConsoleDebugButtonService disposing
+2025-10-19 10:49:15.246 +02:00 [INF] Unsubscribed from error detection
+2025-10-19 10:49:15.250 +02:00 [INF] EditorThreadHelper disposed
+2025-10-19 10:49:20.513 +02:00 [INF] Initializing Coplay services
+2025-10-19 10:49:20.643 +02:00 [INF] Initializing EditorThreadHelper
+2025-10-19 10:49:20.643 +02:00 [INF] EditorThreadHelper initialized successfully
+2025-10-19 10:49:20.728 +02:00 [INF] Enabling console error detection
+2025-10-19 10:49:20.745 +02:00 [INF] Found 0 errors via direct console query (cached)
+2025-10-19 10:49:20.746 +02:00 [INF] ConsoleDebugButtonService initializing
+2025-10-19 10:49:20.750 +02:00 [INF] Console debug button is enabled, adding button
+2025-10-19 10:49:20.750 +02:00 [INF] Enabling console debug button
+2025-10-19 10:49:20.751 +02:00 [INF] === Starting console button injection ===
+2025-10-19 10:49:20.752 +02:00 [INF] Found 1 console window instances
+2025-10-19 10:49:20.837 +02:00 [DBG] Console window found, attempting to add button
+2025-10-19 10:49:20.859 +02:00 [DBG] Initial error state: False
+2025-10-19 10:49:20.860 +02:00 [WRN] Could not find toolbar by child count, trying alternative search
+2025-10-19 10:49:20.862 +02:00 [DBG] Could not find console toolbar - adding button to root instead
+2025-10-19 10:49:20.863 +02:00 [DBG] Logo texture load result: success
+2025-10-19 10:49:20.896 +02:00 [INF] Coplay logo added (always visible)
+2025-10-19 10:49:20.913 +02:00 [INF] Debug button added with absolute positioning (centered), initial visibility: hidden
+2025-10-19 10:49:20.917 +02:00 [INF] Copy button added (always visible), initial position: near logo
+2025-10-19 10:49:20.918 +02:00 [DBG] UpdateButtonVisibility called - hasErrors: False, _debugButton: exists
+2025-10-19 10:49:20.919 +02:00 [INF] Debug With AI button successfully injected into console
+2025-10-19 10:49:20.920 +02:00 [INF] Subscribed to error detection
+2025-10-19 10:49:20.920 +02:00 [INF] ConsoleDebugButtonService initialized
+2025-10-19 10:49:30.243 +02:00 [INF] Found 0 errors via direct console query (cached)
+2025-10-19 10:49:30.243 +02:00 [INF] No startup errors found after delayed check
+2025-10-19 10:49:30.244 +02:00 [DBG] UpdateButtonVisibility called - hasErrors: False, _debugButton: exists
+2025-10-19 10:50:55.381 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 10:50:55.383 +02:00 [INF] Cached error state is stale (85.1s old), returning empty
+2025-10-19 10:56:04.770 +02:00 [INF] Found git repository in parent at /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI
+2025-10-19 10:56:04.802 +02:00 [INF] No existing action records JSON file found.
+2025-10-19 10:56:04.843 +02:00 [INF] No state file found, maintaining Initialized state for fresh installation
+2025-10-19 10:56:04.892 +02:00 [INF] No request found, returning empty.
+2025-10-19 10:56:04.930 +02:00 [INF] No MCP servers configuration found
+2025-10-19 10:56:04.932 +02:00 [INF] MCP host initialized
+2025-10-19 10:56:05.028 +02:00 [INF] Context file not found: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/CoplayLogs/context_items.json
+2025-10-19 10:56:05.031 +02:00 [INF] Checking for dependencies in: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Binaries
+2025-10-19 10:56:05.031 +02:00 [INF] Ripgrep directory not found
+2025-10-19 10:56:05.062 +02:00 [WRN] Autocomplete is disabled in settings. Enable it in Coplay settings to use this feature.
+2025-10-19 10:56:09.770 +02:00 [INF] Clearing All
+2025-10-19 10:56:09.772 +02:00 [INF] Clearing state model
+2025-10-19 10:56:09.773 +02:00 [WRN] You are setting to the same state: Initialized
+2025-10-19 10:56:09.815 +02:00 [INF] Cleaned up all thumbnail textures
+2025-10-19 10:56:09.820 +02:00 [INF] AssistantController: Dispose called
+2025-10-19 10:56:09.822 +02:00 [INF] FunctionExecutionController: Dispose called
+2025-10-19 10:56:13.850 +02:00 [INF] Loading state from file, and setting to: Initialized
+2025-10-19 10:56:13.857 +02:00 [INF] No request found, returning empty.
+2025-10-19 10:56:13.865 +02:00 [INF] No MCP servers configuration found
+2025-10-19 10:56:13.867 +02:00 [INF] MCP host initialized
+2025-10-19 10:56:13.871 +02:00 [INF] Loaded 0 scroll positions from disk
+2025-10-19 10:56:13.875 +02:00 [INF] Context file not found: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/CoplayLogs/context_items.json
+2025-10-19 10:56:13.875 +02:00 [INF] Checking for dependencies in: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Binaries
+2025-10-19 10:56:13.875 +02:00 [INF] Ripgrep directory not found
+2025-10-19 10:56:14.162 +02:00 [INF] Checking for dependencies in: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Binaries
+2025-10-19 10:56:14.162 +02:00 [INF] Ripgrep directory not found
+2025-10-19 10:56:14.166 +02:00 [INF] Showing dependency download screen
+2025-10-19 10:56:21.267 +02:00 [INF] Creating Binaries directory at: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Binaries
+2025-10-19 10:56:51.309 +02:00 [INF] Deinitializing Coplay services
+2025-10-19 10:56:51.310 +02:00 [INF] ConsoleDebugButtonService disposing
+2025-10-19 10:56:51.311 +02:00 [INF] Unsubscribed from error detection
+2025-10-19 10:56:51.314 +02:00 [INF] EditorThreadHelper disposed
+2025-10-19 10:56:56.329 +02:00 [INF] Initializing Coplay services
+2025-10-19 10:56:56.474 +02:00 [INF] Initializing EditorThreadHelper
+2025-10-19 10:56:56.475 +02:00 [INF] EditorThreadHelper initialized successfully
+2025-10-19 10:56:56.560 +02:00 [INF] Enabling console error detection
+2025-10-19 10:56:56.574 +02:00 [INF] Found 0 errors via direct console query (cached)
+2025-10-19 10:56:56.575 +02:00 [INF] ConsoleDebugButtonService initializing
+2025-10-19 10:56:56.578 +02:00 [INF] Console debug button is enabled, adding button
+2025-10-19 10:56:56.579 +02:00 [INF] Enabling console debug button
+2025-10-19 10:56:56.580 +02:00 [INF] === Starting console button injection ===
+2025-10-19 10:56:56.580 +02:00 [INF] Found 1 console window instances
+2025-10-19 10:56:56.668 +02:00 [DBG] Console window found, attempting to add button
+2025-10-19 10:56:56.689 +02:00 [DBG] Initial error state: False
+2025-10-19 10:56:56.690 +02:00 [WRN] Could not find toolbar by child count, trying alternative search
+2025-10-19 10:56:56.693 +02:00 [DBG] Could not find console toolbar - adding button to root instead
+2025-10-19 10:56:56.694 +02:00 [DBG] Logo texture load result: success
+2025-10-19 10:56:56.727 +02:00 [INF] Coplay logo added (always visible)
+2025-10-19 10:56:56.743 +02:00 [INF] Debug button added with absolute positioning (centered), initial visibility: hidden
+2025-10-19 10:56:56.748 +02:00 [INF] Copy button added (always visible), initial position: near logo
+2025-10-19 10:56:56.749 +02:00 [DBG] UpdateButtonVisibility called - hasErrors: False, _debugButton: exists
+2025-10-19 10:56:56.749 +02:00 [INF] Debug With AI button successfully injected into console
+2025-10-19 10:56:56.751 +02:00 [INF] Subscribed to error detection
+2025-10-19 10:56:56.751 +02:00 [INF] ConsoleDebugButtonService initialized
+2025-10-19 10:57:04.951 +02:00 [INF] No existing action records JSON file found.
+2025-10-19 10:57:05.025 +02:00 [INF] Loading state from file, and setting to: Initialized
+2025-10-19 10:57:05.078 +02:00 [INF] No request found, returning empty.
+2025-10-19 10:57:05.125 +02:00 [INF] No MCP servers configuration found
+2025-10-19 10:57:05.125 +02:00 [INF] MCP host initialized
+2025-10-19 10:57:05.135 +02:00 [INF] Loaded 0 scroll positions from disk
+2025-10-19 10:57:05.177 +02:00 [INF] Context file not found: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/CoplayLogs/context_items.json
+2025-10-19 10:57:05.181 +02:00 [INF] Checking for dependencies in: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Binaries
+2025-10-19 10:57:05.183 +02:00 [INF] Architecture folder x86_64 not found
+2025-10-19 10:57:06.926 +02:00 [INF] Found 0 errors via direct console query (cached)
+2025-10-19 10:57:06.926 +02:00 [INF] No startup errors found after delayed check
+2025-10-19 10:57:06.927 +02:00 [DBG] UpdateButtonVisibility called - hasErrors: False, _debugButton: exists
+2025-10-19 10:57:08.019 +02:00 [INF] Checking for dependencies in: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Binaries
+2025-10-19 10:57:08.019 +02:00 [INF] Architecture folder x86_64 not found
+2025-10-19 10:57:08.024 +02:00 [INF] Showing dependency download screen
+2025-10-19 11:10:41.989 +02:00 [INF] Deinitializing Coplay services
+2025-10-19 11:10:41.991 +02:00 [INF] ConsoleDebugButtonService disposing
+2025-10-19 11:10:41.994 +02:00 [INF] Unsubscribed from error detection
+2025-10-19 11:10:41.998 +02:00 [INF] EditorThreadHelper disposed
+2025-10-19 11:10:47.784 +02:00 [INF] Initializing Coplay services
+2025-10-19 11:10:47.958 +02:00 [INF] Initializing EditorThreadHelper
+2025-10-19 11:10:47.958 +02:00 [INF] EditorThreadHelper initialized successfully
+2025-10-19 11:10:48.032 +02:00 [INF] Enabling console error detection
+2025-10-19 11:10:48.047 +02:00 [INF] Found 0 errors via direct console query (cached)
+2025-10-19 11:10:48.049 +02:00 [INF] ConsoleDebugButtonService initializing
+2025-10-19 11:10:48.053 +02:00 [INF] Console debug button is enabled, adding button
+2025-10-19 11:10:48.054 +02:00 [INF] Enabling console debug button
+2025-10-19 11:10:48.056 +02:00 [INF] === Starting console button injection ===
+2025-10-19 11:10:48.056 +02:00 [INF] Found 1 console window instances
+2025-10-19 11:10:48.144 +02:00 [DBG] Console window found, attempting to add button
+2025-10-19 11:10:48.164 +02:00 [DBG] Initial error state: False
+2025-10-19 11:10:48.165 +02:00 [WRN] Could not find toolbar by child count, trying alternative search
+2025-10-19 11:10:48.167 +02:00 [DBG] Could not find console toolbar - adding button to root instead
+2025-10-19 11:10:48.168 +02:00 [DBG] Logo texture load result: success
+2025-10-19 11:10:48.196 +02:00 [INF] Coplay logo added (always visible)
+2025-10-19 11:10:48.213 +02:00 [INF] Debug button added with absolute positioning (centered), initial visibility: hidden
+2025-10-19 11:10:48.218 +02:00 [INF] Copy button added (always visible), initial position: near logo
+2025-10-19 11:10:48.219 +02:00 [DBG] UpdateButtonVisibility called - hasErrors: False, _debugButton: exists
+2025-10-19 11:10:48.219 +02:00 [INF] Debug With AI button successfully injected into console
+2025-10-19 11:10:48.221 +02:00 [INF] Subscribed to error detection
+2025-10-19 11:10:48.221 +02:00 [INF] ConsoleDebugButtonService initialized
+2025-10-19 11:10:57.380 +02:00 [INF] No existing action records JSON file found.
+2025-10-19 11:10:57.462 +02:00 [INF] Loading state from file, and setting to: Initialized
+2025-10-19 11:10:57.526 +02:00 [INF] No request found, returning empty.
+2025-10-19 11:10:57.573 +02:00 [INF] No MCP servers configuration found
+2025-10-19 11:10:57.573 +02:00 [INF] MCP host initialized
+2025-10-19 11:10:57.603 +02:00 [INF] Loaded 0 scroll positions from disk
+2025-10-19 11:10:57.647 +02:00 [INF] Context file not found: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/CoplayLogs/context_items.json
+2025-10-19 11:10:57.649 +02:00 [INF] Checking for dependencies in: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Binaries
+2025-10-19 11:10:57.650 +02:00 [INF] Architecture folder x86_64 not found
+2025-10-19 11:10:59.829 +02:00 [INF] Found 0 errors via direct console query (cached)
+2025-10-19 11:10:59.829 +02:00 [INF] No startup errors found after delayed check
+2025-10-19 11:10:59.830 +02:00 [DBG] UpdateButtonVisibility called - hasErrors: False, _debugButton: exists
+2025-10-19 11:11:00.948 +02:00 [INF] Checking for dependencies in: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Binaries
+2025-10-19 11:11:00.949 +02:00 [INF] Architecture folder x86_64 not found
+2025-10-19 11:11:00.953 +02:00 [INF] Showing dependency download screen
+2025-10-19 11:16:41.726 +02:00 [INF] Deinitializing Coplay services
+2025-10-19 11:16:41.728 +02:00 [INF] ConsoleDebugButtonService disposing
+2025-10-19 11:16:41.731 +02:00 [INF] Unsubscribed from error detection
+2025-10-19 11:16:41.734 +02:00 [INF] EditorThreadHelper disposed
+2025-10-19 11:16:47.085 +02:00 [INF] Initializing Coplay services
+2025-10-19 11:16:47.220 +02:00 [INF] Initializing EditorThreadHelper
+2025-10-19 11:16:47.221 +02:00 [INF] EditorThreadHelper initialized successfully
+2025-10-19 11:16:47.302 +02:00 [INF] Enabling console error detection
+2025-10-19 11:16:47.317 +02:00 [INF] Found 0 errors via direct console query (cached)
+2025-10-19 11:16:47.318 +02:00 [INF] ConsoleDebugButtonService initializing
+2025-10-19 11:16:47.322 +02:00 [INF] Console debug button is enabled, adding button
+2025-10-19 11:16:47.322 +02:00 [INF] Enabling console debug button
+2025-10-19 11:16:47.323 +02:00 [INF] === Starting console button injection ===
+2025-10-19 11:16:47.324 +02:00 [INF] Found 1 console window instances
+2025-10-19 11:16:47.410 +02:00 [DBG] Console window found, attempting to add button
+2025-10-19 11:16:47.431 +02:00 [DBG] Initial error state: False
+2025-10-19 11:16:47.432 +02:00 [WRN] Could not find toolbar by child count, trying alternative search
+2025-10-19 11:16:47.436 +02:00 [DBG] Could not find console toolbar - adding button to root instead
+2025-10-19 11:16:47.438 +02:00 [DBG] Logo texture load result: success
+2025-10-19 11:16:47.466 +02:00 [INF] Coplay logo added (always visible)
+2025-10-19 11:16:47.483 +02:00 [INF] Debug button added with absolute positioning (centered), initial visibility: hidden
+2025-10-19 11:16:47.487 +02:00 [INF] Copy button added (always visible), initial position: near logo
+2025-10-19 11:16:47.488 +02:00 [DBG] UpdateButtonVisibility called - hasErrors: False, _debugButton: exists
+2025-10-19 11:16:47.488 +02:00 [INF] Debug With AI button successfully injected into console
+2025-10-19 11:16:47.490 +02:00 [INF] Subscribed to error detection
+2025-10-19 11:16:47.490 +02:00 [INF] ConsoleDebugButtonService initialized
+2025-10-19 11:16:56.346 +02:00 [INF] No existing action records JSON file found.
+2025-10-19 11:16:56.434 +02:00 [INF] Loading state from file, and setting to: Initialized
+2025-10-19 11:16:56.489 +02:00 [INF] No request found, returning empty.
+2025-10-19 11:16:56.534 +02:00 [INF] No MCP servers configuration found
+2025-10-19 11:16:56.535 +02:00 [INF] MCP host initialized
+2025-10-19 11:16:56.545 +02:00 [INF] Loaded 0 scroll positions from disk
+2025-10-19 11:16:56.587 +02:00 [INF] Context file not found: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/CoplayLogs/context_items.json
+2025-10-19 11:16:56.590 +02:00 [INF] Checking for dependencies in: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Binaries
+2025-10-19 11:16:56.591 +02:00 [INF] Architecture folder x86_64 not found
+2025-10-19 11:16:58.440 +02:00 [INF] Found 0 errors via direct console query (cached)
+2025-10-19 11:16:58.441 +02:00 [INF] No startup errors found after delayed check
+2025-10-19 11:16:58.441 +02:00 [DBG] UpdateButtonVisibility called - hasErrors: False, _debugButton: exists
+2025-10-19 11:17:00.601 +02:00 [INF] Checking for dependencies in: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Binaries
+2025-10-19 11:17:00.602 +02:00 [INF] Architecture folder x86_64 not found
+2025-10-19 11:17:00.608 +02:00 [INF] Showing dependency download screen
+2025-10-19 11:42:13.059 +02:00 [INF] Deinitializing Coplay services
+2025-10-19 11:42:13.063 +02:00 [INF] ConsoleDebugButtonService disposing
+2025-10-19 11:42:13.069 +02:00 [INF] Unsubscribed from error detection
+2025-10-19 11:42:13.075 +02:00 [INF] EditorThreadHelper disposed
+2025-10-19 11:42:19.567 +02:00 [INF] Initializing Coplay services
+2025-10-19 11:42:19.736 +02:00 [INF] Initializing EditorThreadHelper
+2025-10-19 11:42:19.736 +02:00 [INF] EditorThreadHelper initialized successfully
+2025-10-19 11:42:19.845 +02:00 [INF] Enabling console error detection
+2025-10-19 11:42:19.860 +02:00 [INF] Found 0 errors via direct console query (cached)
+2025-10-19 11:42:19.862 +02:00 [INF] ConsoleDebugButtonService initializing
+2025-10-19 11:42:19.866 +02:00 [INF] Console debug button is enabled, adding button
+2025-10-19 11:42:19.866 +02:00 [INF] Enabling console debug button
+2025-10-19 11:42:19.868 +02:00 [INF] === Starting console button injection ===
+2025-10-19 11:42:19.869 +02:00 [INF] Found 1 console window instances
+2025-10-19 11:42:19.958 +02:00 [DBG] Console window found, attempting to add button
+2025-10-19 11:42:19.979 +02:00 [DBG] Initial error state: False
+2025-10-19 11:42:19.980 +02:00 [WRN] Could not find toolbar by child count, trying alternative search
+2025-10-19 11:42:19.983 +02:00 [DBG] Could not find console toolbar - adding button to root instead
+2025-10-19 11:42:19.991 +02:00 [DBG] Logo texture load result: success
+2025-10-19 11:42:20.020 +02:00 [INF] Coplay logo added (always visible)
+2025-10-19 11:42:20.037 +02:00 [INF] Debug button added with absolute positioning (centered), initial visibility: hidden
+2025-10-19 11:42:20.042 +02:00 [INF] Copy button added (always visible), initial position: near logo
+2025-10-19 11:42:20.043 +02:00 [DBG] UpdateButtonVisibility called - hasErrors: False, _debugButton: exists
+2025-10-19 11:42:20.043 +02:00 [INF] Debug With AI button successfully injected into console
+2025-10-19 11:42:20.045 +02:00 [INF] Subscribed to error detection
+2025-10-19 11:42:20.045 +02:00 [INF] ConsoleDebugButtonService initialized
+2025-10-19 11:42:26.381 +02:00 [INF] No existing action records JSON file found.
+2025-10-19 11:42:26.488 +02:00 [INF] Loading state from file, and setting to: Initialized
+2025-10-19 11:42:26.560 +02:00 [INF] No request found, returning empty.
+2025-10-19 11:42:26.621 +02:00 [INF] No MCP servers configuration found
+2025-10-19 11:42:26.622 +02:00 [INF] MCP host initialized
+2025-10-19 11:42:26.639 +02:00 [INF] Loaded 0 scroll positions from disk
+2025-10-19 11:42:26.708 +02:00 [INF] Context file not found: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/CoplayLogs/context_items.json
+2025-10-19 11:42:26.711 +02:00 [INF] Checking for dependencies in: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Binaries
+2025-10-19 11:42:26.713 +02:00 [INF] Architecture folder x86_64 not found
+2025-10-19 11:42:28.697 +02:00 [INF] Found 0 errors via direct console query (cached)
+2025-10-19 11:42:28.697 +02:00 [INF] No startup errors found after delayed check
+2025-10-19 11:42:28.698 +02:00 [DBG] UpdateButtonVisibility called - hasErrors: False, _debugButton: exists
+2025-10-19 11:42:30.703 +02:00 [INF] Checking for dependencies in: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Binaries
+2025-10-19 11:42:30.704 +02:00 [INF] Architecture folder x86_64 not found
+2025-10-19 11:42:30.712 +02:00 [INF] Showing dependency download screen
+2025-10-19 11:47:04.034 +02:00 [INF] Deinitializing Coplay services
+2025-10-19 11:47:04.037 +02:00 [INF] ConsoleDebugButtonService disposing
+2025-10-19 11:47:04.041 +02:00 [INF] Unsubscribed from error detection
+2025-10-19 11:47:04.045 +02:00 [INF] EditorThreadHelper disposed
+2025-10-19 11:47:10.544 +02:00 [INF] Initializing Coplay services
+2025-10-19 11:47:10.698 +02:00 [INF] Initializing EditorThreadHelper
+2025-10-19 11:47:10.698 +02:00 [INF] EditorThreadHelper initialized successfully
+2025-10-19 11:47:10.780 +02:00 [INF] Enabling console error detection
+2025-10-19 11:47:10.795 +02:00 [INF] Found 0 errors via direct console query (cached)
+2025-10-19 11:47:10.796 +02:00 [INF] ConsoleDebugButtonService initializing
+2025-10-19 11:47:10.799 +02:00 [INF] Console debug button is enabled, adding button
+2025-10-19 11:47:10.799 +02:00 [INF] Enabling console debug button
+2025-10-19 11:47:10.801 +02:00 [INF] === Starting console button injection ===
+2025-10-19 11:47:10.801 +02:00 [INF] Found 1 console window instances
+2025-10-19 11:47:10.888 +02:00 [DBG] Console window found, attempting to add button
+2025-10-19 11:47:10.909 +02:00 [DBG] Initial error state: False
+2025-10-19 11:47:10.910 +02:00 [WRN] Could not find toolbar by child count, trying alternative search
+2025-10-19 11:47:10.912 +02:00 [DBG] Could not find console toolbar - adding button to root instead
+2025-10-19 11:47:10.913 +02:00 [DBG] Logo texture load result: success
+2025-10-19 11:47:10.944 +02:00 [INF] Coplay logo added (always visible)
+2025-10-19 11:47:10.962 +02:00 [INF] Debug button added with absolute positioning (centered), initial visibility: hidden
+2025-10-19 11:47:10.967 +02:00 [INF] Copy button added (always visible), initial position: near logo
+2025-10-19 11:47:10.968 +02:00 [DBG] UpdateButtonVisibility called - hasErrors: False, _debugButton: exists
+2025-10-19 11:47:10.968 +02:00 [INF] Debug With AI button successfully injected into console
+2025-10-19 11:47:10.970 +02:00 [INF] Subscribed to error detection
+2025-10-19 11:47:10.970 +02:00 [INF] ConsoleDebugButtonService initialized
+2025-10-19 11:47:18.425 +02:00 [INF] No existing action records JSON file found.
+2025-10-19 11:47:18.534 +02:00 [INF] Loading state from file, and setting to: Initialized
+2025-10-19 11:47:18.610 +02:00 [INF] No request found, returning empty.
+2025-10-19 11:47:18.670 +02:00 [INF] No MCP servers configuration found
+2025-10-19 11:47:18.671 +02:00 [INF] MCP host initialized
+2025-10-19 11:47:18.685 +02:00 [INF] Loaded 0 scroll positions from disk
+2025-10-19 11:47:18.753 +02:00 [INF] Context file not found: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/CoplayLogs/context_items.json
+2025-10-19 11:47:18.756 +02:00 [INF] Checking for dependencies in: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Binaries
+2025-10-19 11:47:18.758 +02:00 [INF] Architecture folder x86_64 not found
+2025-10-19 11:47:20.810 +02:00 [INF] Found 0 errors via direct console query (cached)
+2025-10-19 11:47:20.810 +02:00 [INF] No startup errors found after delayed check
+2025-10-19 11:47:20.811 +02:00 [DBG] UpdateButtonVisibility called - hasErrors: False, _debugButton: exists
+2025-10-19 11:47:22.693 +02:00 [INF] Checking for dependencies in: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Binaries
+2025-10-19 11:47:22.693 +02:00 [INF] Architecture folder x86_64 not found
+2025-10-19 11:47:22.700 +02:00 [INF] Showing dependency download screen
+2025-10-19 11:48:32.326 +02:00 [INF] Deinitializing Coplay services
+2025-10-19 11:48:32.328 +02:00 [INF] ConsoleDebugButtonService disposing
+2025-10-19 11:48:32.332 +02:00 [INF] Unsubscribed from error detection
+2025-10-19 11:48:32.336 +02:00 [INF] EditorThreadHelper disposed
+2025-10-19 11:48:38.924 +02:00 [INF] Initializing Coplay services
+2025-10-19 11:48:39.054 +02:00 [INF] Initializing EditorThreadHelper
+2025-10-19 11:48:39.055 +02:00 [INF] EditorThreadHelper initialized successfully
+2025-10-19 11:48:39.142 +02:00 [INF] Enabling console error detection
+2025-10-19 11:48:39.156 +02:00 [INF] Found 0 errors via direct console query (cached)
+2025-10-19 11:48:39.158 +02:00 [INF] ConsoleDebugButtonService initializing
+2025-10-19 11:48:39.161 +02:00 [INF] Console debug button is enabled, adding button
+2025-10-19 11:48:39.161 +02:00 [INF] Enabling console debug button
+2025-10-19 11:48:39.163 +02:00 [INF] === Starting console button injection ===
+2025-10-19 11:48:39.163 +02:00 [INF] Found 1 console window instances
+2025-10-19 11:48:39.249 +02:00 [DBG] Console window found, attempting to add button
+2025-10-19 11:48:39.274 +02:00 [DBG] Initial error state: False
+2025-10-19 11:48:39.275 +02:00 [WRN] Could not find toolbar by child count, trying alternative search
+2025-10-19 11:48:39.278 +02:00 [DBG] Could not find console toolbar - adding button to root instead
+2025-10-19 11:48:39.279 +02:00 [DBG] Logo texture load result: success
+2025-10-19 11:48:39.320 +02:00 [INF] Coplay logo added (always visible)
+2025-10-19 11:48:39.336 +02:00 [INF] Debug button added with absolute positioning (centered), initial visibility: hidden
+2025-10-19 11:48:39.342 +02:00 [INF] Copy button added (always visible), initial position: near logo
+2025-10-19 11:48:39.343 +02:00 [DBG] UpdateButtonVisibility called - hasErrors: False, _debugButton: exists
+2025-10-19 11:48:39.343 +02:00 [INF] Debug With AI button successfully injected into console
+2025-10-19 11:48:39.345 +02:00 [INF] Subscribed to error detection
+2025-10-19 11:48:39.345 +02:00 [INF] ConsoleDebugButtonService initialized
+2025-10-19 11:48:45.759 +02:00 [INF] No existing action records JSON file found.
+2025-10-19 11:48:45.859 +02:00 [INF] Loading state from file, and setting to: Initialized
+2025-10-19 11:48:45.922 +02:00 [INF] No request found, returning empty.
+2025-10-19 11:48:45.985 +02:00 [INF] No MCP servers configuration found
+2025-10-19 11:48:45.986 +02:00 [INF] MCP host initialized
+2025-10-19 11:48:46.002 +02:00 [INF] Loaded 0 scroll positions from disk
+2025-10-19 11:48:46.063 +02:00 [INF] Context file not found: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/CoplayLogs/context_items.json
+2025-10-19 11:48:46.067 +02:00 [INF] Checking for dependencies in: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Binaries
+2025-10-19 11:48:46.069 +02:00 [INF] Architecture folder x86_64 not found
+2025-10-19 11:48:47.990 +02:00 [INF] Found 0 errors via direct console query (cached)
+2025-10-19 11:48:47.991 +02:00 [INF] No startup errors found after delayed check
+2025-10-19 11:48:47.992 +02:00 [DBG] UpdateButtonVisibility called - hasErrors: False, _debugButton: exists
+2025-10-19 11:48:49.527 +02:00 [INF] Checking for dependencies in: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Binaries
+2025-10-19 11:48:49.527 +02:00 [INF] Architecture folder x86_64 not found
+2025-10-19 11:48:49.532 +02:00 [INF] Showing dependency download screen
+2025-10-19 11:49:08.600 +02:00 [INF] Deinitializing Coplay services
+2025-10-19 11:49:08.602 +02:00 [INF] ConsoleDebugButtonService disposing
+2025-10-19 11:49:08.605 +02:00 [INF] Unsubscribed from error detection
+2025-10-19 11:49:08.610 +02:00 [INF] EditorThreadHelper disposed
+2025-10-19 11:49:13.937 +02:00 [INF] Initializing Coplay services
+2025-10-19 11:49:14.104 +02:00 [INF] Initializing EditorThreadHelper
+2025-10-19 11:49:14.104 +02:00 [INF] EditorThreadHelper initialized successfully
+2025-10-19 11:49:14.183 +02:00 [INF] Enabling console error detection
+2025-10-19 11:49:14.198 +02:00 [INF] Found 0 errors via direct console query (cached)
+2025-10-19 11:49:14.200 +02:00 [INF] ConsoleDebugButtonService initializing
+2025-10-19 11:49:14.203 +02:00 [INF] Console debug button is enabled, adding button
+2025-10-19 11:49:14.203 +02:00 [INF] Enabling console debug button
+2025-10-19 11:49:14.204 +02:00 [INF] === Starting console button injection ===
+2025-10-19 11:49:14.205 +02:00 [INF] Found 1 console window instances
+2025-10-19 11:49:14.293 +02:00 [DBG] Console window found, attempting to add button
+2025-10-19 11:49:14.316 +02:00 [DBG] Initial error state: False
+2025-10-19 11:49:14.316 +02:00 [WRN] Could not find toolbar by child count, trying alternative search
+2025-10-19 11:49:14.320 +02:00 [DBG] Could not find console toolbar - adding button to root instead
+2025-10-19 11:49:14.320 +02:00 [DBG] Logo texture load result: success
+2025-10-19 11:49:14.350 +02:00 [INF] Coplay logo added (always visible)
+2025-10-19 11:49:14.364 +02:00 [INF] Debug button added with absolute positioning (centered), initial visibility: hidden
+2025-10-19 11:49:14.369 +02:00 [INF] Copy button added (always visible), initial position: near logo
+2025-10-19 11:49:14.370 +02:00 [DBG] UpdateButtonVisibility called - hasErrors: False, _debugButton: exists
+2025-10-19 11:49:14.370 +02:00 [INF] Debug With AI button successfully injected into console
+2025-10-19 11:49:14.372 +02:00 [INF] Subscribed to error detection
+2025-10-19 11:49:14.372 +02:00 [INF] ConsoleDebugButtonService initialized
+2025-10-19 11:49:21.688 +02:00 [INF] No existing action records JSON file found.
+2025-10-19 11:49:21.809 +02:00 [INF] Loading state from file, and setting to: Initialized
+2025-10-19 11:49:21.878 +02:00 [INF] No request found, returning empty.
+2025-10-19 11:49:21.923 +02:00 [INF] No MCP servers configuration found
+2025-10-19 11:49:21.924 +02:00 [INF] MCP host initialized
+2025-10-19 11:49:21.935 +02:00 [INF] Loaded 0 scroll positions from disk
+2025-10-19 11:49:21.985 +02:00 [INF] Context file not found: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/CoplayLogs/context_items.json
+2025-10-19 11:49:21.988 +02:00 [INF] Checking for dependencies in: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Binaries
+2025-10-19 11:49:21.990 +02:00 [INF] Architecture folder x86_64 not found
+2025-10-19 11:49:23.935 +02:00 [INF] Found 0 errors via direct console query (cached)
+2025-10-19 11:49:23.936 +02:00 [INF] No startup errors found after delayed check
+2025-10-19 11:49:23.936 +02:00 [DBG] UpdateButtonVisibility called - hasErrors: False, _debugButton: exists
+2025-10-19 11:49:25.524 +02:00 [INF] Checking for dependencies in: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Binaries
+2025-10-19 11:49:25.524 +02:00 [INF] Architecture folder x86_64 not found
+2025-10-19 11:49:25.531 +02:00 [INF] Showing dependency download screen
+2025-10-19 11:55:17.063 +02:00 [INF] Deinitializing Coplay services
+2025-10-19 11:55:17.067 +02:00 [INF] ConsoleDebugButtonService disposing
+2025-10-19 11:55:17.070 +02:00 [INF] Unsubscribed from error detection
+2025-10-19 11:55:17.074 +02:00 [INF] EditorThreadHelper disposed
+2025-10-19 11:55:23.644 +02:00 [INF] Initializing Coplay services
+2025-10-19 11:55:23.786 +02:00 [INF] Initializing EditorThreadHelper
+2025-10-19 11:55:23.787 +02:00 [INF] EditorThreadHelper initialized successfully
+2025-10-19 11:55:23.877 +02:00 [INF] Enabling console error detection
+2025-10-19 11:55:23.891 +02:00 [INF] Found 0 errors via direct console query (cached)
+2025-10-19 11:55:23.893 +02:00 [INF] ConsoleDebugButtonService initializing
+2025-10-19 11:55:23.896 +02:00 [INF] Console debug button is enabled, adding button
+2025-10-19 11:55:23.897 +02:00 [INF] Enabling console debug button
+2025-10-19 11:55:23.898 +02:00 [INF] === Starting console button injection ===
+2025-10-19 11:55:23.898 +02:00 [INF] Found 1 console window instances
+2025-10-19 11:55:23.987 +02:00 [DBG] Console window found, attempting to add button
+2025-10-19 11:55:24.011 +02:00 [DBG] Initial error state: False
+2025-10-19 11:55:24.012 +02:00 [WRN] Could not find toolbar by child count, trying alternative search
+2025-10-19 11:55:24.014 +02:00 [DBG] Could not find console toolbar - adding button to root instead
+2025-10-19 11:55:24.015 +02:00 [DBG] Logo texture load result: success
+2025-10-19 11:55:24.044 +02:00 [INF] Coplay logo added (always visible)
+2025-10-19 11:55:24.060 +02:00 [INF] Debug button added with absolute positioning (centered), initial visibility: hidden
+2025-10-19 11:55:24.064 +02:00 [INF] Copy button added (always visible), initial position: near logo
+2025-10-19 11:55:24.065 +02:00 [DBG] UpdateButtonVisibility called - hasErrors: False, _debugButton: exists
+2025-10-19 11:55:24.065 +02:00 [INF] Debug With AI button successfully injected into console
+2025-10-19 11:55:24.067 +02:00 [INF] Subscribed to error detection
+2025-10-19 11:55:24.067 +02:00 [INF] ConsoleDebugButtonService initialized
+2025-10-19 11:55:31.146 +02:00 [INF] No existing action records JSON file found.
+2025-10-19 11:55:31.266 +02:00 [INF] Loading state from file, and setting to: Initialized
+2025-10-19 11:55:31.344 +02:00 [INF] No request found, returning empty.
+2025-10-19 11:55:31.411 +02:00 [INF] No MCP servers configuration found
+2025-10-19 11:55:31.412 +02:00 [INF] MCP host initialized
+2025-10-19 11:55:31.426 +02:00 [INF] Loaded 0 scroll positions from disk
+2025-10-19 11:55:31.499 +02:00 [INF] Context file not found: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/CoplayLogs/context_items.json
+2025-10-19 11:55:31.503 +02:00 [INF] Checking for dependencies in: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Binaries
+2025-10-19 11:55:31.504 +02:00 [INF] Architecture folder x86_64 not found
+2025-10-19 11:55:33.554 +02:00 [INF] Found 0 errors via direct console query (cached)
+2025-10-19 11:55:33.555 +02:00 [INF] No startup errors found after delayed check
+2025-10-19 11:55:33.556 +02:00 [DBG] UpdateButtonVisibility called - hasErrors: False, _debugButton: exists
+2025-10-19 11:55:35.191 +02:00 [INF] Checking for dependencies in: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Binaries
+2025-10-19 11:55:35.191 +02:00 [INF] Architecture folder x86_64 not found
+2025-10-19 11:55:35.196 +02:00 [INF] Showing dependency download screen
+2025-10-19 11:56:53.227 +02:00 [INF] Deinitializing Coplay services
+2025-10-19 11:56:53.231 +02:00 [INF] ConsoleDebugButtonService disposing
+2025-10-19 11:56:53.234 +02:00 [INF] Unsubscribed from error detection
+2025-10-19 11:56:53.238 +02:00 [INF] EditorThreadHelper disposed
+2025-10-19 11:56:58.919 +02:00 [INF] Initializing Coplay services
+2025-10-19 11:56:59.068 +02:00 [INF] Initializing EditorThreadHelper
+2025-10-19 11:56:59.069 +02:00 [INF] EditorThreadHelper initialized successfully
+2025-10-19 11:56:59.155 +02:00 [INF] Enabling console error detection
+2025-10-19 11:56:59.170 +02:00 [INF] Found 0 errors via direct console query (cached)
+2025-10-19 11:56:59.171 +02:00 [INF] ConsoleDebugButtonService initializing
+2025-10-19 11:56:59.174 +02:00 [INF] Console debug button is enabled, adding button
+2025-10-19 11:56:59.175 +02:00 [INF] Enabling console debug button
+2025-10-19 11:56:59.176 +02:00 [INF] === Starting console button injection ===
+2025-10-19 11:56:59.176 +02:00 [INF] Found 1 console window instances
+2025-10-19 11:56:59.264 +02:00 [DBG] Console window found, attempting to add button
+2025-10-19 11:56:59.287 +02:00 [DBG] Initial error state: False
+2025-10-19 11:56:59.288 +02:00 [WRN] Could not find toolbar by child count, trying alternative search
+2025-10-19 11:56:59.291 +02:00 [DBG] Could not find console toolbar - adding button to root instead
+2025-10-19 11:56:59.292 +02:00 [DBG] Logo texture load result: success
+2025-10-19 11:56:59.323 +02:00 [INF] Coplay logo added (always visible)
+2025-10-19 11:56:59.339 +02:00 [INF] Debug button added with absolute positioning (centered), initial visibility: hidden
+2025-10-19 11:56:59.343 +02:00 [INF] Copy button added (always visible), initial position: near logo
+2025-10-19 11:56:59.344 +02:00 [DBG] UpdateButtonVisibility called - hasErrors: False, _debugButton: exists
+2025-10-19 11:56:59.344 +02:00 [INF] Debug With AI button successfully injected into console
+2025-10-19 11:56:59.346 +02:00 [INF] Subscribed to error detection
+2025-10-19 11:56:59.346 +02:00 [INF] ConsoleDebugButtonService initialized
+2025-10-19 11:57:05.879 +02:00 [INF] No existing action records JSON file found.
+2025-10-19 11:57:05.982 +02:00 [INF] Loading state from file, and setting to: Initialized
+2025-10-19 11:57:06.043 +02:00 [INF] No request found, returning empty.
+2025-10-19 11:57:06.094 +02:00 [INF] No MCP servers configuration found
+2025-10-19 11:57:06.094 +02:00 [INF] MCP host initialized
+2025-10-19 11:57:06.105 +02:00 [INF] Loaded 0 scroll positions from disk
+2025-10-19 11:57:06.155 +02:00 [INF] Context file not found: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/CoplayLogs/context_items.json
+2025-10-19 11:57:06.158 +02:00 [INF] Checking for dependencies in: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Binaries
+2025-10-19 11:57:06.160 +02:00 [INF] Architecture folder x86_64 not found
+2025-10-19 11:57:07.983 +02:00 [INF] Found 0 errors via direct console query (cached)
+2025-10-19 11:57:07.983 +02:00 [INF] No startup errors found after delayed check
+2025-10-19 11:57:07.984 +02:00 [DBG] UpdateButtonVisibility called - hasErrors: False, _debugButton: exists
+2025-10-19 11:57:09.547 +02:00 [INF] Checking for dependencies in: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Binaries
+2025-10-19 11:57:09.547 +02:00 [INF] Architecture folder x86_64 not found
+2025-10-19 11:57:09.552 +02:00 [INF] Showing dependency download screen
+2025-10-19 11:57:13.169 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 11:57:13.171 +02:00 [INF] Cached error state is stale (5.2s old), returning empty
+2025-10-19 11:58:31.363 +02:00 [INF] Deinitializing Coplay services
+2025-10-19 11:58:31.368 +02:00 [INF] ConsoleDebugButtonService disposing
+2025-10-19 11:58:31.373 +02:00 [INF] Unsubscribed from error detection
+2025-10-19 11:58:31.381 +02:00 [INF] EditorThreadHelper disposed
+2025-10-19 11:58:38.133 +02:00 [INF] Initializing Coplay services
+2025-10-19 11:58:38.274 +02:00 [INF] Initializing EditorThreadHelper
+2025-10-19 11:58:38.275 +02:00 [INF] EditorThreadHelper initialized successfully
+2025-10-19 11:58:38.369 +02:00 [INF] Enabling console error detection
+2025-10-19 11:58:38.385 +02:00 [INF] Found 0 errors via direct console query (cached)
+2025-10-19 11:58:38.386 +02:00 [INF] ConsoleDebugButtonService initializing
+2025-10-19 11:58:38.389 +02:00 [INF] Console debug button is enabled, adding button
+2025-10-19 11:58:38.390 +02:00 [INF] Enabling console debug button
+2025-10-19 11:58:38.391 +02:00 [INF] === Starting console button injection ===
+2025-10-19 11:58:38.392 +02:00 [INF] Found 1 console window instances
+2025-10-19 11:58:38.482 +02:00 [DBG] Console window found, attempting to add button
+2025-10-19 11:58:38.510 +02:00 [DBG] Initial error state: False
+2025-10-19 11:58:38.511 +02:00 [WRN] Could not find toolbar by child count, trying alternative search
+2025-10-19 11:58:38.515 +02:00 [DBG] Could not find console toolbar - adding button to root instead
+2025-10-19 11:58:38.515 +02:00 [DBG] Logo texture load result: success
+2025-10-19 11:58:38.547 +02:00 [INF] Coplay logo added (always visible)
+2025-10-19 11:58:38.562 +02:00 [INF] Debug button added with absolute positioning (centered), initial visibility: hidden
+2025-10-19 11:58:38.567 +02:00 [INF] Copy button added (always visible), initial position: near logo
+2025-10-19 11:58:38.568 +02:00 [DBG] UpdateButtonVisibility called - hasErrors: False, _debugButton: exists
+2025-10-19 11:58:38.568 +02:00 [INF] Debug With AI button successfully injected into console
+2025-10-19 11:58:38.570 +02:00 [INF] Subscribed to error detection
+2025-10-19 11:58:38.570 +02:00 [INF] ConsoleDebugButtonService initialized
+2025-10-19 11:58:45.701 +02:00 [INF] No existing action records JSON file found.
+2025-10-19 11:58:45.797 +02:00 [INF] Loading state from file, and setting to: Initialized
+2025-10-19 11:58:45.848 +02:00 [INF] No request found, returning empty.
+2025-10-19 11:58:45.892 +02:00 [INF] No MCP servers configuration found
+2025-10-19 11:58:45.892 +02:00 [INF] MCP host initialized
+2025-10-19 11:58:45.905 +02:00 [INF] Loaded 0 scroll positions from disk
+2025-10-19 11:58:45.956 +02:00 [INF] Context file not found: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/CoplayLogs/context_items.json
+2025-10-19 11:58:45.960 +02:00 [INF] Checking for dependencies in: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Binaries
+2025-10-19 11:58:45.961 +02:00 [INF] Architecture folder x86_64 not found
+2025-10-19 11:58:47.918 +02:00 [INF] Found 0 errors via direct console query (cached)
+2025-10-19 11:58:47.918 +02:00 [INF] No startup errors found after delayed check
+2025-10-19 11:58:47.919 +02:00 [DBG] UpdateButtonVisibility called - hasErrors: False, _debugButton: exists
+2025-10-19 11:58:49.577 +02:00 [INF] Checking for dependencies in: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Binaries
+2025-10-19 11:58:49.577 +02:00 [INF] Architecture folder x86_64 not found
+2025-10-19 11:58:49.586 +02:00 [INF] Showing dependency download screen
+2025-10-19 11:59:17.352 +02:00 [INF] Deinitializing Coplay services
+2025-10-19 11:59:17.354 +02:00 [INF] ConsoleDebugButtonService disposing
+2025-10-19 11:59:17.358 +02:00 [INF] Unsubscribed from error detection
+2025-10-19 11:59:17.362 +02:00 [INF] EditorThreadHelper disposed
+2025-10-19 11:59:22.786 +02:00 [INF] Initializing Coplay services
+2025-10-19 11:59:22.939 +02:00 [INF] Initializing EditorThreadHelper
+2025-10-19 11:59:22.940 +02:00 [INF] EditorThreadHelper initialized successfully
+2025-10-19 11:59:23.024 +02:00 [INF] Enabling console error detection
+2025-10-19 11:59:23.045 +02:00 [INF] Found 0 errors via direct console query (cached)
+2025-10-19 11:59:23.047 +02:00 [INF] ConsoleDebugButtonService initializing
+2025-10-19 11:59:23.051 +02:00 [INF] Console debug button is enabled, adding button
+2025-10-19 11:59:23.052 +02:00 [INF] Enabling console debug button
+2025-10-19 11:59:23.053 +02:00 [INF] === Starting console button injection ===
+2025-10-19 11:59:23.053 +02:00 [INF] Found 1 console window instances
+2025-10-19 11:59:23.139 +02:00 [DBG] Console window found, attempting to add button
+2025-10-19 11:59:23.164 +02:00 [DBG] Initial error state: False
+2025-10-19 11:59:23.165 +02:00 [WRN] Could not find toolbar by child count, trying alternative search
+2025-10-19 11:59:23.168 +02:00 [DBG] Could not find console toolbar - adding button to root instead
+2025-10-19 11:59:23.169 +02:00 [DBG] Logo texture load result: success
+2025-10-19 11:59:23.199 +02:00 [INF] Coplay logo added (always visible)
+2025-10-19 11:59:23.214 +02:00 [INF] Debug button added with absolute positioning (centered), initial visibility: hidden
+2025-10-19 11:59:23.219 +02:00 [INF] Copy button added (always visible), initial position: near logo
+2025-10-19 11:59:23.220 +02:00 [DBG] UpdateButtonVisibility called - hasErrors: False, _debugButton: exists
+2025-10-19 11:59:23.220 +02:00 [INF] Debug With AI button successfully injected into console
+2025-10-19 11:59:23.222 +02:00 [INF] Subscribed to error detection
+2025-10-19 11:59:23.222 +02:00 [INF] ConsoleDebugButtonService initialized
+2025-10-19 11:59:30.195 +02:00 [INF] No existing action records JSON file found.
+2025-10-19 11:59:30.312 +02:00 [INF] Loading state from file, and setting to: Initialized
+2025-10-19 11:59:30.387 +02:00 [INF] No request found, returning empty.
+2025-10-19 11:59:30.437 +02:00 [INF] No MCP servers configuration found
+2025-10-19 11:59:30.438 +02:00 [INF] MCP host initialized
+2025-10-19 11:59:30.452 +02:00 [INF] Loaded 0 scroll positions from disk
+2025-10-19 11:59:30.528 +02:00 [INF] Context file not found: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/CoplayLogs/context_items.json
+2025-10-19 11:59:30.533 +02:00 [INF] Checking for dependencies in: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Binaries
+2025-10-19 11:59:30.535 +02:00 [INF] Architecture folder x86_64 not found
+2025-10-19 11:59:32.503 +02:00 [INF] Found 0 errors via direct console query (cached)
+2025-10-19 11:59:32.503 +02:00 [INF] No startup errors found after delayed check
+2025-10-19 11:59:32.504 +02:00 [DBG] UpdateButtonVisibility called - hasErrors: False, _debugButton: exists
+2025-10-19 11:59:34.208 +02:00 [INF] Checking for dependencies in: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Binaries
+2025-10-19 11:59:34.209 +02:00 [INF] Architecture folder x86_64 not found
+2025-10-19 11:59:34.216 +02:00 [INF] Showing dependency download screen
+2025-10-19 11:59:34.547 +02:00 [WRN] Console reflection query failed: Exception has been thrown by the target of an invocation.
+2025-10-19 11:59:34.549 +02:00 [INF] Using cached error state (0 errors, age: 2.0s)
+2025-10-19 12:05:59.684 +02:00 [INF] Deinitializing Coplay services
+2025-10-19 12:05:59.687 +02:00 [INF] ConsoleDebugButtonService disposing
+2025-10-19 12:05:59.691 +02:00 [INF] Unsubscribed from error detection
+2025-10-19 12:05:59.694 +02:00 [INF] EditorThreadHelper disposed
+2025-10-19 12:06:05.704 +02:00 [INF] Initializing Coplay services
+2025-10-19 12:06:05.842 +02:00 [INF] Initializing EditorThreadHelper
+2025-10-19 12:06:05.843 +02:00 [INF] EditorThreadHelper initialized successfully
+2025-10-19 12:06:05.970 +02:00 [INF] Enabling console error detection
+2025-10-19 12:06:05.988 +02:00 [INF] Found 0 errors via direct console query (cached)
+2025-10-19 12:06:05.990 +02:00 [INF] ConsoleDebugButtonService initializing
+2025-10-19 12:06:05.994 +02:00 [INF] Console debug button is enabled, adding button
+2025-10-19 12:06:05.995 +02:00 [INF] Enabling console debug button
+2025-10-19 12:06:05.996 +02:00 [INF] === Starting console button injection ===
+2025-10-19 12:06:05.997 +02:00 [INF] Found 1 console window instances
+2025-10-19 12:06:06.080 +02:00 [DBG] Console window found, attempting to add button
+2025-10-19 12:06:06.101 +02:00 [DBG] Initial error state: False
+2025-10-19 12:06:06.102 +02:00 [WRN] Could not find toolbar by child count, trying alternative search
+2025-10-19 12:06:06.106 +02:00 [DBG] Could not find console toolbar - adding button to root instead
+2025-10-19 12:06:06.108 +02:00 [DBG] Logo texture load result: success
+2025-10-19 12:06:06.141 +02:00 [INF] Coplay logo added (always visible)
+2025-10-19 12:06:06.157 +02:00 [INF] Debug button added with absolute positioning (centered), initial visibility: hidden
+2025-10-19 12:06:06.162 +02:00 [INF] Copy button added (always visible), initial position: near logo
+2025-10-19 12:06:06.163 +02:00 [DBG] UpdateButtonVisibility called - hasErrors: False, _debugButton: exists
+2025-10-19 12:06:06.163 +02:00 [INF] Debug With AI button successfully injected into console
+2025-10-19 12:06:06.164 +02:00 [INF] Subscribed to error detection
+2025-10-19 12:06:06.165 +02:00 [INF] ConsoleDebugButtonService initialized
+2025-10-19 12:06:12.941 +02:00 [INF] No existing action records JSON file found.
+2025-10-19 12:06:13.049 +02:00 [INF] Loading state from file, and setting to: Initialized
+2025-10-19 12:06:13.128 +02:00 [INF] No request found, returning empty.
+2025-10-19 12:06:13.186 +02:00 [INF] No MCP servers configuration found
+2025-10-19 12:06:13.187 +02:00 [INF] MCP host initialized
+2025-10-19 12:06:13.204 +02:00 [INF] Loaded 0 scroll positions from disk
+2025-10-19 12:06:13.274 +02:00 [INF] Context file not found: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/CoplayLogs/context_items.json
+2025-10-19 12:06:13.278 +02:00 [INF] Checking for dependencies in: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Binaries
+2025-10-19 12:06:13.280 +02:00 [INF] Architecture folder x86_64 not found
+2025-10-19 12:06:15.148 +02:00 [INF] Found 0 errors via direct console query (cached)
+2025-10-19 12:06:15.148 +02:00 [INF] No startup errors found after delayed check
+2025-10-19 12:06:15.149 +02:00 [DBG] UpdateButtonVisibility called - hasErrors: False, _debugButton: exists
+2025-10-19 12:06:17.074 +02:00 [INF] Checking for dependencies in: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Binaries
+2025-10-19 12:06:17.076 +02:00 [INF] Architecture folder x86_64 not found
+2025-10-19 12:06:17.085 +02:00 [INF] Showing dependency download screen
+2025-10-19 12:07:56.842 +02:00 [INF] Deinitializing Coplay services
+2025-10-19 12:07:56.845 +02:00 [INF] ConsoleDebugButtonService disposing
+2025-10-19 12:07:56.850 +02:00 [INF] Unsubscribed from error detection
+2025-10-19 12:07:56.854 +02:00 [INF] EditorThreadHelper disposed
+2025-10-19 12:08:04.371 +02:00 [INF] Initializing Coplay services
+2025-10-19 12:08:04.583 +02:00 [INF] Initializing EditorThreadHelper
+2025-10-19 12:08:04.583 +02:00 [INF] EditorThreadHelper initialized successfully
+2025-10-19 12:08:04.790 +02:00 [INF] Enabling console error detection
+2025-10-19 12:08:04.832 +02:00 [INF] Found 0 errors via direct console query (cached)
+2025-10-19 12:08:04.834 +02:00 [INF] ConsoleDebugButtonService initializing
+2025-10-19 12:08:04.839 +02:00 [INF] Console debug button is enabled, adding button
+2025-10-19 12:08:04.844 +02:00 [INF] Enabling console debug button
+2025-10-19 12:08:04.848 +02:00 [INF] === Starting console button injection ===
+2025-10-19 12:08:04.849 +02:00 [INF] Found 1 console window instances
+2025-10-19 12:08:05.027 +02:00 [DBG] Console window found, attempting to add button
+2025-10-19 12:08:05.068 +02:00 [DBG] Initial error state: False
+2025-10-19 12:08:05.069 +02:00 [WRN] Could not find toolbar by child count, trying alternative search
+2025-10-19 12:08:05.074 +02:00 [DBG] Could not find console toolbar - adding button to root instead
+2025-10-19 12:08:05.076 +02:00 [DBG] Logo texture load result: success
+2025-10-19 12:08:05.151 +02:00 [INF] Coplay logo added (always visible)
+2025-10-19 12:08:05.171 +02:00 [INF] Debug button added with absolute positioning (centered), initial visibility: hidden
+2025-10-19 12:08:05.180 +02:00 [INF] Copy button added (always visible), initial position: near logo
+2025-10-19 12:08:05.182 +02:00 [DBG] UpdateButtonVisibility called - hasErrors: False, _debugButton: exists
+2025-10-19 12:08:05.182 +02:00 [INF] Debug With AI button successfully injected into console
+2025-10-19 12:08:05.186 +02:00 [INF] Subscribed to error detection
+2025-10-19 12:08:05.186 +02:00 [INF] ConsoleDebugButtonService initialized
+2025-10-19 12:08:14.830 +02:00 [INF] No existing action records JSON file found.
+2025-10-19 12:08:15.026 +02:00 [INF] Loading state from file, and setting to: Initialized
+2025-10-19 12:08:15.115 +02:00 [INF] No request found, returning empty.
+2025-10-19 12:08:15.190 +02:00 [INF] No MCP servers configuration found
+2025-10-19 12:08:15.191 +02:00 [INF] MCP host initialized
+2025-10-19 12:08:15.211 +02:00 [INF] Loaded 0 scroll positions from disk
+2025-10-19 12:08:15.290 +02:00 [INF] Context file not found: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/CoplayLogs/context_items.json
+2025-10-19 12:08:15.296 +02:00 [INF] Checking for dependencies in: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Binaries
+2025-10-19 12:08:15.298 +02:00 [INF] Architecture folder x86_64 not found
+2025-10-19 12:08:19.334 +02:00 [INF] Found 0 errors via direct console query (cached)
+2025-10-19 12:08:19.334 +02:00 [INF] No startup errors found after delayed check
+2025-10-19 12:08:19.335 +02:00 [DBG] UpdateButtonVisibility called - hasErrors: False, _debugButton: exists
+2025-10-19 12:08:22.354 +02:00 [INF] Checking for dependencies in: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Binaries
+2025-10-19 12:08:22.354 +02:00 [INF] Architecture folder x86_64 not found
+2025-10-19 12:08:22.361 +02:00 [INF] Showing dependency download screen
+2025-10-19 15:15:40.010 +02:00 [WRN] Autocomplete is disabled in settings. Enable it in Coplay settings to use this feature.
+2025-10-19 15:16:32.119 +02:00 [INF] Checking for executable in: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Binaries/ripgrep/x86_64
+2025-10-19 15:16:32.120 +02:00 [INF] Looking for executable at: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Binaries/ripgrep/x86_64/rg
+2025-10-19 15:16:33.102 +02:00 [INF] Set executable permissions successfully
+2025-10-19 15:16:33.125 +02:00 [INF] Dependency installation completed successfully
+2025-10-19 15:18:46.445 +02:00 [INF] Successfully got device ID: cpl-device-75260f25-5cbf-42fd-bbd6-b2f28d805d58
+2025-10-19 15:20:14.122 +02:00 [WRN] Autocomplete is disabled in settings. Enable it in Coplay settings to use this feature.
+2025-10-19 15:20:15.949 +02:00 [ERR] CoplayError - Login failed
+System.Threading.Tasks.TaskCanceledException: A task was canceled.
+  at Coplay.Common.CoplayApi.CoplayApiClient.CheckForTokens (System.Threading.CancellationToken cancellationToken) [0x00169] in <31c3e5a26ffa4ffbb9305fdc1de995c7>:0 
+System.Threading.Tasks.TaskCanceledException: A task was canceled.
+  at Coplay.Common.CoplayApi.CoplayApiClient.CheckForTokens (System.Threading.CancellationToken cancellationToken) [0x0025f] in <31c3e5a26ffa4ffbb9305fdc1de995c7>:0 
+2025-10-19 15:20:15.953 +02:00 [INF] Login attempt cancelled
+2025-10-19 15:20:24.082 +02:00 [INF] Placeholder text would be: What can I help with?
+2025-10-19 15:20:24.102 +02:00 [INF] Loading threads
+2025-10-19 15:20:24.107 +02:00 [INF] Successfully logged in
+2025-10-19 15:20:26.707 +02:00 [INF] Creating thread
+2025-10-19 15:20:26.707 +02:00 [INF] No current thread to save checkpoint hashes from
+2025-10-19 15:20:27.223 +02:00 [INF] Loading thread messages for thread cpl_thread_1437bdb0_008c_4901_9ab9_89c29e213e1b
+2025-10-19 15:20:27.227 +02:00 [INF] Saving state
+2025-10-19 15:20:27.325 +02:00 [INF] Clearing state model
+2025-10-19 15:20:27.326 +02:00 [WRN] You are setting to the same state: Initialized
+2025-10-19 15:20:27.349 +02:00 [INF] OnThreadChanged
+2025-10-19 15:20:27.357 +02:00 [INF] Handling state change: Initialized
+2025-10-19 15:22:10.549 +02:00 [INF] [Mode: Normal] User prompt: what file contains the scene generator. Every time I press play it creates a new cube for some of the game objects
+2025-10-19 15:22:10.580 +02:00 [INF] Coplay State Change: Initialized -> WaitingForAI
+2025-10-19 15:22:10.629 +02:00 [INF] Handling state change: WaitingForAI
+2025-10-19 15:22:11.558 +02:00 [INF] Saving state
+2025-10-19 15:22:12.506 +02:00 [INF] Listed 200 recursive files and directories matching glob pattern '**/*' in /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI. (Result truncated to first 200 items. Use more specific patterns or explore subdirectories.)
+2025-10-19 15:22:12.549 +02:00 [INF] Updating thread cpl_thread_1437bdb0_008c_4901_9ab9_89c29e213e1b to what file contains the scene generator. Every time I press play it creates a new cube for some of th...
+2025-10-19 15:22:13.138 +02:00 [INF] FunctionExecutionController: Loaded thread with 0 function calls from chat history.
+2025-10-19 15:22:13.139 +02:00 [INF] OnThreadChanged
+2025-10-19 15:22:13.146 +02:00 [INF] Saving state
+2025-10-19 15:22:15.236 +02:00 [INF] assistant mode: Normal
+2025-10-19 15:22:15.268 +02:00 [INF] Starting background checkpoint creation for thread cpl_thread_1437bdb0_008c_4901_9ab9_89c29e213e1b...
+2025-10-19 15:22:15.269 +02:00 [WRN] Shadow Git repository not initialized. Attempting to initialize...
+2025-10-19 15:22:15.274 +02:00 [INF] Started checkpoint creation with placeholder hash: pending-638964841352642350 for message: cfb77520-246a-4b6f-957c-1a1e682df48f
+2025-10-19 15:22:16.322 +02:00 [INF] Saving state
+2025-10-19 15:22:19.510 +02:00 [INF] Initialized shadow Git repository at: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Checkpoints/cpl_thread_1437bdb0_008c_4901_9ab9_89c29e213e1b
+2025-10-19 15:22:20.110 +02:00 [INF] Staging workspace for shadow repository: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Checkpoints/cpl_thread_1437bdb0_008c_4901_9ab9_89c29e213e1b
+2025-10-19 15:22:23.641 +02:00 [INF] Saving state
+2025-10-19 15:22:26.842 +02:00 [INF] Files staged successfully
+2025-10-19 15:22:27.122 +02:00 [INF] Saving state
+2025-10-19 15:22:27.454 +02:00 [INF] Returned to previous state: WaitingForAI -> Initialized (Finished running assistant thread)
+2025-10-19 15:22:28.054 +02:00 [INF] Handling state change: Initialized
+2025-10-19 15:22:28.604 +02:00 [INF] Saving state
+2025-10-19 15:22:31.376 +02:00 [INF] Created checkpoint: efc2a275b845079cbde5578a6e88343ed41418f7
+2025-10-19 15:22:31.381 +02:00 [INF] Before pending hash. Checkpoint completed for message cfb77520-246a-4b6f-957c-1a1e682df48f. Actual hash: efc2a275b845079cbde5578a6e88343ed41418f7
+2025-10-19 15:22:32.381 +02:00 [INF] Saving state
+2025-10-19 15:27:33.970 +02:00 [WRN] Autocomplete is disabled in settings. Enable it in Coplay settings to use this feature.
+2025-10-19 15:29:51.810 +02:00 [DBG] Compilation finished, refreshing error state
+2025-10-19 15:29:51.900 +02:00 [INF] Deinitializing Coplay services
+2025-10-19 15:29:51.906 +02:00 [INF] ConsoleDebugButtonService disposing
+2025-10-19 15:29:51.917 +02:00 [INF] Unsubscribed from error detection
+2025-10-19 15:29:51.928 +02:00 [INF] EditorThreadHelper disposed
+2025-10-19 15:30:03.492 +02:00 [INF] Initializing Coplay services
+2025-10-19 15:30:03.538 +02:00 [INF] Initializing EditorThreadHelper
+2025-10-19 15:30:03.538 +02:00 [INF] EditorThreadHelper initialized successfully
+2025-10-19 15:30:03.634 +02:00 [INF] Enabling console error detection
+2025-10-19 15:30:03.651 +02:00 [INF] Found 0 errors via direct console query (cached)
+2025-10-19 15:30:03.653 +02:00 [INF] ConsoleDebugButtonService initializing
+2025-10-19 15:30:03.656 +02:00 [INF] Console debug button is enabled, adding button
+2025-10-19 15:30:03.656 +02:00 [INF] Enabling console debug button
+2025-10-19 15:30:03.657 +02:00 [INF] === Starting console button injection ===
+2025-10-19 15:30:03.658 +02:00 [INF] Found 1 console window instances
+2025-10-19 15:30:03.752 +02:00 [DBG] Console window found, attempting to add button
+2025-10-19 15:30:03.775 +02:00 [DBG] Initial error state: False
+2025-10-19 15:30:03.776 +02:00 [WRN] Could not find toolbar by child count, trying alternative search
+2025-10-19 15:30:03.779 +02:00 [DBG] Could not find console toolbar - adding button to root instead
+2025-10-19 15:30:03.780 +02:00 [DBG] Logo texture load result: success
+2025-10-19 15:30:03.816 +02:00 [INF] Coplay logo added (always visible)
+2025-10-19 15:30:03.834 +02:00 [INF] Debug button added with absolute positioning (centered), initial visibility: hidden
+2025-10-19 15:30:03.836 +02:00 [INF] Copy button added (always visible), initial position: near logo
+2025-10-19 15:30:03.837 +02:00 [DBG] UpdateButtonVisibility called - hasErrors: False, _debugButton: exists
+2025-10-19 15:30:03.837 +02:00 [INF] Debug With AI button successfully injected into console
+2025-10-19 15:30:03.839 +02:00 [INF] Subscribed to error detection
+2025-10-19 15:30:03.839 +02:00 [INF] ConsoleDebugButtonService initialized
+2025-10-19 15:30:11.239 +02:00 [INF] No existing action records JSON file found.
+2025-10-19 15:30:17.033 +02:00 [INF] Found 0 errors via direct console query (cached)
+2025-10-19 15:30:17.034 +02:00 [INF] No startup errors found after delayed check
+2025-10-19 15:30:17.036 +02:00 [DBG] UpdateButtonVisibility called - hasErrors: False, _debugButton: exists
+2025-10-19 15:30:30.355 +02:00 [INF] Loading state from file, and setting to: Initialized
+2025-10-19 15:30:30.578 +02:00 [INF] No MCP servers configuration found
+2025-10-19 15:30:30.579 +02:00 [INF] MCP host initialized
+2025-10-19 15:30:30.601 +02:00 [INF] Loaded 0 scroll positions from disk
+2025-10-19 15:30:30.779 +02:00 [INF] Checking for dependencies in: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Binaries
+2025-10-19 15:30:30.784 +02:00 [INF] Executable at /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Binaries/ripgrep/x86_64/rg exists: True
+2025-10-19 15:30:38.007 +02:00 [INF] Checking for dependencies in: /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Binaries
+2025-10-19 15:30:38.008 +02:00 [INF] Executable at /Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI/Packages/Coplay/Editor/Binaries/ripgrep/x86_64/rg exists: True
+2025-10-19 15:30:38.443 +02:00 [INF] Placeholder text would be: What can I help with?
+2025-10-19 15:30:38.458 +02:00 [INF] Loading threads state
+2025-10-19 15:30:38.557 +02:00 [INF] Loading thread messages for thread cpl_thread_1437bdb0_008c_4901_9ab9_89c29e213e1b
+2025-10-19 15:30:38.572 +02:00 [INF] Saving state
+2025-10-19 15:30:47.282 +02:00 [INF] Clearing All
+2025-10-19 15:30:47.284 +02:00 [INF] Clearing state model
+2025-10-19 15:30:47.284 +02:00 [WRN] You are setting to the same state: Initialized
+2025-10-19 15:30:47.332 +02:00 [INF] Cleaned up all thumbnail textures
+2025-10-19 15:30:47.341 +02:00 [INF] AssistantController: Dispose called
+2025-10-19 15:30:47.353 +02:00 [INF] FunctionExecutionController: Dispose called

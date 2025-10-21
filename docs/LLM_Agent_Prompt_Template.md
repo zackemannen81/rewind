@@ -79,8 +79,8 @@
 **Initial Data/Environment:**
 - **Project:** RE:WIND - a 3D time-loop thriller
 - **Current Directory:** `/Users/rickardzakrisson/Desktop/gits/rewind_dev/geminiCLI`
-- **Relevant Files:**
-  - `[path/to/relevant/file1.md]`
+- **Relevant Files to read before starting developing:**
+  - *.md, /docs/ and tasks
 - **Key Information:** The core gameplay loop is 7 minutes long. Player knowledge persists across loops.
 
 ## 7. Output Format
