@@ -223,6 +223,13 @@ namespace Art.Editor
         {
             var prefabFolder = EnsureAssetPath(folderPath);
             var prefabPath = Path.Combine(prefabFolder, prefabName + ".prefab").Replace('\\', '/');
+
+            var existing = AssetDatabase.LoadAssetAtPath<GameObject>(prefabPath);
+            if (existing != null)
+            {
+                AssetDatabase.DeleteAsset(prefabPath);
+            }
+
             PrefabUtility.SaveAsPrefabAsset(root, prefabPath);
         }
 
