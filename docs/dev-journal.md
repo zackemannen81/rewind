@@ -69,6 +69,20 @@ This journal tracks the development progress of this project.
   - `docs/GDD_About.md`
 - **Commit Hash:**
 
+### Task ID: CH1-001
+
+- **Start Time:** 2025-10-23 20:53:01 UTC
+- **End Time:**
+- **Status:** In Progress
+- **Notes/Blockers:** 
+  - Resuming Apartment 4C blockout polish; will translate latest layout decisions into `Chapter1Bootstrap` primitives/hero props.
+  - Need to audit current scene output in Unity to capture baseline before edits.
+- **Associated Files:**
+  - `tasks/task_chapter_1.md`
+  - `Assets/Scripts/Chapter1/Chapter1Bootstrap.cs`
+  - `Assets/Scenes/Chapter1/Chapter1_Blockout.unity`
+- **Commit Hash:**
+
 ### Task ID: SND-001
 
 - **Start Time:** 2025-10-18 16:20:15 UTC
@@ -110,4 +124,3 @@ This journal tracks the development progress of this project.
   - `tasks/task_art_style.md`
   - `Assets/Art/Characters/Player/`
   - `docs/ART-001_production_plan.md`
-
