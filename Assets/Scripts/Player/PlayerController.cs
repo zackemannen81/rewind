@@ -47,6 +47,9 @@ namespace Player
         [SerializeField]
         private float climbCheckDistance = 0.9f;
         [SerializeField]
+        private PlayerProceduralAnimator animationDriver;
+
+        [SerializeField]
         private float maxClimbHeight = 2.8f;
         [SerializeField]
         private float climbDurationPerMeter = 0.55f;
@@ -99,6 +102,10 @@ namespace Player
         {
             _characterController = GetComponent<CharacterController>();
             _playerInput = GetComponent<PlayerInput>();
+            if (animationDriver == null)
+            {
+                animationDriver = GetComponentInChildren<PlayerProceduralAnimator>();
+            }
             _defaultControllerCenter = _characterController.center;
 
             if (leanPivot != null)
@@ -122,6 +129,7 @@ namespace Player
             {
                 UpdateLean();
                 BroadcastNoise();
+                UpdateAnimationDriver();
                 return;
             }
 
@@ -132,6 +140,7 @@ namespace Player
             ApplyGravity();
             UpdateLean();
             BroadcastNoise();
+            UpdateAnimationDriver();
         }
 
         private void HandleMovement()
@@ -350,6 +359,7 @@ namespace Player
         private IEnumerator VaultRoutine(Vector3 targetPosition)
         {
             _isVaulting = true;
+            animationDriver?.SetTraversalState(true, false);
             _characterController.enabled = false;
             var startPosition = transform.position;
             var elapsed = 0f;
@@ -369,6 +379,10 @@ namespace Player
         private IEnumerator ClimbRoutine(Vector3 targetPosition)
         {
             _isClimbing = true;
+            if (animationDriver != null)
+            {
+                animationDriver.SetTraversalState(false, true);
+            }
             _characterController.enabled = false;
 
             var startPosition = transform.position;
@@ -394,11 +408,21 @@ namespace Player
             _velocity = Vector3.zero;
             _isVaulting = false;
             _isClimbing = false;
+            if (animationDriver != null)
+            {
+                animationDriver.SetTraversalState(false, false);
+            }
             _traversalRoutine = null;
         }
 
         private void UpdateLean()
         {
+            if (animationDriver != null)
+            {
+                animationDriver.UpdateLean(_playerInput.LeanInput);
+                return;
+            }
+
             if (leanPivot == null)
             {
                 return;
@@ -414,6 +438,30 @@ namespace Player
             var targetRotation = _leanDefaultRotation * Quaternion.Euler(0f, 0f, -_currentLeanAngle);
             leanPivot.localRotation = Quaternion.Slerp(leanPivot.localRotation, targetRotation, Time.deltaTime * leanSmoothing);
         }
+
+        private void UpdateAnimationDriver()
+        {
+            if (animationDriver == null)
+            {
+                return;
+            }
+
+            var normalizedSpeed = Mathf.Approximately(runSpeed, 0f) ? 0f : Mathf.Clamp01(_currentSpeed / runSpeed);
+            var isGrounded = _characterController != null && _characterController.isGrounded;
+            var isSneaking = _playerInput != null && _playerInput.SneakHeld;
+
+            animationDriver.UpdateLocomotion(
+                _currentSpeed,
+                normalizedSpeed,
+                isGrounded,
+                _isCrouching,
+                isSneaking,
+                _isRunning,
+                _velocity.y);
+        }
+
+
+
 
         private void BroadcastNoise()
         {

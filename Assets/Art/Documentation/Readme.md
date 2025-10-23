@@ -17,9 +17,10 @@ This folder contains the assets introduced for Task ART-001 to standardise the n
   - Enables alert mode when the loop timer hits the final minute (via `MinutePassedEvent`).
 
 ## Editor Generator
-- `RetroArtBaselineGenerator` (`Art ▸ Generate ▸ Build Core Art Baseline`) spawns the default characters, props, and lighting prefabs under `Assets/Art/Characters`, `Assets/Art/Props`, and `Assets/Art/Lighting`.
-- The generator wipes previously generated prefabs before writing new ones, so you can re-run it safely after tweaking materials or palette values.
-- Expect each prefab to land in its own folder (e.g. `Assets/Art/Characters/Player/Player_LowPoly.prefab`). Drop these into scenes for quick blockouts.
+- `RetroArtBaselineGenerator` (`Art ▸ Generate ▸ Build Core Art Baseline`) spawns the default guard/drone characters, props, and lighting prefabs under `Assets/Art/Characters`, `Assets/Art/Props`, and `Assets/Art/Lighting`.
+- `PlayerCharacterBuilder` (`Art ▸ Generate ▸ Build Final Player Character`) produces `Assets/Art/Characters/Player/PlayerCharacter.prefab` with the controller, input rig, and `PlayerProceduralAnimator` bindings configured.
+- Both generators wipe previously generated prefabs before writing new ones, so you can re-run them safely after tweaking materials or palette values.
+- Expect each prefab to land in its own folder (e.g. `Assets/Art/Characters/Player/PlayerCharacter.prefab`). Drop these into scenes for quick blockouts.
 
 ### Usage Steps
 1. Drop `RetroPaletteStateController` onto a scene GameObject (e.g. `ArtPaletteController`).

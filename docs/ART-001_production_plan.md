@@ -47,3 +47,10 @@ Build the Chapter 1 vertical-slice art foundation that matches the retro-futuris
 1. Create folder skeleton under `Assets/Art/` and stub palette/shader assets.
 2. Implement `RetroPalette` ScriptableObject & shader.
 3. Produce first-pass player/guard/drone blockout meshes and wire them into prefabs for iteration.
+
+## Scope Update — 2025-10-22
+- Brutalist environment kit will be split into a follow-up art task once Chapter 1 layout locking is complete; current ART-001 scope focuses on character, shader, and lighting systems.
+- Scheduled Chapter 1 art integration window for next layout sync (targeting 2025-10-24) to swap player prefab, hero props, and palette-driven volumes into `Chapter1_Blockout`.
+- `PlayerCharacterBuilder` + `PlayerProceduralAnimator` replace the previous `Player_LowPoly` placeholder to align with the neon-noir silhouette style and animation requirements.
+- `ThirdPersonCamera` rig automation included in the builder so drop-in prefabs arrive with tuned orbit camera + audio listener.
+

@@ -104,8 +104,8 @@ This journal tracks the development progress of this project.
 - **End Time:**
 - **Status:** In Progress
 - **Notes/Blockers:** 
-  - Resuming ART-001 to finalize the player character mesh, animation set, and controller hooks per vertical slice quality bar.
-  - Need to evaluate brutalist environment kit scope vs. current sprint capacity and coordinate Chapter 1 scene integration plan.
+  - PlayerCharacter prefab now ships with the third-person camera rig; Chapter 1 integration pass pencilled in for 2025-10-24 with layout team to wire the rig into `Chapter1_Blockout`.
+  - Brutalist environment kit deferred to follow-up art task to avoid blocking play-character delivery.
 - **Associated Files:**
   - `tasks/task_art_style.md`
   - `Assets/Art/Characters/Player/`
