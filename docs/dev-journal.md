@@ -97,3 +97,17 @@ This journal tracks the development progress of this project.
   - `docs/ART-001_production_plan.md`
   - `Assets/Art/`
 - **Commit Hash:** `7cea5e1`
+
+### Task ID: ART-001
+
+- **Start Time:** 2025-10-22 09:30:00
+- **End Time:**
+- **Status:** In Progress
+- **Notes/Blockers:** 
+  - Resuming ART-001 to finalize the player character mesh, animation set, and controller hooks per vertical slice quality bar.
+  - Need to evaluate brutalist environment kit scope vs. current sprint capacity and coordinate Chapter 1 scene integration plan.
+- **Associated Files:**
+  - `tasks/task_art_style.md`
+  - `Assets/Art/Characters/Player/`
+  - `docs/ART-001_production_plan.md`
+
