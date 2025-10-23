@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 using Core;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -225,46 +226,21 @@ public class Chapter1Bootstrap : MonoBehaviour
             area.transform.localPosition = localOffset;
             area.transform.localRotation = Quaternion.identity;
 
-            var blockoutTransform = area.transform.Find("Blockout");
-            if (blockoutTransform == null)
+            var block = EnsurePrimitiveChild(area.transform, "Blockout", PrimitiveType.Cube, color);
+
+            float thickness = Mathf.Clamp(size.y, 0.05f, 0.5f);
+            block.localPosition = new Vector3(0f, -thickness * 0.5f, 0f);
+            block.localRotation = Quaternion.identity;
+            block.localScale = new Vector3(size.x, thickness, size.z);
+
+            var blockCollider = block.GetComponent<BoxCollider>();
+            if (blockCollider == null)
             {
-                var blockout = CreatePrimitive(area.transform, color);
-                blockoutTransform = blockout.transform;
+                blockCollider = block.gameObject.AddComponent<BoxCollider>();
             }
-
-            blockoutTransform.localPosition = Vector3.zero;
-            blockoutTransform.localRotation = Quaternion.identity;
-            blockoutTransform.localScale = size;
-        }
-
-        private GameObject CreatePrimitive(Transform parent, Color color)
-        {
-            var primitive = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            primitive.name = "Blockout";
-            primitive.transform.SetParent(parent, false);
-
-            var renderer = primitive.GetComponent<MeshRenderer>();
-            if (renderer != null)
-            {
-                var shader = Shader.Find("Universal Render Pipeline/Lit") ?? Shader.Find("HDRP/Lit") ?? Shader.Find("Standard");
-                if (shader != null)
-                {
-                    var material = new Material(shader)
-                    {
-                        color = color
-                    };
-                    renderer.sharedMaterial = material;
-                }
-            }
-
-            primitive.layer = ResolveLayer("Ground");
-            var collider = primitive.GetComponent<Collider>();
-            if (collider != null)
-            {
-                collider.gameObject.layer = primitive.layer;
-            }
-
-            return primitive;
+            blockCollider.enabled = true;
+            blockCollider.isTrigger = false;
+            blockCollider.gameObject.layer = ResolveLayer("Ground");
         }
 
         private void BuildFuseBox(Transform host, Chapter1FuseBox fuseBox)
@@ -338,19 +314,10 @@ public class Chapter1Bootstrap : MonoBehaviour
             barrier.transform.localRotation = Quaternion.identity;
             barrier.transform.localScale = new Vector3(1f, 3f, 1f);
 
-            var meshRenderer = barrier.GetComponent<MeshRenderer>();
-            if (meshRenderer == null)
-            {
-                var primitive = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                primitive.name = "Block";
-                primitive.transform.SetParent(barrier.transform, false);
-                primitive.transform.localPosition = Vector3.zero;
-                primitive.transform.localScale = Vector3.one;
-                meshRenderer = primitive.GetComponent<MeshRenderer>();
-                meshRenderer.sharedMaterial = CreateBlockMaterial(wallColor);
-                var primitiveCollider = primitive.GetComponent<BoxCollider>();
-                primitiveCollider.enabled = false;
-            }
+            var block = EnsurePrimitiveChild(barrier.transform, "Block", PrimitiveType.Cube, wallColor);
+            block.localPosition = Vector3.zero;
+            block.localRotation = Quaternion.identity;
+            block.localScale = Vector3.one;
 
             var collider = barrier.GetComponent<BoxCollider>();
             if (collider == null)
@@ -414,21 +381,10 @@ public class Chapter1Bootstrap : MonoBehaviour
             connector.transform.localRotation = Quaternion.identity;
             connector.transform.localScale = size;
 
-            var renderer = connector.GetComponent<MeshRenderer>();
-            if (renderer == null)
-            {
-                var primitive = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                primitive.name = "Block";
-                primitive.transform.SetParent(connector.transform, false);
-                primitive.transform.localPosition = Vector3.zero;
-                primitive.transform.localRotation = Quaternion.identity;
-                primitive.transform.localScale = Vector3.one;
-
-                renderer = primitive.GetComponent<MeshRenderer>();
-                renderer.sharedMaterial = CreateBlockMaterial(connectorColor);
-                var collider = primitive.GetComponent<BoxCollider>();
-                collider.enabled = false;
-            }
+            var block = EnsurePrimitiveChild(connector.transform, "Block", PrimitiveType.Cube, connectorColor);
+            block.localPosition = Vector3.zero;
+            block.localRotation = Quaternion.identity;
+            block.localScale = Vector3.one;
 
             var colliderComponent = connector.GetComponent<BoxCollider>();
             if (colliderComponent == null)
@@ -453,20 +409,10 @@ public class Chapter1Bootstrap : MonoBehaviour
             wall.transform.localRotation = rotationEuler.HasValue ? Quaternion.Euler(rotationEuler.Value) : Quaternion.identity;
             wall.transform.localScale = scale;
 
-            var renderer = wall.GetComponent<MeshRenderer>();
-            if (renderer == null)
-            {
-                var primitive = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                primitive.name = "Wall";
-                primitive.transform.SetParent(wall.transform, false);
-                primitive.transform.localPosition = Vector3.zero;
-                primitive.transform.localRotation = Quaternion.identity;
-                primitive.transform.localScale = Vector3.one;
-                renderer = primitive.GetComponent<MeshRenderer>();
-                renderer.sharedMaterial = CreateBlockMaterial(wallColor);
-                var collider = primitive.GetComponent<BoxCollider>();
-                collider.enabled = false;
-            }
+            var block = EnsurePrimitiveChild(wall.transform, "Wall", PrimitiveType.Cube, wallColor);
+            block.localPosition = Vector3.zero;
+            block.localRotation = Quaternion.identity;
+            block.localScale = Vector3.one;
 
             var box = wall.GetComponent<BoxCollider>();
             if (box == null)
@@ -498,15 +444,43 @@ public class Chapter1Bootstrap : MonoBehaviour
                 return;
             }
 
-            var verticalOffset = new Vector3(0f, 2f, 0f);
+            const float wallHeight = 3f;
+            const float wallThickness = 0.2f;
+            const float counterHeight = 0.9f;
+            const float propElevation = 0.05f;
+
+            float halfWidth = apartmentSize.x * 0.5f;
+            float halfDepth = apartmentSize.z * 0.5f;
+
+            var wallsRoot = EnsureChild(apartmentRoot, "Walls").transform;
+            ConfigureBlock(wallsRoot, "Wall_West", new Vector3(-halfWidth + wallThickness * 0.5f, wallHeight * 0.5f, 0f), new Vector3(wallThickness, wallHeight, apartmentSize.z), wallColor);
+            ConfigureBlock(wallsRoot, "Wall_East", new Vector3(halfWidth - wallThickness * 0.5f, wallHeight * 0.5f, 0f), new Vector3(wallThickness, wallHeight, apartmentSize.z), wallColor);
+            ConfigureBlock(wallsRoot, "Wall_South", new Vector3(0f, wallHeight * 0.5f, -halfDepth + wallThickness * 0.5f), new Vector3(apartmentSize.x, wallHeight, wallThickness), wallColor);
+
+            float entryGap = 2.2f;
+            float northSegmentWidth = (apartmentSize.x - entryGap) * 0.5f;
+            ConfigureBlock(wallsRoot, "Wall_North_Left", new Vector3(-halfWidth + northSegmentWidth * 0.5f, wallHeight * 0.5f, halfDepth - wallThickness * 0.5f), new Vector3(northSegmentWidth, wallHeight, wallThickness), wallColor);
+            ConfigureBlock(wallsRoot, "Wall_North_Right", new Vector3(halfWidth - northSegmentWidth * 0.5f, wallHeight * 0.5f, halfDepth - wallThickness * 0.5f), new Vector3(northSegmentWidth, wallHeight, wallThickness), wallColor);
+
+            float bedroomDividerX = 1.6f;
+            ConfigureBlock(wallsRoot, "BedroomDivider_South", new Vector3(bedroomDividerX, wallHeight * 0.5f, -2.3f), new Vector3(wallThickness, wallHeight, 2.6f), wallColor);
+            ConfigureBlock(wallsRoot, "BedroomDivider_North", new Vector3(bedroomDividerX, wallHeight * 0.5f, 2.2f), new Vector3(wallThickness, wallHeight, 2.8f), wallColor);
+            ConfigureBlock(wallsRoot, "BedroomDoorHeader", new Vector3(bedroomDividerX, 2.6f, -0.05f), new Vector3(wallThickness, 0.8f, 1.4f), wallColor);
+
+            var builtInsRoot = EnsureChild(apartmentRoot, "BuiltIns").transform;
+            ConfigureBlock(builtInsRoot, "EntryBench", new Vector3(-halfWidth + 1.4f, 0.35f, -halfDepth + 1.0f), new Vector3(2.4f, 0.7f, 0.6f), gatePanelColor, true);
+            ConfigureBlock(builtInsRoot, "KitchenCounter_Main", new Vector3(-halfWidth + 1.2f, counterHeight * 0.5f, 1.8f), new Vector3(2.4f, counterHeight, 2.8f), gatePanelColor, true);
+            ConfigureBlock(builtInsRoot, "KitchenCounter_Return", new Vector3(-0.3f, counterHeight * 0.5f, 2.8f), new Vector3(2.4f, counterHeight, 0.6f), gatePanelColor, true);
+            ConfigureBlock(builtInsRoot, "SofaBlock", new Vector3(-0.6f, 0.45f, -1.0f), new Vector3(2.2f, 0.9f, 1.4f), accentHighlightColor, true);
+            ConfigureBlock(builtInsRoot, "CoffeeTable", new Vector3(-0.6f, 0.3f, -2.0f), new Vector3(1.4f, 0.6f, 0.8f), accentHighlightColor, true);
+
             var furnitureRoot = EnsureChild(apartmentRoot, "Furniture").transform;
-            EnsureModelInstance(furnitureRoot, apartmentBedModel, BedDefaultPath, new Vector3(2.5f, 0.05f, -2.2f) + verticalOffset, new Vector3(0f, -90f, 0f), Vector3.one * 0.01f);
-            EnsureModelInstance(furnitureRoot, apartmentTableModel, TableDefaultPath, new Vector3(-1.6f, 0.05f, 0.9f) + verticalOffset, new Vector3(0f, 45f, 0f), Vector3.one * 0.012f);
-            EnsureModelInstance(furnitureRoot, apartmentChairModel, ChairDefaultPath, new Vector3(-2.4f, 0.05f, 1.8f) + verticalOffset, new Vector3(0f, 140f, 0f), Vector3.one * 0.011f);
-            EnsureModelInstance(furnitureRoot, apartmentPlantModel, PlantDefaultPath, new Vector3(3.1f, 0.05f, 1.8f) + verticalOffset, Vector3.zero, Vector3.one * 0.01f);
+            EnsureModelInstance(furnitureRoot, apartmentBedModel, BedDefaultPath, new Vector3(bedroomDividerX + 0.9f, propElevation, 2.3f), new Vector3(0f, -90f, 0f), Vector3.one * 0.01f);
+            EnsureModelInstance(furnitureRoot, apartmentTableModel, TableDefaultPath, new Vector3(-0.4f, propElevation, 0.2f), new Vector3(0f, 25f, 0f), Vector3.one * 0.012f);
+            EnsureModelInstance(furnitureRoot, apartmentChairModel, ChairDefaultPath, new Vector3(-1.4f, propElevation, -0.6f), new Vector3(0f, -60f, 0f), Vector3.one * 0.011f);
+            EnsureModelInstance(furnitureRoot, apartmentPlantModel, PlantDefaultPath, new Vector3(3.0f, propElevation, -2.6f), Vector3.zero, Vector3.one * 0.01f);
 
             BuildNoticeBoard(apartmentRoot);
-            OffsetChildLocalPosition(apartmentRoot, "NoticeBoard", verticalOffset);
         }
 
         private void PopulateCourtyard(Transform courtyardRoot)
@@ -756,27 +730,10 @@ public class Chapter1Bootstrap : MonoBehaviour
             node.transform.localRotation = Quaternion.identity;
             node.transform.localScale = localScale;
 
-            var mesh = node.GetComponent<MeshFilter>();
-            if (mesh == null)
-            {
-                var primitive = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                primitive.transform.SetParent(node.transform, false);
-                primitive.transform.localPosition = Vector3.zero;
-                primitive.transform.localRotation = Quaternion.identity;
-                primitive.transform.localScale = Vector3.one;
-
-                var renderer = primitive.GetComponent<MeshRenderer>();
-                if (renderer != null)
-                {
-                    renderer.sharedMaterial = CreateBlockMaterial(color);
-                }
-
-                var primitiveCollider = primitive.GetComponent<Collider>();
-                if (primitiveCollider != null)
-                {
-                    primitiveCollider.enabled = false;
-                }
-            }
+            var block = EnsurePrimitiveChild(node.transform, "Block", PrimitiveType.Cube, color);
+            block.localPosition = Vector3.zero;
+            block.localRotation = Quaternion.identity;
+            block.localScale = Vector3.one;
 
             var nodeCollider = node.GetComponent<BoxCollider>();
             if (nodeCollider == null)
@@ -784,6 +741,99 @@ public class Chapter1Bootstrap : MonoBehaviour
                 nodeCollider = node.AddComponent<BoxCollider>();
             }
             nodeCollider.isTrigger = trigger;
+        }
+
+        private void ConfigureBlock(Transform parent, string name, Vector3 localPosition, Vector3 blockScale, Color color, bool solid = true)
+        {
+            var node = EnsureChild(parent, name);
+            node.transform.localPosition = localPosition;
+            node.transform.localRotation = Quaternion.identity;
+            node.transform.localScale = Vector3.one;
+
+            var block = EnsurePrimitiveChild(node.transform, "Block", PrimitiveType.Cube, color);
+            block.localPosition = Vector3.zero;
+            block.localRotation = Quaternion.identity;
+            block.localScale = blockScale;
+
+            var collider = node.GetComponent<BoxCollider>();
+            if (collider == null)
+            {
+                collider = node.gameObject.AddComponent<BoxCollider>();
+            }
+            collider.center = Vector3.zero;
+            collider.size = blockScale;
+            collider.enabled = solid;
+            collider.isTrigger = !solid;
+        }
+
+        private Transform EnsurePrimitiveChild(Transform parent, string childName, PrimitiveType primitiveType, Color color)
+        {
+            Transform primary = null;
+            var duplicates = new System.Collections.Generic.List<Transform>();
+            var primitiveName = primitiveType.ToString();
+
+            foreach (Transform child in parent)
+            {
+                if (child == null)
+                {
+                    continue;
+                }
+
+                var matches = child.name == childName || child.name.StartsWith(childName + " (") || child.name == primitiveName || child.name.StartsWith(primitiveName + " (");
+                if (!matches)
+                {
+                    continue;
+                }
+
+                if (primary == null)
+                {
+                    primary = child;
+                }
+                else
+                {
+                    duplicates.Add(child);
+                }
+            }
+
+            foreach (var duplicate in duplicates)
+            {
+#if UNITY_EDITOR
+                if (!Application.isPlaying)
+                {
+                    UnityEditor.Undo.DestroyObjectImmediate(duplicate.gameObject);
+                }
+                else
+#endif
+                {
+                    Destroy(duplicate.gameObject);
+                }
+            }
+
+            if (primary == null)
+            {
+                var primitive = GameObject.CreatePrimitive(primitiveType);
+                primitive.name = childName;
+                primitive.transform.SetParent(parent, false);
+                primary = primitive.transform;
+            }
+            else
+            {
+                primary.name = childName;
+            }
+
+            var collider = primary.GetComponent<Collider>();
+            if (collider != null)
+            {
+                collider.enabled = false;
+            }
+
+            var renderer = primary.GetComponent<MeshRenderer>();
+            if (renderer != null)
+            {
+                renderer.sharedMaterial = CreateBlockMaterial(color);
+            }
+
+            return primary;
         }
 
         private Material CreateBlockMaterial(Color baseColor)
