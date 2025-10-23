@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 using UnityEngine.InputSystem;
 
 namespace Player
@@ -30,6 +31,12 @@ namespace Player
 
         private void OnEnable()
         {
+            EnsureInputActions();
+            if (_playerInputActions == null)
+            {
+                return;
+            }
+
             var playerMap = _playerInputActions.Player;
             playerMap.Enable();
             playerMap.Move.performed += OnMove;
@@ -46,6 +53,11 @@ namespace Player
 
         private void OnDisable()
         {
+            if (_playerInputActions == null)
+            {
+                return;
+            }
+
             var playerMap = _playerInputActions.Player;
             playerMap.Move.performed -= OnMove;
             playerMap.Move.canceled -= OnMove;
@@ -69,6 +81,26 @@ namespace Player
             _leanAction?.Dispose();
             _climbAction?.Dispose();
         }
+
+        private void EnsureInputActions()
+        {
+            if (_playerInputActions != null)
+            {
+                return;
+            }
+
+            try
+            {
+                _playerInputActions = new PlayerInputActions();
+                SetupAuxiliaryActions();
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"PlayerInput failed to initialise input actions: {ex.Message}", this);
+                _playerInputActions = null;
+            }
+        }
+
 
         public bool ConsumeJumpPressed()
         {
