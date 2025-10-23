@@ -1,319 +1,178 @@
-using System.Collections;
-using System.Collections.Generic;
-using Core;
-using Events;
 using UnityEngine;
+using System.Collections.Generic;
 
-namespace Audio
+[RequireComponent(typeof(AudioSource))]
+public class SoundscapeManager : MonoBehaviour
 {
-    /// <summary>
-    /// Centralises procedural audio playback for ambience, SFX and diegetic cues.
-    /// </summary>
-    [DefaultExecutionOrder(-50)]
-    public class SoundscapeManager : MonoBehaviour
+    #region Singleton
+    public static SoundscapeManager Instance { get; private set; }
+
+    private void Awake()
     {
-        [Header("Mix Busses")]
-        [SerializeField]
-        private AudioSource ambientPrimary;
-        [SerializeField]
-        private AudioSource ambientSecondary;
-        [SerializeField]
-        private AudioSource effectsSource;
-        [SerializeField]
-        private AudioSource uiSource;
-        [SerializeField]
-        private AudioSource voiceSource;
-        [SerializeField, Range(0f, 1f)]
-        private float ambientPrimaryLevel = 0.7f;
-        [SerializeField, Range(0f, 1f)]
-        private float ambientSecondaryLevel = 0.45f;
-        [SerializeField]
-        private float ambientCrossFadeSeconds = 1.5f;
-
-        private readonly Dictionary<AudioCueId, AudioCue> _library = new();
-        private readonly HashSet<AudioCueId> _missingCueWarnings = new();
-
-        private float _nextFootstepTime;
-        private Coroutine _primaryFadeRoutine;
-        private Coroutine _secondaryFadeRoutine;
-
-        public static SoundscapeManager Instance { get; private set; }
-
-        private void Awake()
+        if (Instance != null && Instance != this)
         {
-            if (Instance != null && Instance != this)
-            {
-                Debug.LogWarning("Duplicate SoundscapeManager detected; destroying the newest instance.");
-                Destroy(gameObject);
-                return;
-            }
-
+            Destroy(gameObject);
+        }
+        else
+        {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-
-            EnsureSource(ref ambientPrimary, "AmbientPrimary");
-            EnsureSource(ref ambientSecondary, "AmbientSecondary");
-            EnsureSource(ref effectsSource, "Effects");
-            EnsureSource(ref uiSource, "UI");
-            EnsureSource(ref voiceSource, "Voice");
-
-            SeedLibrary();
-        }
-
-        private void OnEnable()
-        {
-            EventBus.Subscribe<LoopStartEvent>(OnLoopStart);
-            EventBus.Subscribe<LoopEndEvent>(OnLoopEnd);
-            EventBus.Subscribe<MinutePassedEvent>(OnMinutePassed);
-            EventBus.Subscribe<PlayerNoiseEvent>(OnPlayerNoise);
-        }
-
-        private void Start()
-        {
-            SeedAmbientLayer(AudioCueId.AmbientDistrictDrone, ambientPrimary, ambientPrimaryLevel);
-            SeedAmbientLayer(AudioCueId.AmbientPulse, ambientSecondary, ambientSecondaryLevel);
-        }
-
-        public void PlayEffect(AudioCueId id, float volumeScale = 1f)
-        {
-            if (!TryGetCue(id, out var cue))
-            {
-                return;
-            }
-
-            cue.ApplyToSource(effectsSource, volumeScale);
-            effectsSource.loop = false;
-            effectsSource.Play();
-        }
-
-        public void PlayUiCue(AudioCueId id, float volumeScale = 1f)
-        {
-            if (!TryGetCue(id, out var cue))
-            {
-                return;
-            }
-
-            cue.ApplyToSource(uiSource, volumeScale);
-            uiSource.loop = false;
-            uiSource.Play();
-        }
-
-        public void PlayVoiceCue(AudioCueId id, float volumeScale = 1f)
-        {
-            if (!TryGetCue(id, out var cue))
-            {
-                return;
-            }
-
-            cue.ApplyToSource(voiceSource, volumeScale);
-            voiceSource.loop = false;
-            voiceSource.Play();
-        }
-
-        public void PlayAmbientLayer(AudioCueId id, AudioSource source, float volumeScale, bool loop)
-        {
-            if (!TryGetCue(id, out var cue))
-            {
-                return;
-            }
-
-            cue.ApplyToSource(source, volumeScale);
-            source.loop = loop;
-            if (!source.isPlaying)
-            {
-                source.Play();
-            }
-        }
-
-        public void TriggerInteractionFeedback()
-        {
-            PlayEffect(AudioCueId.InteractionClick, 1f);
-        }
-
-        public void TriggerUiGlitch()
-        {
-            PlayUiCue(AudioCueId.UiGlitch, 1f);
-        }
-
-        public bool TryResolveCue(AudioCueId id, out AudioCue cue)
-        {
-            return TryGetCue(id, out cue);
-        }
-
-        private void OnLoopStart(LoopStartEvent evt)
-        {
-            PlayEffect(AudioCueId.LoopStartStutter, 1f);
-
-            EnsureAmbientClip(AudioCueId.AmbientDistrictDrone, ambientPrimary, ambientPrimaryLevel);
-            EnsureAmbientClip(AudioCueId.AmbientPulse, ambientSecondary, ambientSecondaryLevel);
-
-            FadeAmbient(ambientPrimary, GetAmbientTargetVolume(AudioCueId.AmbientDistrictDrone, ambientPrimaryLevel));
-            FadeAmbient(ambientSecondary, GetAmbientTargetVolume(AudioCueId.AmbientPulse, ambientSecondaryLevel));
-        }
-
-        private void OnLoopEnd(LoopEndEvent evt)
-        {
-            PlayEffect(AudioCueId.LoopEndCollapse, 1f);
-            FadeAmbient(ambientPrimary, 0f);
-            FadeAmbient(ambientSecondary, 0f);
-        }
-
-        private void OnMinutePassed(MinutePassedEvent evt)
-        {
-            var proximity = Mathf.Clamp01(1f - evt.MinutesRemaining / 7f);
-            PlayUiCue(AudioCueId.LoopTick, Mathf.Lerp(0.2f, 0.7f, proximity));
-        }
-
-        private void OnPlayerNoise(PlayerNoiseEvent evt)
-        {
-            if (!evt.IsMoving)
-            {
-                return;
-            }
-
-            var normalizedNoise = Mathf.Clamp01(evt.NoiseLevel);
-            var cadence = Mathf.Lerp(0.52f, 0.24f, normalizedNoise);
-            if (Time.time < _nextFootstepTime)
-            {
-                return;
-            }
-
-            PlayEffect(AudioCueId.FootstepConcrete, Mathf.Lerp(0.4f, 1f, normalizedNoise));
-            _nextFootstepTime = Time.time + cadence;
-        }
-
-        private void EnsureSource(ref AudioSource source, string childName)
-        {
-            if (source != null)
-            {
-                return;
-            }
-
-            var child = new GameObject(childName);
-            child.transform.SetParent(transform);
-            source = child.AddComponent<AudioSource>();
-            source.playOnAwake = false;
-            source.spatialBlend = 0f;
-        }
-
-        private void SeedLibrary()
-        {
-            _library.Clear();
-            foreach (var kvp in ProceduralCueLibrary.BuildLibrary())
-            {
-                if (kvp.Value.Clip == null)
-                {
-                    Debug.LogWarning($"Audio cue {kvp.Key} returned a null clip.");
-                    continue;
-                }
-
-                _library[kvp.Key] = kvp.Value;
-            }
-        }
-
-        private bool TryGetCue(AudioCueId id, out AudioCue cue)
-        {
-            if (_library.TryGetValue(id, out cue))
-            {
-                return true;
-            }
-
-            if (_missingCueWarnings.Add(id))
-            {
-                Debug.LogWarning($"Audio cue {id} is missing from the library.");
-            }
-
-            return false;
-        }
-
-        private void SeedAmbientLayer(AudioCueId id, AudioSource source, float volumeScale)
-        {
-            if (!TryGetCue(id, out var cue))
-            {
-                return;
-            }
-
-            cue.ApplyToSource(source, volumeScale);
-            source.loop = true;
-            source.volume = GetAmbientTargetVolume(id, volumeScale);
-            source.Play();
-        }
-
-        private void EnsureAmbientClip(AudioCueId id, AudioSource source, float volumeScale)
-        {
-            if (!TryGetCue(id, out var cue))
-            {
-                return;
-            }
-
-            var shouldRestart = !source.isPlaying || source.clip != cue.Clip;
-            cue.ApplyToSource(source, volumeScale);
-            source.loop = true;
-
-            if (shouldRestart)
-            {
-                source.volume = 0f;
-                source.Play();
-            }
-        }
-
-        private float GetAmbientTargetVolume(AudioCueId id, float volumeScale)
-        {
-            return TryGetCue(id, out var cue)
-                ? Mathf.Clamp01(cue.DefaultVolume * volumeScale)
-                : 0f;
-        }
-
-        private void FadeAmbient(AudioSource target, float targetVolume)
-        {
-            if (target == null)
-            {
-                return;
-            }
-
-            if (target == ambientPrimary)
-            {
-                if (_primaryFadeRoutine != null)
-                {
-                    StopCoroutine(_primaryFadeRoutine);
-                }
-
-                _primaryFadeRoutine = StartCoroutine(FadeRoutine(target, targetVolume));
-            }
-            else if (target == ambientSecondary)
-            {
-                if (_secondaryFadeRoutine != null)
-                {
-                    StopCoroutine(_secondaryFadeRoutine);
-                }
-
-                _secondaryFadeRoutine = StartCoroutine(FadeRoutine(target, targetVolume));
-            }
-            else
-            {
-                StartCoroutine(FadeRoutine(target, targetVolume));
-            }
-        }
-
-        private IEnumerator FadeRoutine(AudioSource source, float targetVolume)
-        {
-            var startVolume = source.volume;
-            var elapsed = 0f;
-            var duration = Mathf.Max(0.05f, ambientCrossFadeSeconds);
-
-            while (elapsed < duration)
-            {
-                elapsed += Time.deltaTime;
-                var t = Mathf.Clamp01(elapsed / duration);
-                source.volume = Mathf.Lerp(startVolume, targetVolume, t);
-                yield return null;
-            }
-
-            source.volume = targetVolume;
-            if (Mathf.Approximately(targetVolume, 0f))
-            {
-                source.Stop();
-            }
+            Initialize();
         }
     }
+    #endregion
+
+    public LoopStartEvent loopStartEvent;
+    public LoopEndEvent loopEndEvent;
+    public MinutePassedEvent minutePassedEvent;
+    public PlayerNoiseEvent playerNoiseEvent;
+
+    private ProceduralCueLibrary cueLibrary;
+    private AudioSource audioSource;
+    private AudioSource droneAudioSource;
+    private AudioSource ambientAudioSource;
+    private AudioSource pulseAudioSource;
+
+    private void Initialize()
+    {
+        cueLibrary = new ProceduralCueLibrary();
+        audioSource = GetComponent<AudioSource>();
+        droneAudioSource = gameObject.AddComponent<AudioSource>();
+        ambientAudioSource = gameObject.AddComponent<AudioSource>();
+        pulseAudioSource = gameObject.AddComponent<AudioSource>();
+
+        ambientAudioSource.clip = cueLibrary.GetClip(AudioCueId.AmbientDistrictDrone);
+        ambientAudioSource.loop = true;
+        ambientAudioSource.Play();
+
+        pulseAudioSource.clip = cueLibrary.GetClip(AudioCueId.AmbientPulse);
+        pulseAudioSource.loop = true;
+        pulseAudioSource.Play();
+    }
+
+    private void OnEnable()
+    {
+        loopStartEvent.RegisterListener(OnLoopStart);
+        loopEndEvent.RegisterListener(OnLoopEnd);
+        minutePassedEvent.RegisterListener(OnMinutePassed);
+        playerNoiseEvent.RegisterListener(OnPlayerNoise);
+    }
+
+    private void OnDisable()
+    {
+        loopStartEvent.UnregisterListener(OnLoopStart);
+        loopEndEvent.UnregisterListener(OnLoopEnd);
+        minutePassedEvent.UnregisterListener(OnMinutePassed);
+        playerNoiseEvent.UnregisterListener(OnPlayerNoise);
+    }
+
+    private void OnLoopStart()
+    {
+        audioSource.PlayOneShot(cueLibrary.GetClip(AudioCueId.LoopStartStutter));
+    }
+
+    private void OnLoopEnd()
+    {
+        audioSource.PlayOneShot(cueLibrary.GetClip(AudioCueId.LoopEndCollapse));
+    }
+
+    private void OnMinutePassed()
+    {
+        audioSource.PlayOneShot(cueLibrary.GetClip(AudioCueId.LoopTick));
+    }
+
+    private void OnPlayerNoise(GameEvent @event)
+    {
+        PlayerNoiseEvent noiseEvent = @event as PlayerNoiseEvent;
+        if (noiseEvent != null)
+        {
+            audioSource.PlayOneShot(cueLibrary.GetClip(AudioCueId.FootstepConcrete), noiseEvent.noiseLevel);
+        }
+    }
+
+    public void TriggerInteractionFeedback()
+    {
+        audioSource.PlayOneShot(cueLibrary.GetClip(AudioCueId.InteractionClick));
+    }
+
+    public void TriggerUiGlitch()
+    {
+        audioSource.PlayOneShot(cueLibrary.GetClip(AudioCueId.UiGlitch));
+    }
+
+    public void PlayVoiceCue(AudioCueId cueId)
+    {
+        audioSource.PlayOneShot(cueLibrary.GetClip(cueId));
+    }
+
+    public void SetAlertState(bool isAlerted)
+    {
+        if (isAlerted)
+        {
+            droneAudioSource.clip = cueLibrary.GetClip(AudioCueId.DroneAlert);
+        }
+        else
+        {
+            droneAudioSource.clip = cueLibrary.GetClip(AudioCueId.DroneHover);
+        }
+        droneAudioSource.Play();
+    }
+}
+
+public class ProceduralCueLibrary
+{
+    private Dictionary<AudioCueId, AudioClip> cues = new Dictionary<AudioCueId, AudioClip>();
+
+    public ProceduralCueLibrary()
+    {
+        cues.Add(AudioCueId.LoopStartStutter, GenerateSineWave(440, 0.5f, 0.5f));
+        cues.Add(AudioCueId.LoopEndCollapse, GenerateSineWave(880, 0.5f, 0.5f));
+        cues.Add(AudioCueId.LoopTick, GenerateSineWave(1760, 0.1f, 0.2f));
+        cues.Add(AudioCueId.InteractionClick, GenerateSineWave(3520, 0.1f, 0.5f));
+        cues.Add(AudioCueId.FootstepConcrete, GenerateSineWave(100, 0.1f, 0.8f));
+        cues.Add(AudioCueId.UiGlitch, GenerateSineWave(2000, 0.2f, 0.5f));
+        cues.Add(AudioCueId.DroneHover, GenerateSineWave(220, 1f, 0.3f, true));
+        cues.Add(AudioCueId.DroneAlert, GenerateSineWave(440, 1f, 0.6f, true));
+        cues.Add(AudioCueId.RadioPacket, GenerateSineWave(1000, 1f, 0.5f));
+        cues.Add(AudioCueId.AmbientDistrictDrone, GenerateSineWave(60, 10f, 0.1f, true));
+        cues.Add(AudioCueId.AmbientPulse, GenerateSineWave(40, 2f, 0.2f, true));
+    }
+
+    public AudioClip GetClip(AudioCueId cueId)
+    {
+        return cues.ContainsKey(cueId) ? cues[cueId] : null;
+    }
+
+    private AudioClip GenerateSineWave(float frequency, float duration, float volume, bool loop = false)
+    {
+        int sampleRate = 44100;
+        int sampleCount = (int)(duration * sampleRate);
+        float[] samples = new float[sampleCount];
+
+        for (int i = 0; i < sampleCount; i++)
+        {
+            float t = (float)i / sampleRate;
+            samples[i] = volume * Mathf.Sin(2 * Mathf.PI * frequency * t);
+        }
+
+        AudioClip clip = AudioClip.Create("SineWave", sampleCount, 1, sampleRate, false);
+        clip.SetData(samples, 0);
+        clip.loop = loop;
+        return clip;
+    }
+}
+
+public enum AudioCueId
+{
+    AmbientDistrictDrone,
+    AmbientPulse,
+    LoopStartStutter,
+    LoopEndCollapse,
+    LoopTick,
+    FootstepConcrete,
+    InteractionClick,
+    UiGlitch,
+    DroneHover,
+    DroneAlert,
+    RadioPacket
 }
