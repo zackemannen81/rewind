@@ -1,4 +1,3 @@
-
 import json
 import argparse
 import os
@@ -13,13 +12,39 @@ PALETTE = {
     "TertiaryWarmGrey": {"r": 0.482, "g": 0.446, "b": 0.423, "a": 1},
 }
 
+def optimize_mesh(vertices, faces, face_material_indices):
+    """Merges duplicate vertices to optimize the mesh."""
+    vertex_map = {}
+    optimized_vertices = []
+    remap_indices = [-1] * len(vertices)
+
+    for i, v in enumerate(vertices):
+        v_tuple = tuple(round(c, 4) for c in v)
+        if v_tuple not in vertex_map:
+            new_index = len(optimized_vertices)
+            vertex_map[v_tuple] = new_index
+            optimized_vertices.append(v)
+            remap_indices[i] = new_index
+        else:
+            remap_indices[i] = vertex_map[v_tuple]
+
+    optimized_faces = []
+    for face in faces:
+        new_face = []
+        for v_index, n_index in face:
+            new_v_index = remap_indices[v_index - 1] + 1
+            new_face.append((new_v_index, n_index))
+        optimized_faces.append(tuple(new_face))
+    
+    return optimized_vertices, optimized_faces
+
 def generate(asset_brief):
     asset_name = asset_brief['assetName']
     output_dir = f'Assets/Art/Procedural/{asset_name}'
     os.makedirs(output_dir, exist_ok=True)
 
     obj_path = f'{output_dir}/{asset_name}.obj'
-    mtllib_path = f'{output_dir}/{asset_name}.mtl' # OBJ references a .mtl file
+    mtllib_path = f'{output_dir}/{asset_name}.mtl'
 
     vertices = []
     normals = []
@@ -45,6 +70,8 @@ def generate(asset_brief):
         num_new_faces = len(faces) - len(face_material_indices)
         face_material_indices.extend([mat_name] * num_new_faces)
 
+    optimized_vertices, optimized_faces = optimize_mesh(vertices, faces, face_material_indices)
+
     # Write MTL file
     with open(mtllib_path, 'w') as f:
         for mat_name, mat_info in materials.items():
@@ -52,7 +79,7 @@ def generate(asset_brief):
             base_color = PALETTE.get(mat_info['baseColor'], PALETTE['PrimaryBase'])
             f.write(f'Kd {base_color["r"]} {base_color["g"]} {base_color["b"]}\n')
             if mat_info.get('isEmissive', False):
-                f.write(f'Ka {base_color["r"]} {base_color["g"]} {base_color["b"]}\n') # Emissive color
+                f.write(f'Ka {base_color["r"]} {base_color["g"]} {base_color["b"]}\n')
             else:
                 f.write('Ka 0 0 0\n')
 
@@ -61,7 +88,7 @@ def generate(asset_brief):
         f.write(f'mtllib {os.path.basename(mtllib_path)}\n')
         f.write(f'o {asset_name}\n')
 
-        for v in vertices:
+        for v in optimized_vertices:
             f.write(f'v {v[0]} {v[1]} {v[2]}\n')
         for n in normals:
             f.write(f'vn {n[0]} {n[1]} {n[2]}\n')
@@ -69,14 +96,16 @@ def generate(asset_brief):
         f.write('s off\n')
         
         current_material = ""
-        for i, face in enumerate(faces):
+        for i, face in enumerate(optimized_faces):
             mat_name = face_material_indices[i]
             if mat_name != current_material:
                 f.write(f'usemtl {mat_name}\n')
                 current_material = mat_name
+            # Note: This generator only produces quads.
             f.write(f'f {face[0][0]}//{face[0][1]} {face[1][0]}//{face[1][1]} {face[2][0]}//{face[2][1]} {face[3][0]}//{face[3][1]}\n')
 
-    print(f'Generated {obj_path} and {mtllib_path}')
+    print(f'Generated optimized {obj_path} and {mtllib_path}')
+
 
 def add_cube(vertices, normals, faces, dimensions, offset, v_offset, n_offset):
     x, y, z = dimensions['x'], dimensions['y'], dimensions['z']
@@ -86,60 +115,65 @@ def add_cube(vertices, normals, faces, dimensions, offset, v_offset, n_offset):
     v_start_index = v_offset + 1
     n_start_index = n_offset + 1
 
-    new_vertices = [
+    vertices.extend([
         (ox - dx, oy - dy, oz - dz), (ox + dx, oy - dy, oz - dz), (ox + dx, oy + dy, oz - dz), (ox - dx, oy + dy, oz - dz),
         (ox - dx, oy - dy, oz + dz), (ox + dx, oy - dy, oz + dz), (ox + dx, oy + dy, oz + dz), (ox - dx, oy + dy, oz + dz)
-    ]
-    vertices.extend(new_vertices)
-
-    new_normals = [
+    ])
+    normals.extend([
         (0, 0, -1), (0, 0, 1), (0, -1, 0), (0, 1, 0), (-1, 0, 0), (1, 0, 0)
-    ]
-    normals.extend(new_normals)
+    ])
 
-    new_faces = [
+    faces.extend([
         ((v_start_index + 4, n_start_index + 1), (v_start_index + 5, n_start_index + 1), (v_start_index + 6, n_start_index + 1), (v_start_index + 7, n_start_index + 1)),
         ((v_start_index + 1, n_start_index + 0), (v_start_index + 0, n_start_index + 0), (v_start_index + 3, n_start_index + 0), (v_start_index + 2, n_start_index + 0)),
         ((v_start_index + 3, n_start_index + 3), (v_start_index + 7, n_start_index + 3), (v_start_index + 6, n_start_index + 3), (v_start_index + 2, n_start_index + 3)),
         ((v_start_index + 1, n_start_index + 2), (v_start_index + 5, n_start_index + 2), (v_start_index + 4, n_start_index + 2), (v_start_index + 0, n_start_index + 2)),
         ((v_start_index + 5, n_start_index + 5), (v_start_index + 1, n_start_index + 5), (v_start_index + 2, n_start_index + 5), (v_start_index + 6, n_start_index + 5)),
         ((v_start_index + 0, n_start_index + 4), (v_start_index + 4, n_start_index + 4), (v_start_index + 7, n_start_index + 4), (v_start_index + 3, n_start_index + 4)),
-    ]
-    faces.extend(new_faces)
+    ])
 
 def add_cylinder(vertices, normals, faces, radius, height, segments, offset, v_offset, n_offset):
     v_start_index = v_offset + 1
     n_start_index = n_offset + 1
     ox, oy, oz = offset['x'], offset['y'], offset['z']
 
-    top_center = (ox, oy + height / 2, oz)
-    bottom_center = (ox, oy - height / 2, oz)
-    vertices.append(top_center)
-    vertices.append(bottom_center)
+    # Normals
+    normals.append((0, 1, 0))  # Top cap normal
+    normals.append((0, -1, 0)) # Bottom cap normal
+    for i in range(segments):
+        angle = 2 * math.pi * i / segments
+        normals.append((math.cos(angle), 0, math.sin(angle))) # Side normals
 
-    normals.append((0, 1, 0))
-    normals.append((0, -1, 0))
+    # Vertices
+    top_center_idx = v_start_index
+    vertices.append((ox, oy + height / 2, oz))
+    bottom_center_idx = v_start_index + 1
+    vertices.append((ox, oy - height / 2, oz))
 
     for i in range(segments):
         angle = 2 * math.pi * i / segments
         x = ox + radius * math.cos(angle)
         z = oz + radius * math.sin(angle)
-        
-        vertices.append((x, oy + height / 2, z))
-        vertices.append((x, oy - height / 2, z))
+        vertices.append((x, oy + height / 2, z)) # Top edge
+        vertices.append((x, oy - height / 2, z)) # Bottom edge
 
-        normals.append((math.cos(angle), 0, math.sin(angle)))
+    # Faces
+    for i in range(segments):
+        v_top_curr = v_start_index + 2 + i * 2
+        v_bottom_curr = v_start_index + 3 + i * 2
+        v_top_next = v_start_index + 2 + ((i + 1) % segments) * 2
+        v_bottom_next = v_start_index + 3 + ((i + 1) % segments) * 2
 
-        v_top = v_start_index + 2 + i * 2
-        v_bottom = v_start_index + 3 + i * 2
-        v_next_top = v_start_index + 2 + ((i + 1) % segments) * 2
-        v_next_bottom = v_start_index + 3 + ((i + 1) % segments) * 2
-
+        n_top = n_start_index
+        n_bottom = n_start_index + 1
         n_side = n_start_index + 2 + i
 
-        faces.append(((v_bottom, n_side), (v_next_bottom, n_side), (v_next_top, n_side), (v_top, n_side)))
-        faces.append(((v_start_index, n_start_index), (v_next_top, n_start_index), (v_top, n_start_index), (v_top, n_start_index)))
-        faces.append(((v_start_index + 1, n_start_index + 1), (v_bottom, n_start_index + 1), (v_next_bottom, n_start_index + 1), (v_next_bottom, n_start_index + 1)))
+        # Side Face (CCW from outside)
+        faces.append(((v_bottom_curr, n_side), (v_bottom_next, n_side), (v_top_next, n_side), (v_top_curr, n_side)))
+        # Top Cap Face (CCW from outside, i.e., from top)
+        faces.append(((top_center_idx, n_top), (v_top_curr, n_top), (v_top_next, n_top), (v_top_next, n_top))) # Degenerate quad
+        # Bottom Cap Face (CCW from outside, i.e., from bottom)
+        faces.append(((bottom_center_idx, n_bottom), (v_bottom_next, n_bottom), (v_bottom_curr, n_bottom), (v_bottom_curr, n_bottom))) # Degenerate quad
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Procedural Asset Generator')
