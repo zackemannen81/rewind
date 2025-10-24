@@ -7,9 +7,10 @@ This document defines the input schema for the procedural asset generator. The s
 | Property | Type | Description |
 |---|---|---|
 | `assetName` | string | The name of the asset. This will be used for the generated file names. |
-| `type` | string | The type of the asset. Currently, only `cube` is supported. |
+| `type` | string | The type of the asset. Supported values are `cube` and `bench`. |
 | `dimensions` | object | The dimensions of the asset. |
 | `material` | object | The material properties of the asset. |
+| `functionalTags` | array of strings | Functional tags for the asset (e.g., `cover`, `interactable`). |
 
 ## Dimensions Object
 
@@ -23,9 +24,10 @@ This document defines the input schema for the procedural asset generator. The s
 
 | Property | Type | Description |
 |---|---|---|
-| `paletteSlot` | string | The palette slot to use for the asset. Valid values are `primary`, `secondary`, and `tertiary`. |
+| `baseColor` | string | The palette swatch for the base color. |
+| `accentColor` | string | The palette swatch for the accent color. |
 
-## Example
+## Example (Cube)
 
 ```json
 {
@@ -37,7 +39,28 @@ This document defines the input schema for the procedural asset generator. The s
     "z": 1
   },
   "material": {
-    "paletteSlot": "primary"
-  }
+    "baseColor": "PrimaryConcrete",
+    "accentColor": "AccentMagenta"
+  },
+  "functionalTags": []
+}
+```
+
+## Example (Bench)
+
+```json
+{
+  "assetName": "MyBench",
+  "type": "bench",
+  "dimensions": {
+    "x": 2,
+    "y": 0.5,
+    "z": 0.5
+  },
+  "material": {
+    "baseColor": "TertiaryOxide",
+    "accentColor": ""
+  },
+  "functionalTags": ["cover"]
 }
 ```

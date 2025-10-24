@@ -1,0 +1,13 @@
+{
+  "assetName": "SampleWall",
+  "type": "cube",
+  "dimensions": {
+    "x": 4,
+    "y": 3,
+    "z": 0.2
+  },
+  "material": {
+    "baseColor": "PrimaryBase"
+  },
+  "functionalTags": []
+}

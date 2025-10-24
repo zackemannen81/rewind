@@ -1,0 +1,14 @@
+{
+  "assetName": "SampleCube",
+  "type": "cube",
+  "dimensions": {
+    "x": 1,
+    "y": 1,
+    "z": 1
+  },
+  "material": {
+    "baseColor": "PrimaryConcrete",
+    "accentColor": "AccentMagenta"
+  },
+  "functionalTags": []
+}

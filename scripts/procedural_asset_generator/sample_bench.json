@@ -1,0 +1,13 @@
+{
+  "assetName": "SampleBench",
+  "type": "bench",
+  "dimensions": {
+    "x": 2,
+    "y": 0.5,
+    "z": 0.5
+  },
+  "material": {
+    "baseColor": "TertiaryOxide"
+  },
+  "functionalTags": ["cover"]
+}
