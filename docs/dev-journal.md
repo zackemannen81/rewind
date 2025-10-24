@@ -18,6 +18,17 @@ This journal tracks the development progress of this project.
 - **Commit Hash:** `[commit hash]`
 ```
 
+### Task ID: TOOL-001
+
+- **Start Time:** 2025-10-24 10:00:00
+- **End Time:**
+- **Status:** In Progress
+- **Notes/Blockers:** 
+  - Starting implementation of the procedural asset generator.
+  - The initial focus will be on defining the input schema and creating a basic generator for simple props.
+- **Associated Files:**
+  - `tasks/task_tool_asset_generator.md`
+
 ### Task ID: SYS-001
 
 - **Start Time:** 2025-10-18 10:00:00

@@ -2,7 +2,7 @@
 
 - **ID:** TOOL-001
 - **Title:** Build Procedural Asset Generator for Retro Palette Assets
-- **Status:** OPEN
+- **Status:** IN_PROGRESS
 - **Description:** Implement a pipeline tool that ingests structured object descriptions and outputs Unity-ready meshes/prefabs conforming to the Retro Palette art direction and technical constraints.
 - **Acceptance Criteria:**
   - Tool accepts a schema covering geometric proportions, functional tags, palette choices, and material hints, and outputs FBX/Prefab pairs with correct pivots and collision proxies.

@@ -1,0 +1,12 @@
+{
+  "assetName": "MyCube",
+  "type": "cube",
+  "dimensions": {
+    "x": 1,
+    "y": 1,
+    "z": 1
+  },
+  "material": {
+    "paletteSlot": "primary"
+  }
+}
