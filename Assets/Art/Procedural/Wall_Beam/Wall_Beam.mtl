@@ -1,0 +1,8 @@
+newmtl Wall_Beam_MainWall
+Kd 0.196 0.204 0.227
+Ka 0 0 0
+Ks 0 0 0
+newmtl Wall_Beam_HorizontalBeam
+Kd 0.105 0.121 0.165
+Ka 0 0 0
+Ks 0 0 0

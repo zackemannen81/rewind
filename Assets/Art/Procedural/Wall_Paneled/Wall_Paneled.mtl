@@ -1,0 +1,20 @@
+newmtl Wall_Paneled_BaseWall
+Kd 0.105 0.121 0.165
+Ka 0 0 0
+Ks 0 0 0
+newmtl Wall_Paneled_Panel1
+Kd 0.196 0.204 0.227
+Ka 0 0 0
+Ks 0 0 0
+newmtl Wall_Paneled_Panel2
+Kd 0.482 0.446 0.423
+Ka 0 0 0
+Ks 0 0 0
+newmtl Wall_Paneled_Panel3
+Kd 0.482 0.446 0.423
+Ka 0 0 0
+Ks 0 0 0
+newmtl Wall_Paneled_Panel4
+Kd 0.196 0.204 0.227
+Ka 0 0 0
+Ks 0 0 0

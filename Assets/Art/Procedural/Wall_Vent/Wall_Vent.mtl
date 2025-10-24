@@ -1,0 +1,20 @@
+newmtl Wall_Vent_MainWall
+Kd 0.196 0.204 0.227
+Ka 0 0 0
+Ks 0 0 0
+newmtl Wall_Vent_VentFrame
+Kd 0.482 0.446 0.423
+Ka 0 0 0
+Ks 0 0 0
+newmtl Wall_Vent_VentBar1
+Kd 0.105 0.121 0.165
+Ka 0 0 0
+Ks 0 0 0
+newmtl Wall_Vent_VentBar2
+Kd 0.105 0.121 0.165
+Ka 0 0 0
+Ks 0 0 0
+newmtl Wall_Vent_VentBar3
+Kd 0.105 0.121 0.165
+Ka 0 0 0
+Ks 0 0 0

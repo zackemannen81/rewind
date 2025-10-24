@@ -1,0 +1,26 @@
+{
+    "assetName": "Wall_Pillars",
+    "parts": [
+        {
+            "partName": "MainWall",
+            "type": "cube",
+            "dimensions": {"x": 4, "y": 3, "z": 0.2},
+            "offset": {"x": 0, "y": 1.5, "z": 0},
+            "material": {"baseColor": "PrimaryConcrete"}
+        },
+        {
+            "partName": "PillarLeft",
+            "type": "cube",
+            "dimensions": {"x": 0.4, "y": 3, "z": 0.3},
+            "offset": {"x": -1.8, "y": 1.5, "z": 0.05},
+            "material": {"baseColor": "PrimaryBase"}
+        },
+        {
+            "partName": "PillarRight",
+            "type": "cube",
+            "dimensions": {"x": 0.4, "y": 3, "z": 0.3},
+            "offset": {"x": 1.8, "y": 1.5, "z": 0.05},
+            "material": {"baseColor": "PrimaryBase"}
+        }
+    ]
+}

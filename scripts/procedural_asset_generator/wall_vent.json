@@ -1,0 +1,40 @@
+{
+    "assetName": "Wall_Vent",
+    "parts": [
+        {
+            "partName": "MainWall",
+            "type": "cube",
+            "dimensions": {"x": 4, "y": 3, "z": 0.2},
+            "offset": {"x": 0, "y": 1.5, "z": 0},
+            "material": {"baseColor": "PrimaryConcrete"}
+        },
+        {
+            "partName": "VentFrame",
+            "type": "cube",
+            "dimensions": {"x": 1, "y": 0.8, "z": 0.1},
+            "offset": {"x": 0, "y": 1, "z": 0.1},
+            "material": {"baseColor": "TertiaryWarmGrey"}
+        },
+        {
+            "partName": "VentBar1",
+            "type": "cube",
+            "dimensions": {"x": 0.9, "y": 0.05, "z": 0.05},
+            "offset": {"x": 0, "y": 1.2, "z": 0.12},
+            "material": {"baseColor": "PrimaryBase"}
+        },
+        {
+            "partName": "VentBar2",
+            "type": "cube",
+            "dimensions": {"x": 0.9, "y": 0.05, "z": 0.05},
+            "offset": {"x": 0, "y": 1.0, "z": 0.12},
+            "material": {"baseColor": "PrimaryBase"}
+        },
+        {
+            "partName": "VentBar3",
+            "type": "cube",
+            "dimensions": {"x": 0.9, "y": 0.05, "z": 0.05},
+            "offset": {"x": 0, "y": 0.8, "z": 0.12},
+            "material": {"baseColor": "PrimaryBase"}
+        }
+    ]
+}

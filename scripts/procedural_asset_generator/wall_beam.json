@@ -1,0 +1,19 @@
+{
+    "assetName": "Wall_Beam",
+    "parts": [
+        {
+            "partName": "MainWall",
+            "type": "cube",
+            "dimensions": {"x": 4, "y": 3, "z": 0.2},
+            "offset": {"x": 0, "y": 1.5, "z": 0},
+            "material": {"baseColor": "PrimaryConcrete"}
+        },
+        {
+            "partName": "HorizontalBeam",
+            "type": "cube",
+            "dimensions": {"x": 4, "y": 0.4, "z": 0.3},
+            "offset": {"x": 0, "y": 1.5, "z": 0.05},
+            "material": {"baseColor": "PrimaryBase"}
+        }
+    ]
+}

@@ -1,0 +1,12 @@
+newmtl Wall_Pillars_MainWall
+Kd 0.196 0.204 0.227
+Ka 0 0 0
+Ks 0 0 0
+newmtl Wall_Pillars_PillarLeft
+Kd 0.105 0.121 0.165
+Ka 0 0 0
+Ks 0 0 0
+newmtl Wall_Pillars_PillarRight
+Kd 0.105 0.121 0.165
+Ka 0 0 0
+Ks 0 0 0

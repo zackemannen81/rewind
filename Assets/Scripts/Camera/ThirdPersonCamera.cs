@@ -21,14 +21,14 @@ namespace CameraSystem
         [SerializeField, Min(0f)] private float followLerp = 12f;
 
         [Header("Orbit Settings")]
-        [SerializeField] private Vector2 lookSensitivity = new(180f, 140f);
+        [SerializeField] private Vector2 lookSensitivity = new(18f, 14f);
         [SerializeField] private Vector2 pitchLimits = new(-65f, 70f);
         [SerializeField, Min(0f)] private float rotationLerp = 16f;
         [SerializeField] private bool lockCursor = true;
 
         [Header("Zoom Settings")]
         [SerializeField] private float distance = 4.5f;
-        [SerializeField] private Vector2 distanceLimits = new(2.2f, 6.5f);
+        [SerializeField] private Vector2 distanceLimits = new(1.2f, 3.5f);
         [SerializeField] private float zoomSensitivity = 2f;
         [SerializeField] private LayerMask collisionMask = -1;
         [SerializeField] private float collisionRadius = 0.2f;
