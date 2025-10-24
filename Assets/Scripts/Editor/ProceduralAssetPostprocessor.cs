@@ -42,6 +42,11 @@ public class ProceduralAssetPostprocessor : AssetPostprocessor
 
         PrefabUtility.SaveAsPrefabAsset(prefabRoot, prefabPath, out bool success);
         UnityEngine.Object.DestroyImmediate(prefabRoot);
+        GameObject prefabRoot = Object.Instantiate(gameObject);
+        prefabRoot.name = prefabName;
+
+        PrefabUtility.SaveAsPrefabAsset(prefabRoot, prefabPath, out bool success);
+        Object.DestroyImmediate(prefabRoot);
 
         if (success)
         {
