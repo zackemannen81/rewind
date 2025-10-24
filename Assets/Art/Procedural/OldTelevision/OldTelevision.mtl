@@ -1,12 +1,16 @@
 newmtl OldTelevision_Body
 Kd 0.655 0.341 0.235
 Ka 0 0 0
+Ks 0 0 0
 newmtl OldTelevision_Screen
 Kd 0 0.819 0.996
 Ka 0 0.819 0.996
+Ks 0 0 0
 newmtl OldTelevision_Knob1
 Kd 0.105 0.121 0.165
 Ka 0 0 0
+Ks 0 0 0
 newmtl OldTelevision_Knob2
 Kd 0.105 0.121 0.165
 Ka 0 0 0
+Ks 0 0 0

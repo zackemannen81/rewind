@@ -9,19 +9,23 @@ public class ProceduralAssetPostprocessor : AssetPostprocessor
         if (!assetPath.Contains("Procedural")) return;
         Debug.Log($"PROCEDURAL_GEN: Preprocessing model: {assetPath}");
         ModelImporter modelImporter = (ModelImporter)assetImporter;
-        modelImporter.materialImportMode = ModelImporterMaterialImportMode.None;
+
+        // Use the material description from the .mtl file
+        modelImporter.materialImportMode = ModelImporterMaterialImportMode.ImportViaMaterialDescription;
+        modelImporter.materialSearch = ModelImporterMaterialSearch.Local;
+        modelImporter.materialLocation = ModelImporterMaterialLocation.InPrefab;
     }
 
     void OnPostprocessModel(GameObject gameObject)
     {
         if (!assetPath.Contains("Procedural")) return;
-        Debug.Log($"PROCEDURAL_GEN: Postprocessing model: {assetPath}");
+        Debug.Log($"PROCEDURAL_GEN: Postprocessing model: {gameObject.name}");
 
-        // Add a BoxCollider
+        // Add a BoxCollider if one doesn't exist
         if (gameObject.GetComponent<BoxCollider>() == null)
         {
-            BoxCollider collider = gameObject.AddComponent<BoxCollider>();
-            Debug.Log($"PROCEDURAL_GEN: Added BoxCollider to {gameObject.name}");
+            gameObject.AddComponent<BoxCollider>();
+            Debug.Log($"PROCEDural_GEN: Added BoxCollider to {gameObject.name}");
         }
 
         // --- Prefab Generation ---
@@ -29,17 +33,15 @@ public class ProceduralAssetPostprocessor : AssetPostprocessor
         string assetFolder = Path.GetDirectoryName(assetPath);
         string prefabPath = Path.Combine(assetFolder, $"{assetName}.prefab");
 
-        // Check if prefab already exists
-        GameObject existingPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(prefabPath);
-        if (existingPrefab != null)
+        Debug.Log($"PROCEDURAL_GEN: Saving prefab to {prefabPath}");
+        PrefabUtility.SaveAsPrefabAsset(gameObject, prefabPath, out bool success);
+        if (success)
         {
-            Debug.Log($"PROCEDURAL_GEN: Prefab already exists at {prefabPath}. Overwriting.");
-            PrefabUtility.SaveAsPrefabAssetAndConnect(gameObject, prefabPath, InteractionMode.AutomatedAction);
+            Debug.Log("PROCEDURAL_GEN: Prefab saved successfully.");
         }
         else
         {
-            Debug.Log($"PROCEDURAL_GEN: Creating new prefab at {prefabPath}");
-            PrefabUtility.SaveAsPrefabAsset(gameObject, prefabPath);
+            Debug.LogError($"PROCEDURAL_GEN: Failed to save prefab for {assetName}");
         }
     }
 }

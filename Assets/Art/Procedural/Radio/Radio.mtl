@@ -1,18 +1,24 @@
 newmtl Radio_Body
 Kd 0.196 0.204 0.227
 Ka 0 0 0
+Ks 0 0 0
 newmtl Radio_Display
 Kd 0 0.819 0.996
 Ka 0 0.819 0.996
+Ks 0 0 0
 newmtl Radio_VolumeKnob
 Kd 0.482 0.446 0.423
 Ka 0 0 0
+Ks 0 0 0
 newmtl Radio_ChannelSelector
 Kd 0.482 0.446 0.423
 Ka 0 0 0
+Ks 0 0 0
 newmtl Radio_PowerButton
 Kd 0.996 0.176 0.584
 Ka 0.996 0.176 0.584
+Ks 0 0 0
 newmtl Radio_Antenna
 Kd 0.482 0.446 0.423
 Ka 0 0 0
+Ks 0 0 0

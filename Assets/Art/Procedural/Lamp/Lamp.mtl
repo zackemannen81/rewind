@@ -1,9 +1,12 @@
 newmtl Lamp_Base
 Kd 0.105 0.121 0.165
 Ka 0 0 0
+Ks 0 0 0
 newmtl Lamp_Stand
 Kd 0.105 0.121 0.165
 Ka 0 0 0
+Ks 0 0 0
 newmtl Lamp_Shade
 Kd 0.996 0.176 0.584
 Ka 0.996 0.176 0.584
+Ks 0 0 0

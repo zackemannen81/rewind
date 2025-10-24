@@ -77,11 +77,12 @@ def generate(asset_brief):
         for mat_name, mat_info in materials.items():
             f.write(f'newmtl {mat_name}\n')
             base_color = PALETTE.get(mat_info['baseColor'], PALETTE['PrimaryBase'])
-            f.write(f'Kd {base_color["r"]} {base_color["g"]} {base_color["b"]}\n')
+            f.write(f'Kd {base_color["r"]} {base_color["g"]} {base_color["b"]}\n') # Diffuse color
             if mat_info.get('isEmissive', False):
-                f.write(f'Ka {base_color["r"]} {base_color["g"]} {base_color["b"]}\n')
+                f.write(f'Ka {base_color["r"]} {base_color["g"]} {base_color["b"]}\n') # Ambient color as emissive
             else:
-                f.write('Ka 0 0 0\n')
+                f.write('Ka 0 0 0\n') # No ambient for non-emissive
+            f.write('Ks 0 0 0\n') # No specular
 
     # Write OBJ file
     with open(obj_path, 'w') as f:
