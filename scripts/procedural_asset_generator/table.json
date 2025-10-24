@@ -1,0 +1,40 @@
+{
+    "assetName": "Table",
+    "parts": [
+        {
+            "partName": "Top",
+            "type": "cube",
+            "dimensions": {"x": 1.2, "y": 0.05, "z": 0.7},
+            "offset": {"x": 0, "y": 0.7, "z": 0},
+            "material": {"baseColor": "TertiaryOxide"}
+        },
+        {
+            "partName": "Leg1",
+            "type": "cylinder",
+            "dimensions": {"x": 0.08, "y": 0.65, "z": 0.08},
+            "offset": {"x": 0.5, "y": 0.325, "z": 0.25},
+            "material": {"baseColor": "TertiaryOxide"}
+        },
+        {
+            "partName": "Leg2",
+            "type": "cylinder",
+            "dimensions": {"x": 0.08, "y": 0.65, "z": 0.08},
+            "offset": {"x": -0.5, "y": 0.325, "z": 0.25},
+            "material": {"baseColor": "TertiaryOxide"}
+        },
+        {
+            "partName": "Leg3",
+            "type": "cylinder",
+            "dimensions": {"x": 0.08, "y": 0.65, "z": 0.08},
+            "offset": {"x": 0.5, "y": 0.325, "z": -0.25},
+            "material": {"baseColor": "TertiaryOxide"}
+        },
+        {
+            "partName": "Leg4",
+            "type": "cylinder",
+            "dimensions": {"x": 0.08, "y": 0.65, "z": 0.08},
+            "offset": {"x": -0.5, "y": 0.325, "z": -0.25},
+            "material": {"baseColor": "TertiaryOxide"}
+        }
+    ]
+}

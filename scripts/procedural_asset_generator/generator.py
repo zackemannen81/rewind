@@ -1,3 +1,4 @@
+
 import json
 import argparse
 import os
@@ -77,12 +78,12 @@ def generate(asset_brief):
         for mat_name, mat_info in materials.items():
             f.write(f'newmtl {mat_name}\n')
             base_color = PALETTE.get(mat_info['baseColor'], PALETTE['PrimaryBase'])
-            f.write(f'Kd {base_color["r"]} {base_color["g"]} {base_color["b"]}\n') # Diffuse color
+            f.write(f'Kd {base_color["r"]} {base_color["g"]} {base_color["b"]}\n')
             if mat_info.get('isEmissive', False):
-                f.write(f'Ka {base_color["r"]} {base_color["g"]} {base_color["b"]}\n') # Ambient color as emissive
+                f.write(f'Ka {base_color["r"]} {base_color["g"]} {base_color["b"]}\n')
             else:
-                f.write('Ka 0 0 0\n') # No ambient for non-emissive
-            f.write('Ks 0 0 0\n') # No specular
+                f.write('Ka 0 0 0\n')
+            f.write('Ks 0 0 0\n')
 
     # Write OBJ file
     with open(obj_path, 'w') as f:
@@ -102,11 +103,9 @@ def generate(asset_brief):
             if mat_name != current_material:
                 f.write(f'usemtl {mat_name}\n')
                 current_material = mat_name
-            # Note: This generator only produces quads.
             f.write(f'f {face[0][0]}//{face[0][1]} {face[1][0]}//{face[1][1]} {face[2][0]}//{face[2][1]} {face[3][0]}//{face[3][1]}\n')
 
     print(f'Generated optimized {obj_path} and {mtllib_path}')
-
 
 def add_cube(vertices, normals, faces, dimensions, offset, v_offset, n_offset):
     x, y, z = dimensions['x'], dimensions['y'], dimensions['z']
@@ -169,12 +168,9 @@ def add_cylinder(vertices, normals, faces, radius, height, segments, offset, v_o
         n_bottom = n_start_index + 1
         n_side = n_start_index + 2 + i
 
-        # Side Face (CCW from outside)
         faces.append(((v_bottom_curr, n_side), (v_bottom_next, n_side), (v_top_next, n_side), (v_top_curr, n_side)))
-        # Top Cap Face (CCW from outside, i.e., from top)
-        faces.append(((top_center_idx, n_top), (v_top_curr, n_top), (v_top_next, n_top), (v_top_next, n_top))) # Degenerate quad
-        # Bottom Cap Face (CCW from outside, i.e., from bottom)
-        faces.append(((bottom_center_idx, n_bottom), (v_bottom_next, n_bottom), (v_bottom_curr, n_bottom), (v_bottom_curr, n_bottom))) # Degenerate quad
+        faces.append(((top_center_idx, n_top), (v_top_curr, n_top), (v_top_next, n_top), (v_top_next, n_top)))
+        faces.append(((bottom_center_idx, n_bottom), (v_bottom_next, n_bottom), (v_bottom_curr, n_bottom), (v_bottom_curr, n_bottom)))
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Procedural Asset Generator')

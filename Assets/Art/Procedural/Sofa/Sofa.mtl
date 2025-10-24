@@ -1,0 +1,16 @@
+newmtl Sofa_Base
+Kd 0.196 0.204 0.227
+Ka 0 0 0
+Ks 0 0 0
+newmtl Sofa_Back
+Kd 0.196 0.204 0.227
+Ka 0 0 0
+Ks 0 0 0
+newmtl Sofa_LeftArm
+Kd 0.196 0.204 0.227
+Ka 0 0 0
+Ks 0 0 0
+newmtl Sofa_RightArm
+Kd 0.196 0.204 0.227
+Ka 0 0 0
+Ks 0 0 0

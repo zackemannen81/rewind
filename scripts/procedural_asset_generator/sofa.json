@@ -1,0 +1,33 @@
+{
+    "assetName": "Sofa",
+    "parts": [
+        {
+            "partName": "Base",
+            "type": "cube",
+            "dimensions": {"x": 2, "y": 0.4, "z": 0.8},
+            "offset": {"x": 0, "y": 0.2, "z": 0},
+            "material": {"baseColor": "PrimaryConcrete"}
+        },
+        {
+            "partName": "Back",
+            "type": "cube",
+            "dimensions": {"x": 2, "y": 0.5, "z": 0.2},
+            "offset": {"x": 0, "y": 0.65, "z": -0.3},
+            "material": {"baseColor": "PrimaryConcrete"}
+        },
+        {
+            "partName": "LeftArm",
+            "type": "cube",
+            "dimensions": {"x": 0.2, "y": 0.3, "z": 0.8},
+            "offset": {"x": -0.9, "y": 0.55, "z": 0},
+            "material": {"baseColor": "PrimaryConcrete"}
+        },
+        {
+            "partName": "RightArm",
+            "type": "cube",
+            "dimensions": {"x": 0.2, "y": 0.3, "z": 0.8},
+            "offset": {"x": 0.9, "y": 0.55, "z": 0},
+            "material": {"baseColor": "PrimaryConcrete"}
+        }
+    ]
+}

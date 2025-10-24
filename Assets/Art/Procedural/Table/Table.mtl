@@ -1,0 +1,20 @@
+newmtl Table_Top
+Kd 0.655 0.341 0.235
+Ka 0 0 0
+Ks 0 0 0
+newmtl Table_Leg1
+Kd 0.655 0.341 0.235
+Ka 0 0 0
+Ks 0 0 0
+newmtl Table_Leg2
+Kd 0.655 0.341 0.235
+Ka 0 0 0
+Ks 0 0 0
+newmtl Table_Leg3
+Kd 0.655 0.341 0.235
+Ka 0 0 0
+Ks 0 0 0
+newmtl Table_Leg4
+Kd 0.655 0.341 0.235
+Ka 0 0 0
+Ks 0 0 0
