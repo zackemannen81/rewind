@@ -32,6 +32,7 @@ public class ProceduralAssetPostprocessor : AssetPostprocessor
         // --- Prefab Generation ---
         string assetName = Path.GetFileNameWithoutExtension(assetPath);
         string assetFolder = (Path.GetDirectoryName(assetPath) ?? "Assets/Art/Procedural").Replace('\\', '/');
+        string prefabName = assetName.EndsWith("_PFB", System.StringComparison.OrdinalIgnoreCase) ? assetName : assetName + "_PFB";
         string prefabName = assetName.EndsWith("_PFB", StringComparison.OrdinalIgnoreCase) ? assetName : assetName + "_PFB";
         string prefabPath = Path.Combine(assetFolder, prefabName + ".prefab").Replace('\\', '/');
 
