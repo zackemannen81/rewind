@@ -1,3 +1,4 @@
+using System;
 using UnityEditor;
 using UnityEngine;
 using System.IO;
@@ -25,19 +26,26 @@ public class ProceduralAssetPostprocessor : AssetPostprocessor
         if (gameObject.GetComponent<BoxCollider>() == null)
         {
             gameObject.AddComponent<BoxCollider>();
-            Debug.Log($"PROCEDural_GEN: Added BoxCollider to {gameObject.name}");
+            Debug.Log($"PROCEDURAL_GEN: Added BoxCollider to {gameObject.name}");
         }
 
         // --- Prefab Generation ---
         string assetName = Path.GetFileNameWithoutExtension(assetPath);
-        string assetFolder = Path.GetDirectoryName(assetPath);
-        string prefabPath = Path.Combine(assetFolder, $"{assetName}.prefab");
+        string assetFolder = (Path.GetDirectoryName(assetPath) ?? "Assets/Art/Procedural").Replace('\\', '/');
+        string prefabName = assetName.EndsWith("_PFB", StringComparison.OrdinalIgnoreCase) ? assetName : assetName + "_PFB";
+        string prefabPath = Path.Combine(assetFolder, prefabName + ".prefab").Replace('\\', '/');
 
         Debug.Log($"PROCEDURAL_GEN: Saving prefab to {prefabPath}");
-        PrefabUtility.SaveAsPrefabAsset(gameObject, prefabPath, out bool success);
+
+        GameObject prefabRoot = Object.Instantiate(gameObject);
+        prefabRoot.name = prefabName;
+
+        PrefabUtility.SaveAsPrefabAsset(prefabRoot, prefabPath, out bool success);
+        Object.DestroyImmediate(prefabRoot);
+
         if (success)
         {
-            Debug.Log("PROCEDURAL_GEN: Prefab saved successfully.");
+            Debug.Log($"PROCEDURAL_GEN: Prefab saved successfully to {prefabPath}.");
         }
         else
         {
