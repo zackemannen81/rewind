@@ -122,46 +122,41 @@ Material:
     print(f'Generated {obj_path} and {mat_path}')
 
 def add_cube(vertices, normals, faces, dimensions, offset=(0, 0, 0)):
-    """Generates a cube."""
+    """Generates a cube with correct face winding and normals."""
     x, y, z = dimensions['x'], dimensions['y'], dimensions['z']
     dx, dy, dz = x / 2, y / 2, z / 2
     ox, oy, oz = offset
 
     v_start_index = len(vertices) + 1
+    n_start_index = len(normals) + 1
 
+    # Add vertices
     new_vertices = [
-        (ox - dx, oy - dy, oz - dz),
-        (ox + dx, oy - dy, oz - dz),
-        (ox + dx, oy + dy, oz - dz),
-        (ox - dx, oy + dy, oz - dz),
-        (ox - dx, oy - dy, oz + dz),
-        (ox + dx, oy - dy, oz + dz),
-        (ox + dx, oy + dy, oz + dz),
-        (ox - dx, oy + dy, oz + dz),
+        (ox - dx, oy - dy, oz - dz), (ox + dx, oy - dy, oz - dz), (ox + dx, oy + dy, oz - dz), (ox - dx, oy + dy, oz - dz),
+        (ox - dx, oy - dy, oz + dz), (ox + dx, oy - dy, oz + dz), (ox + dx, oy + dy, oz + dz), (ox - dx, oy + dy, oz + dz)
     ]
     vertices.extend(new_vertices)
 
-    n_start_index = len(normals) + 1
+    # Add normals
     new_normals = [
-        (-1, 0, 0), (1, 0, 0),
-        (0, -1, 0), (0, 1, 0),
-        (0, 0, -1), (0, 0, 1)
+        (0, 0, -1), (0, 0, 1), (0, -1, 0), (0, 1, 0), (-1, 0, 0), (1, 0, 0)
     ]
     normals.extend(new_normals)
 
+    # Add faces (vertex index // normal index)
     new_faces = [
-        # Front
-        ((v_start_index + 3, n_start_index + 5), (v_start_index + 2, n_start_index + 5), (v_start_index + 6, n_start_index + 5), (v_start_index + 7, n_start_index + 5)),
-        # Back
-        ((v_start_index + 1, n_start_index + 4), (v_start_index + 0, n_start_index + 4), (v_start_index + 4, n_start_index + 4), (v_start_index + 5, n_start_index + 4)),
-        # Left
-        ((v_start_index + 0, n_start_index + 0), (v_start_index + 3, n_start_index + 0), (v_start_index + 7, n_start_index + 0), (v_start_index + 4, n_start_index + 0)),
-        # Right
-        ((v_start_index + 2, n_start_index + 1), (v_start_index + 1, n_start_index + 1), (v_start_index + 5, n_start_index + 1), (v_start_index + 6, n_start_index + 1)),
-        # Top
-        ((v_start_index + 7, n_start_index + 3), (v_start_index + 6, n_start_index + 3), (v_start_index + 2, n_start_index + 3), (v_start_index + 3, n_start_index + 3)),
-        # Bottom
-        ((v_start_index + 0, n_start_index + 2), (v_start_index + 1, n_start_index + 2), (v_start_index + 5, n_start_index + 2), (v_start_index + 4, n_start_index + 2)),
+        # Front (+Z)
+        ((v_start_index + 4, n_start_index + 1), (v_start_index + 5, n_start_index + 1), (v_start_index + 6, n_start_index + 1), (v_start_index + 7, n_start_index + 1)),
+        # Back (-Z)
+        ((v_start_index + 1, n_start_index + 0), (v_start_index + 0, n_start_index + 0), (v_start_index + 3, n_start_index + 0), (v_start_index + 2, n_start_index + 0)),
+        # Top (+Y)
+        ((v_start_index + 3, n_start_index + 3), (v_start_index + 7, n_start_index + 3), (v_start_index + 6, n_start_index + 3), (v_start_index + 2, n_start_index + 3)),
+        # Bottom (-Y)
+        ((v_start_index + 1, n_start_index + 2), (v_start_index + 5, n_start_index + 2), (v_start_index + 4, n_start_index + 2), (v_start_index + 0, n_start_index + 2)),
+        # Right (+X)
+        ((v_start_index + 5, n_start_index + 5), (v_start_index + 1, n_start_index + 5), (v_start_index + 2, n_start_index + 5), (v_start_index + 6, n_start_index + 5)),
+        # Left (-X)
+        ((v_start_index + 0, n_start_index + 4), (v_start_index + 4, n_start_index + 4), (v_start_index + 7, n_start_index + 4), (v_start_index + 3, n_start_index + 4)),
     ]
     faces.extend(new_faces)
 
@@ -172,7 +167,7 @@ def generate_bench(asset_brief, vertices, normals, faces):
 
     # Seat
     seat_dims = {'x': x, 'y': y * 0.1, 'z': z}
-    add_cube(vertices, normals, faces, seat_dims, (0, y * 0.45, 0))
+    add_cube(vertices, normals, faces, seat_dims, (0, 0, 0))
 
     # Legs
     leg_height = y * 0.9
@@ -183,10 +178,10 @@ def generate_bench(asset_brief, vertices, normals, faces):
     leg_x_offset = x / 2 - leg_width / 2
     leg_z_offset = z / 2 - leg_depth / 2
 
-    add_cube(vertices, normals, faces, leg_dims, (-leg_x_offset, -leg_height / 2 + y*0.4, -leg_z_offset))
-    add_cube(vertices, normals, faces, leg_dims, (leg_x_offset, -leg_height / 2+ y*0.4, -leg_z_offset))
-    add_cube(vertices, normals, faces, leg_dims, (-leg_x_offset, -leg_height / 2+ y*0.4, leg_z_offset))
-    add_cube(vertices, normals, faces, leg_dims, (leg_x_offset, -leg_height / 2+ y*0.4, leg_z_offset))
+    add_cube(vertices, normals, faces, leg_dims, (-leg_x_offset, -leg_height / 2, -leg_z_offset))
+    add_cube(vertices, normals, faces, leg_dims, (leg_x_offset, -leg_height / 2, -leg_z_offset))
+    add_cube(vertices, normals, faces, leg_dims, (-leg_x_offset, -leg_height / 2, leg_z_offset))
+    add_cube(vertices, normals, faces, leg_dims, (leg_x_offset, -leg_height / 2, leg_z_offset))
 
 def generate_desk(asset_brief, vertices, normals, faces):
     """Generates a desk."""
@@ -195,7 +190,7 @@ def generate_desk(asset_brief, vertices, normals, faces):
 
     # Top
     top_dims = {'x': x, 'y': y * 0.05, 'z': z}
-    add_cube(vertices, normals, faces, top_dims, (0, y * 0.975, 0))
+    add_cube(vertices, normals, faces, top_dims, (0, y - (y*0.05)/2, 0))
 
     # Legs
     leg_height = y * 0.95
@@ -218,23 +213,23 @@ def generate_sofa(asset_brief, vertices, normals, faces):
 
     # Base
     base_dims = {'x': x, 'y': y * 0.4, 'z': z}
-    add_cube(vertices, normals, faces, base_dims, (0, y * 0.2, 0))
+    add_cube(vertices, normals, faces, base_dims, (0, y * 0.2 - y/2, 0))
 
     # Back
     back_dims = {'x': x, 'y': y * 0.6, 'z': z * 0.2}
-    add_cube(vertices, normals, faces, back_dims, (0, y * 0.7, -z * 0.4))
+    add_cube(vertices, normals, faces, back_dims, (0, y * 0.7 - y/2, -z * 0.4))
 
     # Arms
     arm_dims = {'x': x * 0.1, 'y': y * 0.3, 'z': z * 0.8}
-    add_cube(vertices, normals, faces, arm_dims, (-x * 0.45, y * 0.55, z * 0.1))
-    add_cube(vertices, normals, faces, arm_dims, (x * 0.45, y * 0.55, z * 0.1))
+    add_cube(vertices, normals, faces, arm_dims, (-x * 0.45, y * 0.55 - y/2, z * 0.1))
+    add_cube(vertices, normals, faces, arm_dims, (x * 0.45, y * 0.55 - y/2, z * 0.1))
 
 def generate_radio(asset_brief, vertices, normals, faces):
     """Generates a radio."""
     dims = asset_brief['dimensions']
     x, y, z = dims['x'], dims['y'], dims['z']
-    add_cube(vertices, normals, faces, {'x': x, 'y': y * 0.8, 'z': z}, (0, y * 0.1, 0))
-    add_cube(vertices, normals, faces, {'x': x * 0.2, 'y': y * 0.2, 'z': z * 0.2}, (x * 0.3, y * 0.9, 0))
+    add_cube(vertices, normals, faces, {'x': x, 'y': y * 0.8, 'z': z}, (0, y * 0.1 - y*0.4, 0))
+    add_cube(vertices, normals, faces, {'x': x * 0.2, 'y': y * 0.2, 'z': z * 0.2}, (x * 0.3, y * 0.9 - y*0.4, 0))
 
 def generate_television(asset_brief, vertices, normals, faces):
     """Generates a television."""
@@ -247,9 +242,9 @@ def generate_lamp(asset_brief, vertices, normals, faces):
     """Generates a lamp."""
     dims = asset_brief['dimensions']
     x, y, z = dims['x'], dims['y'], dims['z']
-    add_cube(vertices, normals, faces, {'x': x, 'y': y * 0.1, 'z': z}, (0, -y * 0.45, 0)) # Base
+    add_cube(vertices, normals, faces, {'x': x, 'y': y * 0.1, 'z': z}, (0, -y/2 + y*0.05, 0)) # Base
     add_cube(vertices, normals, faces, {'x': x * 0.1, 'y': y * 0.9, 'z': z * 0.1}, (0, 0, 0)) # Stand
-    add_cube(vertices, normals, faces, {'x': x * 0.8, 'y': y * 0.3, 'z': z * 0.8}, (0, y * 0.35, 0)) # Shade
+    add_cube(vertices, normals, faces, {'x': x * 0.8, 'y': y * 0.3, 'z': z * 0.8}, (0, y/2 - y*0.15, 0)) # Shade
 
 def generate_chair(asset_brief, vertices, normals, faces):
     """Generates a chair."""

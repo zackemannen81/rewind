@@ -1,44 +1,45 @@
 using UnityEditor;
 using UnityEngine;
+using System.IO;
 
 public class ProceduralAssetPostprocessor : AssetPostprocessor
 {
     void OnPreprocessModel()
     {
-        if (assetPath.Contains("Procedural"))
-        {
-            ModelImporter modelImporter = (ModelImporter)assetImporter;
-            modelImporter.materialImportMode = ModelImporterMaterialImportMode.None;
-        }
+        if (!assetPath.Contains("Procedural")) return;
+        Debug.Log($"PROCEDURAL_GEN: Preprocessing model: {assetPath}");
+        ModelImporter modelImporter = (ModelImporter)assetImporter;
+        modelImporter.materialImportMode = ModelImporterMaterialImportMode.None;
     }
 
     void OnPostprocessModel(GameObject gameObject)
     {
-        if (assetPath.Contains("Procedural"))
+        if (!assetPath.Contains("Procedural")) return;
+        Debug.Log($"PROCEDURAL_GEN: Postprocessing model: {assetPath}");
+
+        // Add a BoxCollider
+        if (gameObject.GetComponent<BoxCollider>() == null)
         {
-            // Add a BoxCollider
             BoxCollider collider = gameObject.AddComponent<BoxCollider>();
+            Debug.Log($"PROCEDURAL_GEN: Added BoxCollider to {gameObject.name}");
+        }
 
-            // Calculate the bounds of the mesh
-            Renderer[] renderers = gameObject.GetComponentsInChildren<Renderer>();
-            Bounds bounds = new Bounds(gameObject.transform.position, Vector3.zero);
-            foreach (Renderer renderer in renderers)
-            {
-                bounds.Encapsulate(renderer.bounds);
-            }
+        // --- Prefab Generation ---
+        string assetName = Path.GetFileNameWithoutExtension(assetPath);
+        string assetFolder = Path.GetDirectoryName(assetPath);
+        string prefabPath = Path.Combine(assetFolder, $"{assetName}.prefab");
 
-            collider.center = bounds.center - gameObject.transform.position;
-            collider.size = bounds.size;
-
-            string[] pathParts = assetPath.Split('/');
-            string assetName = pathParts[pathParts.Length - 1].Split('.')[0];
-            string assetFolder = string.Join("/", pathParts, 0, pathParts.Length - 1);
-
-            // Create a prefab
-            string prefabPath = $"{assetFolder}/{assetName}.prefab";
+        // Check if prefab already exists
+        GameObject existingPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(prefabPath);
+        if (existingPrefab != null)
+        {
+            Debug.Log($"PROCEDURAL_GEN: Prefab already exists at {prefabPath}. Overwriting.");
+            PrefabUtility.SaveAsPrefabAssetAndConnect(gameObject, prefabPath, InteractionMode.AutomatedAction);
+        }
+        else
+        {
+            Debug.Log($"PROCEDURAL_GEN: Creating new prefab at {prefabPath}");
             PrefabUtility.SaveAsPrefabAsset(gameObject, prefabPath);
-
-            // Further steps would involve finding the correct material from the palette and assigning it.
         }
     }
 }
