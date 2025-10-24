@@ -33,7 +33,7 @@ public class ProceduralAssetPostprocessor : AssetPostprocessor
         string assetName = Path.GetFileNameWithoutExtension(assetPath);
         string assetFolder = (Path.GetDirectoryName(assetPath) ?? "Assets/Art/Procedural").Replace('\\', '/');
         string prefabName = assetName.EndsWith("_PFB", System.StringComparison.OrdinalIgnoreCase) ? assetName : assetName + "_PFB";
-        string prefabName = assetName.EndsWith("_PFB", StringComparison.OrdinalIgnoreCase) ? assetName : assetName + "_PFB";
+//        string prefabName = assetName.EndsWith("_PFB", StringComparison.OrdinalIgnoreCase) ? assetName : assetName + "_PFB";
         string prefabPath = Path.Combine(assetFolder, prefabName + ".prefab").Replace('\\', '/');
 
         Debug.Log($"PROCEDURAL_GEN: Saving prefab to {prefabPath}");
@@ -45,12 +45,12 @@ public class ProceduralAssetPostprocessor : AssetPostprocessor
         UnityEngine.Object.DestroyImmediate(prefabRoot);
 
         if (savedPrefab != null)
-        PrefabUtility.SaveAsPrefabAsset(prefabRoot, prefabPath, out bool success);
+        PrefabUtility.SaveAsPrefabAsset(prefabRoot, prefabPath, out bool successFlag);
         UnityEngine.Object.DestroyImmediate(prefabRoot);
-        GameObject prefabRoot = Object.Instantiate(gameObject);
+        prefabRoot = Object.Instantiate(gameObject);
         prefabRoot.name = prefabName;
 
-        PrefabUtility.SaveAsPrefabAsset(prefabRoot, prefabPath, out bool success);
+        PrefabUtility.SaveAsPrefabAsset(prefabRoot, prefabPath, out bool successFlag);
         Object.DestroyImmediate(prefabRoot);
 
         if (success)
