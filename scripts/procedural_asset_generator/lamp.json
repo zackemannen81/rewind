@@ -1,14 +1,26 @@
 {
-  "assetName": "Lamp",
-  "type": "lamp",
-  "dimensions": {
-    "x": 0.3,
-    "y": 0.8,
-    "z": 0.3
-  },
-  "material": {
-    "baseColor": "PrimaryBase",
-    "accentColor": "AccentMagenta"
-  },
-  "functionalTags": []
+    "assetName": "Lamp",
+    "parts": [
+        {
+            "partName": "Base",
+            "type": "cylinder",
+            "dimensions": {"x": 0.3, "y": 0.05, "z": 0.3},
+            "offset": {"x": 0, "y": 0.025, "z": 0},
+            "material": {"baseColor": "PrimaryBase"}
+        },
+        {
+            "partName": "Stand",
+            "type": "cylinder",
+            "dimensions": {"x": 0.05, "y": 0.8, "z": 0.05},
+            "offset": {"x": 0, "y": 0.4, "z": 0},
+            "material": {"baseColor": "PrimaryBase"}
+        },
+        {
+            "partName": "Shade",
+            "type": "cylinder",
+            "dimensions": {"x": 0.4, "y": 0.3, "z": 0.4},
+            "offset": {"x": 0, "y": 0.7, "z": 0},
+            "material": {"baseColor": "AccentMagenta", "isEmissive": true}
+        }
+    ]
 }

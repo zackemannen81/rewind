@@ -1,14 +1,47 @@
 {
   "assetName": "Radio",
-  "type": "radio",
-  "dimensions": {
-    "x": 0.4,
-    "y": 0.2,
-    "z": 0.15
-  },
-  "material": {
-    "baseColor": "PrimaryConcrete",
-    "accentColor": "AccentCyan"
-  },
-  "functionalTags": ["interactable"]
+  "parts": [
+    {
+      "partName": "Body",
+      "type": "cube",
+      "dimensions": {"x": 0.4, "y": 0.2, "z": 0.15},
+      "offset": {"x": 0, "y": 0, "z": 0},
+      "material": {"baseColor": "PrimaryConcrete"}
+    },
+    {
+      "partName": "Display",
+      "type": "cube",
+      "dimensions": {"x": 0.15, "y": 0.08, "z": 0.01},
+      "offset": {"x": -0.08, "y": 0.02, "z": 0.075},
+      "material": {"baseColor": "AccentCyan", "isEmissive": true}
+    },
+    {
+      "partName": "VolumeKnob",
+      "type": "cylinder",
+      "dimensions": {"x": 0.04, "y": 0.03, "z": 0.04},
+      "offset": {"x": 0.1, "y": 0.05, "z": 0.075},
+      "material": {"baseColor": "TertiaryWarmGrey"}
+    },
+    {
+      "partName": "ChannelSelector",
+      "type": "cylinder",
+      "dimensions": {"x": 0.04, "y": 0.03, "z": 0.04},
+      "offset": {"x": 0.1, "y": -0.05, "z": 0.075},
+      "material": {"baseColor": "TertiaryWarmGrey"}
+    },
+    {
+      "partName": "PowerButton",
+      "type": "cylinder",
+      "dimensions": {"x": 0.03, "y": 0.02, "z": 0.03},
+      "offset": {"x": 0.15, "y": 0.0, "z": 0.075},
+      "material": {"baseColor": "AccentMagenta", "isEmissive": true}
+    },
+    {
+        "partName": "Antenna",
+        "type": "cylinder",
+        "dimensions": {"x": 0.01, "y": 0.15, "z": 0.01},
+        "offset": {"x": 0.18, "y": 0.1, "z": 0},
+        "material": {"baseColor": "TertiaryWarmGrey"}
+    }
+  ]
 }
