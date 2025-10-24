@@ -1,0 +1,14 @@
+{
+  "assetName": "SampleSofa",
+  "type": "sofa",
+  "dimensions": {
+    "x": 2.5,
+    "y": 0.8,
+    "z": 1
+  },
+  "material": {
+    "baseColor": "PrimaryConcrete",
+    "accentColor": "AccentMagenta"
+  },
+  "functionalTags": ["cover", "interactable"]
+}

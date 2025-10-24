@@ -13,8 +13,23 @@ PALETTE = {
     "TertiaryWarmGrey": {"r": 0.482, "g": 0.446, "b": 0.423, "a": 1},
 }
 
+def validate_brief(asset_brief):
+    """Validates the asset brief against the schema."""
+    if 'assetName' not in asset_brief or not isinstance(asset_brief['assetName'], str):
+        raise ValueError("Invalid or missing assetName")
+    if 'type' not in asset_brief or asset_brief['type'] not in ['cube', 'bench', 'desk', 'sofa']:
+        raise ValueError("Invalid or missing type")
+    if 'dimensions' not in asset_brief or not isinstance(asset_brief['dimensions'], dict):
+        raise ValueError("Invalid or missing dimensions")
+    if 'material' not in asset_brief or not isinstance(asset_brief['material'], dict):
+        raise ValueError("Invalid or missing material")
+    if 'baseColor' not in asset_brief['material'] or asset_brief['material']['baseColor'] not in PALETTE:
+        raise ValueError("Invalid or missing baseColor")
+    return True
+
 def generate(asset_brief):
     """Generates a .obj and .mat file from an asset brief."""
+    validate_brief(asset_brief)
 
     asset_name = asset_brief['assetName']
     output_dir = f'Assets/Art/Procedural/{asset_name}'
@@ -30,6 +45,10 @@ def generate(asset_brief):
         add_cube(vertices, faces, asset_brief['dimensions'])
     elif asset_brief['type'] == 'bench':
         generate_bench(asset_brief, vertices, faces)
+    elif asset_brief['type'] == 'desk':
+        generate_desk(asset_brief, vertices, faces)
+    elif asset_brief['type'] == 'sofa':
+        generate_sofa(asset_brief, vertices, faces)
     else:
         print(f"Unsupported asset type: {asset_brief['type']}")
         return
@@ -115,7 +134,6 @@ def add_cube(vertices, faces, dimensions, offset=(0, 0, 0)):
     ]
     faces.extend(new_faces)
 
-
 def generate_bench(asset_brief, vertices, faces):
     """Generates a bench."""
     dims = asset_brief['dimensions']
@@ -139,6 +157,46 @@ def generate_bench(asset_brief, vertices, faces):
     add_cube(vertices, faces, leg_dims, (-leg_x_offset, -leg_height / 2+ y*0.4, leg_z_offset))
     add_cube(vertices, faces, leg_dims, (leg_x_offset, -leg_height / 2+ y*0.4, leg_z_offset))
 
+def generate_desk(asset_brief, vertices, faces):
+    """Generates a desk."""
+    dims = asset_brief['dimensions']
+    x, y, z = dims['x'], dims['y'], dims['z']
+
+    # Top
+    top_dims = {'x': x, 'y': y * 0.05, 'z': z}
+    add_cube(vertices, faces, top_dims, (0, y * 0.975, 0))
+
+    # Legs
+    leg_height = y * 0.95
+    leg_width = x * 0.05
+    leg_depth = z * 0.05
+    leg_dims = {'x': leg_width, 'y': leg_height, 'z': leg_depth}
+
+    leg_x_offset = x / 2 - leg_width / 2
+    leg_z_offset = z / 2 - leg_depth / 2
+
+    add_cube(vertices, faces, leg_dims, (-leg_x_offset, leg_height / 2, -leg_z_offset))
+    add_cube(vertices, faces, leg_dims, (leg_x_offset, leg_height / 2, -leg_z_offset))
+    add_cube(vertices, faces, leg_dims, (-leg_x_offset, leg_height / 2, leg_z_offset))
+    add_cube(vertices, faces, leg_dims, (leg_x_offset, leg_height / 2, leg_z_offset))
+
+def generate_sofa(asset_brief, vertices, faces):
+    """Generates a sofa."""
+    dims = asset_brief['dimensions']
+    x, y, z = dims['x'], dims['y'], dims['z']
+
+    # Base
+    base_dims = {'x': x, 'y': y * 0.4, 'z': z}
+    add_cube(vertices, faces, base_dims, (0, y * 0.2, 0))
+
+    # Back
+    back_dims = {'x': x, 'y': y * 0.6, 'z': z * 0.2}
+    add_cube(vertices, faces, back_dims, (0, y * 0.7, -z * 0.4))
+
+    # Arms
+    arm_dims = {'x': x * 0.1, 'y': y * 0.3, 'z': z * 0.8}
+    add_cube(vertices, faces, arm_dims, (-x * 0.45, y * 0.55, z * 0.1))
+    add_cube(vertices, faces, arm_dims, (x * 0.45, y * 0.55, z * 0.1))
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Procedural Asset Generator')
@@ -148,4 +206,7 @@ if __name__ == '__main__':
     with open(args.brief, 'r') as f:
         asset_brief = json.load(f)
 
-    generate(asset_brief)
+    try:
+        generate(asset_brief)
+    except ValueError as e:
+        print(f"Error: {e}")
