@@ -1,4 +1,3 @@
-
 import json
 import argparse
 import os
@@ -268,18 +267,40 @@ def generate_sofa(asset_brief, vertices, normals, faces):
     add_beveled_cube(vertices, normals, faces, arm_dims, (x * 0.45, y * 0.55 - y/2, z * 0.1))
 
 def generate_radio(asset_brief, vertices, normals, faces):
-    """Generates a radio."""
+    """Generates a radio with more detail."""
     dims = asset_brief['dimensions']
     x, y, z = dims['x'], dims['y'], dims['z']
-    add_beveled_cube(vertices, normals, faces, {'x': x, 'y': y * 0.8, 'z': z}, (0, y * 0.1 - y*0.4, 0))
-    add_cylinder(vertices, normals, faces, x * 0.05, y * 0.3, 12, (x * 0.4, y * 0.85 - y*0.4, 0)) # Antenna
+
+    # Main body
+    add_beveled_cube(vertices, normals, faces, dims, (0,0,0))
+
+    # Display Screen (inset)
+    screen_dims = {'x': x * 0.4, 'y': y * 0.3, 'z': 0.01}
+    add_cube(vertices, normals, faces, screen_dims, (-x * 0.2, y * 0.1, z/2 - 0.005))
+
+    # Volume Knob
+    add_cylinder(vertices, normals, faces, radius=y*0.1, height=0.04, segments=12, offset=(x*0.3, y*0.2, z/2))
+
+    # Channel Selector
+    add_cylinder(vertices, normals, faces, radius=y*0.1, height=0.04, segments=12, offset=(x*0.3, -y*0.2, z/2))
+
+    # Power Button
+    add_cylinder(vertices, normals, faces, radius=y*0.08, height=0.02, segments=8, offset=(-x*0.4, -y*0.3, z/2))
+
+    # Antenna
+    add_cylinder(vertices, normals, faces, radius=x*0.02, height=y*0.5, segments=8, offset=(x*0.45, y*0.5, -z*0.4))
 
 def generate_television(asset_brief, vertices, normals, faces):
-    """Generates a television."""
+    """Generates a television with more detail."""
     dims = asset_brief['dimensions']
     x, y, z = dims['x'], dims['y'], dims['z']
+    # Screen/Body
     add_beveled_cube(vertices, normals, faces, {'x': x, 'y': y, 'z': z * 0.6}, (0, 0, z * 0.2))
+    # CRT Back
     add_beveled_cube(vertices, normals, faces, {'x': x * 0.5, 'y': y * 0.5, 'z': z * 0.4}, (0, 0, -z * 0.3))
+    # Knobs
+    add_cylinder(vertices, normals, faces, radius=y*0.05, height=0.03, segments=10, offset=(x*0.4, -y*0.4, z*0.5))
+    add_cylinder(vertices, normals, faces, radius=y*0.05, height=0.03, segments=10, offset=(x*0.3, -y*0.4, z*0.5))
 
 def generate_lamp(asset_brief, vertices, normals, faces):
     """Generates a lamp."""
@@ -313,9 +334,18 @@ def generate_desk_with_computer(asset_brief, vertices, normals, faces):
     x, y, z = dims['x'], dims['y'], dims['z']
     # Desk
     generate_desk(asset_brief, vertices, normals, faces)
-    # Computer
-    add_beveled_cube(vertices, normals, faces, {'x': x * 0.2, 'y': y * 0.4, 'z': z * 0.05}, (0, y + y*0.2, 0)) # Monitor
-    add_beveled_cube(vertices, normals, faces, {'x': x * 0.1, 'y': y * 0.5, 'z': z * 0.3}, (-x * 0.4, y/2, 0)) # Tower
+    # Computer Monitor
+    monitor_dims = {'x': x * 0.3, 'y': y * 0.4, 'z': 0.05}
+    monitor_offset = (0, y + y*0.2, 0)
+    add_beveled_cube(vertices, normals, faces, monitor_dims, monitor_offset)
+    # Monitor Stand
+    stand_dims = {'x': x * 0.1, 'y': y * 0.1, 'z': x * 0.1}
+    stand_offset = (0, y - y*0.05, -z*0.1)
+    add_beveled_cube(vertices, normals, faces, stand_dims, stand_offset)
+    # Computer Tower
+    tower_dims = {'x': x * 0.15, 'y': y * 0.6, 'z': z * 0.4}
+    tower_offset = (-x * 0.4, y/2, 0)
+    add_beveled_cube(vertices, normals, faces, tower_dims, tower_offset)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Procedural Asset Generator')
