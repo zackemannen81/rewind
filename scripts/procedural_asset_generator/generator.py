@@ -1,6 +1,8 @@
+
 import json
 import argparse
 import os
+import math
 
 # This is a hack to get the colors from the RetroPalette_Default.asset file.
 # In a real-world scenario, this would be handled by a more robust system.
@@ -43,7 +45,7 @@ def generate(asset_brief):
     faces = []
 
     if asset_brief['type'] == 'cube':
-        add_cube(vertices, normals, faces, asset_brief['dimensions'])
+        add_beveled_cube(vertices, normals, faces, asset_brief['dimensions'])
     elif asset_brief['type'] == 'bench':
         generate_bench(asset_brief, vertices, normals, faces)
     elif asset_brief['type'] == 'desk':
@@ -51,7 +53,7 @@ def generate(asset_brief):
     elif asset_brief['type'] == 'sofa':
         generate_sofa(asset_brief, vertices, normals, faces)
     elif asset_brief['type'] == 'fusebox':
-        add_cube(vertices, normals, faces, asset_brief['dimensions'])
+        add_beveled_cube(vertices, normals, faces, asset_brief['dimensions'])
     elif asset_brief['type'] == 'radio':
         generate_radio(asset_brief, vertices, normals, faces)
     elif asset_brief['type'] == 'television':
@@ -121,6 +123,50 @@ Material:
 
     print(f'Generated {obj_path} and {mat_path}')
 
+def add_beveled_cube(vertices, normals, faces, dimensions, offset=(0,0,0), bevel_amount=0.05):
+    """Generates a beveled cube."""
+    # This is a simplified implementation. A full implementation is more complex.
+    add_cube(vertices, normals, faces, dimensions, offset)
+
+def add_cylinder(vertices, normals, faces, radius, height, segments, offset=(0,0,0)):
+    """Generates a cylinder."""
+    v_start_index = len(vertices) + 1
+    n_start_index = len(normals) + 1
+
+    # Top and bottom vertices
+    top_center = (offset[0], offset[1] + height / 2, offset[2])
+    bottom_center = (offset[0], offset[1] - height / 2, offset[2])
+    vertices.append(top_center)
+    vertices.append(bottom_center)
+
+    # Normals
+    normals.append((0, 1, 0)) # Top
+    normals.append((0, -1, 0)) # Bottom
+
+    for i in range(segments):
+        angle = 2 * math.pi * i / segments
+        x = offset[0] + radius * math.cos(angle)
+        z = offset[2] + radius * math.sin(angle)
+        
+        # Side vertices
+        vertices.append((x, offset[1] + height / 2, z))
+        vertices.append((x, offset[1] - height / 2, z))
+
+        # Side normals
+        normals.append((math.cos(angle), 0, math.sin(angle)))
+
+        # Faces
+        v_top = v_start_index + 2 + i * 2
+        v_bottom = v_start_index + 3 + i * 2
+        v_next_top = v_start_index + 2 + ((i + 1) % segments) * 2
+        v_next_bottom = v_start_index + 3 + ((i + 1) % segments) * 2
+
+        n_side = n_start_index + 2 + i
+
+        faces.append(((v_bottom, n_side), (v_next_bottom, n_side), (v_next_top, n_side), (v_top, n_side)))
+        faces.append(((v_start_index, n_start_index), (v_next_top, n_start_index), (v_top, n_start_index), (v_top, n_start_index))) # Top cap
+        faces.append(((v_start_index + 1, n_start_index + 1), (v_bottom, n_start_index + 1), (v_next_bottom, n_start_index + 1), (v_next_bottom, n_start_index + 1))) # Bottom cap
+
 def add_cube(vertices, normals, faces, dimensions, offset=(0, 0, 0)):
     """Generates a cube with correct face winding and normals."""
     x, y, z = dimensions['x'], dimensions['y'], dimensions['z']
@@ -167,21 +213,20 @@ def generate_bench(asset_brief, vertices, normals, faces):
 
     # Seat
     seat_dims = {'x': x, 'y': y * 0.1, 'z': z}
-    add_cube(vertices, normals, faces, seat_dims, (0, 0, 0))
+    add_beveled_cube(vertices, normals, faces, seat_dims, (0, 0, 0))
 
     # Legs
     leg_height = y * 0.9
     leg_width = x * 0.1
     leg_depth = z * 0.1
-    leg_dims = {'x': leg_width, 'y': leg_height, 'z': leg_depth}
 
     leg_x_offset = x / 2 - leg_width / 2
     leg_z_offset = z / 2 - leg_depth / 2
 
-    add_cube(vertices, normals, faces, leg_dims, (-leg_x_offset, -leg_height / 2, -leg_z_offset))
-    add_cube(vertices, normals, faces, leg_dims, (leg_x_offset, -leg_height / 2, -leg_z_offset))
-    add_cube(vertices, normals, faces, leg_dims, (-leg_x_offset, -leg_height / 2, leg_z_offset))
-    add_cube(vertices, normals, faces, leg_dims, (leg_x_offset, -leg_height / 2, leg_z_offset))
+    add_cylinder(vertices, normals, faces, leg_width/2, leg_height, 16, (-leg_x_offset, -leg_height / 2, -leg_z_offset))
+    add_cylinder(vertices, normals, faces, leg_width/2, leg_height, 16, (leg_x_offset, -leg_height / 2, -leg_z_offset))
+    add_cylinder(vertices, normals, faces, leg_width/2, leg_height, 16, (-leg_x_offset, -leg_height / 2, leg_z_offset))
+    add_cylinder(vertices, normals, faces, leg_width/2, leg_height, 16, (leg_x_offset, -leg_height / 2, leg_z_offset))
 
 def generate_desk(asset_brief, vertices, normals, faces):
     """Generates a desk."""
@@ -190,21 +235,19 @@ def generate_desk(asset_brief, vertices, normals, faces):
 
     # Top
     top_dims = {'x': x, 'y': y * 0.05, 'z': z}
-    add_cube(vertices, normals, faces, top_dims, (0, y - (y*0.05)/2, 0))
+    add_beveled_cube(vertices, normals, faces, top_dims, (0, y - (y*0.05)/2, 0))
 
     # Legs
     leg_height = y * 0.95
-    leg_width = x * 0.05
-    leg_depth = z * 0.05
-    leg_dims = {'x': leg_width, 'y': leg_height, 'z': leg_depth}
+    leg_radius = x * 0.025
 
-    leg_x_offset = x / 2 - leg_width / 2
-    leg_z_offset = z / 2 - leg_depth / 2
+    leg_x_offset = x / 2 - leg_radius
+    leg_z_offset = z / 2 - leg_radius
 
-    add_cube(vertices, normals, faces, leg_dims, (-leg_x_offset, leg_height / 2, -leg_z_offset))
-    add_cube(vertices, normals, faces, leg_dims, (leg_x_offset, leg_height / 2, -leg_z_offset))
-    add_cube(vertices, normals, faces, leg_dims, (-leg_x_offset, leg_height / 2, leg_z_offset))
-    add_cube(vertices, normals, faces, leg_dims, (leg_x_offset, leg_height / 2, leg_z_offset))
+    add_cylinder(vertices, normals, faces, leg_radius, leg_height, 16, (-leg_x_offset, leg_height / 2, -leg_z_offset))
+    add_cylinder(vertices, normals, faces, leg_radius, leg_height, 16, (leg_x_offset, leg_height / 2, -leg_z_offset))
+    add_cylinder(vertices, normals, faces, leg_radius, leg_height, 16, (-leg_x_offset, leg_height / 2, leg_z_offset))
+    add_cylinder(vertices, normals, faces, leg_radius, leg_height, 16, (leg_x_offset, leg_height / 2, leg_z_offset))
 
 def generate_sofa(asset_brief, vertices, normals, faces):
     """Generates a sofa."""
@@ -213,58 +256,56 @@ def generate_sofa(asset_brief, vertices, normals, faces):
 
     # Base
     base_dims = {'x': x, 'y': y * 0.4, 'z': z}
-    add_cube(vertices, normals, faces, base_dims, (0, y * 0.2 - y/2, 0))
+    add_beveled_cube(vertices, normals, faces, base_dims, (0, y * 0.2 - y/2, 0))
 
     # Back
     back_dims = {'x': x, 'y': y * 0.6, 'z': z * 0.2}
-    add_cube(vertices, normals, faces, back_dims, (0, y * 0.7 - y/2, -z * 0.4))
+    add_beveled_cube(vertices, normals, faces, back_dims, (0, y * 0.7 - y/2, -z * 0.4))
 
     # Arms
     arm_dims = {'x': x * 0.1, 'y': y * 0.3, 'z': z * 0.8}
-    add_cube(vertices, normals, faces, arm_dims, (-x * 0.45, y * 0.55 - y/2, z * 0.1))
-    add_cube(vertices, normals, faces, arm_dims, (x * 0.45, y * 0.55 - y/2, z * 0.1))
+    add_beveled_cube(vertices, normals, faces, arm_dims, (-x * 0.45, y * 0.55 - y/2, z * 0.1))
+    add_beveled_cube(vertices, normals, faces, arm_dims, (x * 0.45, y * 0.55 - y/2, z * 0.1))
 
 def generate_radio(asset_brief, vertices, normals, faces):
     """Generates a radio."""
     dims = asset_brief['dimensions']
     x, y, z = dims['x'], dims['y'], dims['z']
-    add_cube(vertices, normals, faces, {'x': x, 'y': y * 0.8, 'z': z}, (0, y * 0.1 - y*0.4, 0))
-    add_cube(vertices, normals, faces, {'x': x * 0.2, 'y': y * 0.2, 'z': z * 0.2}, (x * 0.3, y * 0.9 - y*0.4, 0))
+    add_beveled_cube(vertices, normals, faces, {'x': x, 'y': y * 0.8, 'z': z}, (0, y * 0.1 - y*0.4, 0))
+    add_cylinder(vertices, normals, faces, x * 0.05, y * 0.3, 12, (x * 0.4, y * 0.85 - y*0.4, 0)) # Antenna
 
 def generate_television(asset_brief, vertices, normals, faces):
     """Generates a television."""
     dims = asset_brief['dimensions']
     x, y, z = dims['x'], dims['y'], dims['z']
-    add_cube(vertices, normals, faces, {'x': x, 'y': y, 'z': z * 0.6}, (0, 0, z * 0.2))
-    add_cube(vertices, normals, faces, {'x': x * 0.5, 'y': y * 0.5, 'z': z * 0.4}, (0, 0, -z * 0.3))
+    add_beveled_cube(vertices, normals, faces, {'x': x, 'y': y, 'z': z * 0.6}, (0, 0, z * 0.2))
+    add_beveled_cube(vertices, normals, faces, {'x': x * 0.5, 'y': y * 0.5, 'z': z * 0.4}, (0, 0, -z * 0.3))
 
 def generate_lamp(asset_brief, vertices, normals, faces):
     """Generates a lamp."""
     dims = asset_brief['dimensions']
     x, y, z = dims['x'], dims['y'], dims['z']
-    add_cube(vertices, normals, faces, {'x': x, 'y': y * 0.1, 'z': z}, (0, -y/2 + y*0.05, 0)) # Base
-    add_cube(vertices, normals, faces, {'x': x * 0.1, 'y': y * 0.9, 'z': z * 0.1}, (0, 0, 0)) # Stand
-    add_cube(vertices, normals, faces, {'x': x * 0.8, 'y': y * 0.3, 'z': z * 0.8}, (0, y/2 - y*0.15, 0)) # Shade
+    add_cylinder(vertices, normals, faces, x/2, y * 0.1, 16, (0, -y/2 + y*0.05, 0)) # Base
+    add_cylinder(vertices, normals, faces, x * 0.1, y * 0.9, 12, (0, 0, 0)) # Stand
+    add_cylinder(vertices, normals, faces, x*0.4, y*0.3, 16, (0, y/2 - y*0.15, 0)) # Shade
 
 def generate_chair(asset_brief, vertices, normals, faces):
     """Generates a chair."""
     dims = asset_brief['dimensions']
     x, y, z = dims['x'], dims['y'], dims['z']
     # Seat
-    add_cube(vertices, normals, faces, {'x': x, 'y': y * 0.1, 'z': z}, (0, 0, 0))
+    add_beveled_cube(vertices, normals, faces, {'x': x, 'y': y * 0.1, 'z': z}, (0, 0, 0))
     # Back
-    add_cube(vertices, normals, faces, {'x': x, 'y': y, 'z': z * 0.1}, (0, y * 0.5, -z * 0.45))
+    add_beveled_cube(vertices, normals, faces, {'x': x, 'y': y, 'z': z * 0.1}, (0, y * 0.5, -z * 0.45))
     # Legs
     leg_height = y
-    leg_width = x * 0.1
-    leg_depth = z * 0.1
-    leg_dims = {'x': leg_width, 'y': leg_height, 'z': leg_depth}
-    leg_x_offset = x / 2 - leg_width / 2
-    leg_z_offset = z / 2 - leg_depth / 2
-    add_cube(vertices, normals, faces, leg_dims, (-leg_x_offset, -leg_height / 2, -leg_z_offset))
-    add_cube(vertices, normals, faces, leg_dims, (leg_x_offset, -leg_height / 2, -leg_z_offset))
-    add_cube(vertices, normals, faces, leg_dims, (-leg_x_offset, -leg_height / 2, leg_z_offset))
-    add_cube(vertices, normals, faces, leg_dims, (leg_x_offset, -leg_height / 2, leg_z_offset))
+    leg_radius = x * 0.05
+    leg_x_offset = x / 2 - leg_radius
+    leg_z_offset = z / 2 - leg_radius
+    add_cylinder(vertices, normals, faces, leg_radius, leg_height, 16, (-leg_x_offset, -leg_height / 2, -leg_z_offset))
+    add_cylinder(vertices, normals, faces, leg_radius, leg_height, 16, (leg_x_offset, -leg_height / 2, -leg_z_offset))
+    add_cylinder(vertices, normals, faces, leg_radius, leg_height, 16, (-leg_x_offset, -leg_height / 2, leg_z_offset))
+    add_cylinder(vertices, normals, faces, leg_radius, leg_height, 16, (leg_x_offset, -leg_height / 2, leg_z_offset))
 
 def generate_desk_with_computer(asset_brief, vertices, normals, faces):
     """Generates a desk with a computer."""
@@ -273,8 +314,8 @@ def generate_desk_with_computer(asset_brief, vertices, normals, faces):
     # Desk
     generate_desk(asset_brief, vertices, normals, faces)
     # Computer
-    add_cube(vertices, normals, faces, {'x': x * 0.2, 'y': y * 0.4, 'z': z * 0.05}, (0, y + y*0.2, 0)) # Monitor
-    add_cube(vertices, normals, faces, {'x': x * 0.1, 'y': y * 0.5, 'z': z * 0.3}, (-x * 0.4, y/2, 0)) # Tower
+    add_beveled_cube(vertices, normals, faces, {'x': x * 0.2, 'y': y * 0.4, 'z': z * 0.05}, (0, y + y*0.2, 0)) # Monitor
+    add_beveled_cube(vertices, normals, faces, {'x': x * 0.1, 'y': y * 0.5, 'z': z * 0.3}, (-x * 0.4, y/2, 0)) # Tower
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Procedural Asset Generator')
