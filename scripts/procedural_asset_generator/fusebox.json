@@ -1,0 +1,13 @@
+{
+  "assetName": "FuseBox",
+  "type": "fusebox",
+  "dimensions": {
+    "x": 0.3,
+    "y": 0.4,
+    "z": 0.15
+  },
+  "material": {
+    "baseColor": "TertiaryWarmGrey"
+  },
+  "functionalTags": ["interactable"]
+}

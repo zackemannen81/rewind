@@ -1,0 +1,13 @@
+{
+  "assetName": "OldTelevision",
+  "type": "television",
+  "dimensions": {
+    "x": 0.8,
+    "y": 0.6,
+    "z": 0.5
+  },
+  "material": {
+    "baseColor": "TertiaryOxide"
+  },
+  "functionalTags": []
+}

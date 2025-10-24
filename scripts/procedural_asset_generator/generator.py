@@ -17,7 +17,7 @@ def validate_brief(asset_brief):
     """Validates the asset brief against the schema."""
     if 'assetName' not in asset_brief or not isinstance(asset_brief['assetName'], str):
         raise ValueError("Invalid or missing assetName")
-    if 'type' not in asset_brief or asset_brief['type'] not in ['cube', 'bench', 'desk', 'sofa']:
+    if 'type' not in asset_brief or asset_brief['type'] not in ['cube', 'bench', 'desk', 'sofa', 'fusebox', 'radio', 'television', 'lamp', 'chair', 'desk_with_computer']:
         raise ValueError("Invalid or missing type")
     if 'dimensions' not in asset_brief or not isinstance(asset_brief['dimensions'], dict):
         raise ValueError("Invalid or missing dimensions")
@@ -50,6 +50,18 @@ def generate(asset_brief):
         generate_desk(asset_brief, vertices, normals, faces)
     elif asset_brief['type'] == 'sofa':
         generate_sofa(asset_brief, vertices, normals, faces)
+    elif asset_brief['type'] == 'fusebox':
+        add_cube(vertices, normals, faces, asset_brief['dimensions'])
+    elif asset_brief['type'] == 'radio':
+        generate_radio(asset_brief, vertices, normals, faces)
+    elif asset_brief['type'] == 'television':
+        generate_television(asset_brief, vertices, normals, faces)
+    elif asset_brief['type'] == 'lamp':
+        generate_lamp(asset_brief, vertices, normals, faces)
+    elif asset_brief['type'] == 'chair':
+        generate_chair(asset_brief, vertices, normals, faces)
+    elif asset_brief['type'] == 'desk_with_computer':
+        generate_desk_with_computer(asset_brief, vertices, normals, faces)
     else:
         print(f"Unsupported asset type: {asset_brief['type']}")
         return
@@ -216,6 +228,58 @@ def generate_sofa(asset_brief, vertices, normals, faces):
     arm_dims = {'x': x * 0.1, 'y': y * 0.3, 'z': z * 0.8}
     add_cube(vertices, normals, faces, arm_dims, (-x * 0.45, y * 0.55, z * 0.1))
     add_cube(vertices, normals, faces, arm_dims, (x * 0.45, y * 0.55, z * 0.1))
+
+def generate_radio(asset_brief, vertices, normals, faces):
+    """Generates a radio."""
+    dims = asset_brief['dimensions']
+    x, y, z = dims['x'], dims['y'], dims['z']
+    add_cube(vertices, normals, faces, {'x': x, 'y': y * 0.8, 'z': z}, (0, y * 0.1, 0))
+    add_cube(vertices, normals, faces, {'x': x * 0.2, 'y': y * 0.2, 'z': z * 0.2}, (x * 0.3, y * 0.9, 0))
+
+def generate_television(asset_brief, vertices, normals, faces):
+    """Generates a television."""
+    dims = asset_brief['dimensions']
+    x, y, z = dims['x'], dims['y'], dims['z']
+    add_cube(vertices, normals, faces, {'x': x, 'y': y, 'z': z * 0.6}, (0, 0, z * 0.2))
+    add_cube(vertices, normals, faces, {'x': x * 0.5, 'y': y * 0.5, 'z': z * 0.4}, (0, 0, -z * 0.3))
+
+def generate_lamp(asset_brief, vertices, normals, faces):
+    """Generates a lamp."""
+    dims = asset_brief['dimensions']
+    x, y, z = dims['x'], dims['y'], dims['z']
+    add_cube(vertices, normals, faces, {'x': x, 'y': y * 0.1, 'z': z}, (0, -y * 0.45, 0)) # Base
+    add_cube(vertices, normals, faces, {'x': x * 0.1, 'y': y * 0.9, 'z': z * 0.1}, (0, 0, 0)) # Stand
+    add_cube(vertices, normals, faces, {'x': x * 0.8, 'y': y * 0.3, 'z': z * 0.8}, (0, y * 0.35, 0)) # Shade
+
+def generate_chair(asset_brief, vertices, normals, faces):
+    """Generates a chair."""
+    dims = asset_brief['dimensions']
+    x, y, z = dims['x'], dims['y'], dims['z']
+    # Seat
+    add_cube(vertices, normals, faces, {'x': x, 'y': y * 0.1, 'z': z}, (0, 0, 0))
+    # Back
+    add_cube(vertices, normals, faces, {'x': x, 'y': y, 'z': z * 0.1}, (0, y * 0.5, -z * 0.45))
+    # Legs
+    leg_height = y
+    leg_width = x * 0.1
+    leg_depth = z * 0.1
+    leg_dims = {'x': leg_width, 'y': leg_height, 'z': leg_depth}
+    leg_x_offset = x / 2 - leg_width / 2
+    leg_z_offset = z / 2 - leg_depth / 2
+    add_cube(vertices, normals, faces, leg_dims, (-leg_x_offset, -leg_height / 2, -leg_z_offset))
+    add_cube(vertices, normals, faces, leg_dims, (leg_x_offset, -leg_height / 2, -leg_z_offset))
+    add_cube(vertices, normals, faces, leg_dims, (-leg_x_offset, -leg_height / 2, leg_z_offset))
+    add_cube(vertices, normals, faces, leg_dims, (leg_x_offset, -leg_height / 2, leg_z_offset))
+
+def generate_desk_with_computer(asset_brief, vertices, normals, faces):
+    """Generates a desk with a computer."""
+    dims = asset_brief['dimensions']
+    x, y, z = dims['x'], dims['y'], dims['z']
+    # Desk
+    generate_desk(asset_brief, vertices, normals, faces)
+    # Computer
+    add_cube(vertices, normals, faces, {'x': x * 0.2, 'y': y * 0.4, 'z': z * 0.05}, (0, y + y*0.2, 0)) # Monitor
+    add_cube(vertices, normals, faces, {'x': x * 0.1, 'y': y * 0.5, 'z': z * 0.3}, (-x * 0.4, y/2, 0)) # Tower
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Procedural Asset Generator')

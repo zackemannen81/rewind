@@ -1,0 +1,14 @@
+{
+  "assetName": "Lamp",
+  "type": "lamp",
+  "dimensions": {
+    "x": 0.3,
+    "y": 0.8,
+    "z": 0.3
+  },
+  "material": {
+    "baseColor": "PrimaryBase",
+    "accentColor": "AccentMagenta"
+  },
+  "functionalTags": []
+}
