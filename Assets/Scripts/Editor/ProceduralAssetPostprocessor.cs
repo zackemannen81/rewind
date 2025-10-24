@@ -37,6 +37,11 @@ public class ProceduralAssetPostprocessor : AssetPostprocessor
 
         Debug.Log($"PROCEDURAL_GEN: Saving prefab to {prefabPath}");
 
+        GameObject prefabRoot = UnityEngine.Object.Instantiate(gameObject);
+        prefabRoot.name = prefabName;
+
+        PrefabUtility.SaveAsPrefabAsset(prefabRoot, prefabPath, out bool success);
+        UnityEngine.Object.DestroyImmediate(prefabRoot);
         GameObject prefabRoot = Object.Instantiate(gameObject);
         prefabRoot.name = prefabName;
 
